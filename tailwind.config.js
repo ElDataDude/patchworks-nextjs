@@ -40,7 +40,10 @@ module.exports = {
         white: "#FFFFFF",
         black: "#121723",
         dark: "#1D2430",
-        primary: "#4A6CF7",
+        // Patchworks AI brand colors
+        primary: "#d16013", // Patchworks orange
+        "patchworks-orange": "#d16013",
+        "patchworks-dark-gray": "#333333",
         yellow: "#FBB040",
         "bg-color-dark": "#171C28",
         "body-color": {

@@ -1,22 +1,17 @@
-import Breadcrumb from "@/components/Common/Breadcrumb";
+import BookingCTA from "@/components/Common/BookingCTA";
 import Contact from "@/components/Contact";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Contact Page for Startup Nextjs Template",
+  title: "Contact Patchworks AI | Fractional AI Leadership & Implementation",
+  description: "Get in touch with Patchworks AI to discuss how our fractional AI leadership and implementation services can help your business achieve measurable ROI from AI investments.",
   // other metadata
 };
 
 const ContactPage = () => {
   return (
     <>
-      <Breadcrumb
-        pageName="Contact Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
-      />
-
       <Contact />
     </>
   );

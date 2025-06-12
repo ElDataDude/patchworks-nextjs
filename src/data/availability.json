@@ -1,0 +1,43 @@
+{
+  "Fractional Head of AI": {
+    "type": "retainer",
+    "totalCapacity": 5,
+    "bookedCapacity": 3
+  },
+  "Getting Started with AI Workshop": {
+    "type": "monthly",
+    "slots": [
+      { "total": 4, "booked": 4 },
+      { "total": 4, "booked": 3 },
+      { "total": 5, "booked": 2 },
+      { "total": 5, "booked": 1 }
+    ]
+  },
+  "Full AI Roadmap Package": {
+    "type": "monthly",
+    "slots": [
+      { "total": 3, "booked": 3 },
+      { "total": 3, "booked": 2 },
+      { "total": 4, "booked": 1 },
+      { "total": 4, "booked": 0 }
+    ]
+  },
+  "Bespoke AI Application & Workflow Automation": {
+    "type": "monthly",
+    "slots": [
+      { "total": 4, "booked": 4 },
+      { "total": 4, "booked": 2 },
+      { "total": 5, "booked": 2 },
+      { "total": 5, "booked": 0 }
+    ]
+  },
+  "Microsoft Copilot Integration & Training": {
+    "type": "monthly",
+    "slots": [
+      { "total": 4, "booked": 4 },
+      { "total": 4, "booked": 3 },
+      { "total": 5, "booked": 2 },
+      { "total": 5, "booked": 1 }
+    ]
+  }
+}

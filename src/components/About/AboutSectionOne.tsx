@@ -18,16 +18,16 @@ const AboutSectionOne = () => {
   );
 
   return (
-    <section id="about" className="pt-16 md:pt-20 lg:pt-28">
+    <section id="about" className="pt-8 md:pt-12 lg:pt-16">
       <div className="container">
-        <div className="border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
+        <div className="border-b border-body-color/[.15] pb-12 dark:border-white/[.15] md:pb-16 lg:pb-20">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
-              <SectionTitle
-                title="Crafted for Startup, SaaS and Business Sites."
-                paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
-                mb="44px"
-              />
+                <SectionTitle
+                  title="About Patchworks AI"
+                  paragraph="We bridge the gap between executive vision and technical execution, delivering AI solutions that generate measurable returns within weeks, not years. Our technology-agnostic approach ensures you get the right solution for your specific business needs."
+                  mb="44px"
+                />
 
               <div
                 className="mb-12 max-w-[570px] lg:mb-0"
@@ -35,15 +35,15 @@ const AboutSectionOne = () => {
               >
                 <div className="mx-[-12px] flex flex-wrap">
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Premium quality" />
-                    <List text="Tailwind CSS" />
-                    <List text="Use for lifetime" />
+                    <List text="Executive-Level AI Strategy" />
+                    <List text="Rapid ROI Demonstration" />
+                    <List text="Business-First Approach" />
                   </div>
 
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Next.js" />
-                    <List text="Rich documentation" />
-                    <List text="Developer friendly" />
+                    <List text="Technology-Agnostic Solutions" />
+                    <List text="Team Capability Building" />
+                    <List text="Proven Implementation Methodology" />
                   </div>
                 </div>
               </div>
@@ -53,13 +53,13 @@ const AboutSectionOne = () => {
               <div className="relative mx-auto aspect-[25/24] max-w-[500px] lg:mr-0">
                 <Image
                   src="/images/about/about-image.svg"
-                  alt="about-image"
+                  alt="AI Strategy and Implementation"
                   fill
                   className="mx-auto max-w-full drop-shadow-three dark:hidden dark:drop-shadow-none lg:mr-0"
                 />
                 <Image
                   src="/images/about/about-image-dark.svg"
-                  alt="about-image"
+                  alt="AI Strategy and Implementation"
                   fill
                   className="mx-auto hidden max-w-full drop-shadow-three dark:block dark:drop-shadow-none lg:mr-0"
                 />

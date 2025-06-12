@@ -1,24 +1,18 @@
 import AboutSectionOne from "@/components/About/AboutSectionOne";
-import AboutSectionTwo from "@/components/About/AboutSectionTwo";
-import Breadcrumb from "@/components/Common/Breadcrumb";
-
+import BookingCTA from "@/components/Common/BookingCTA";
+import ScrollUp from "@/components/Common/ScrollUp";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Page | Free Next.js Template for Startup and SaaS",
-  description: "This is About Page for Startup Nextjs Template",
-  // other metadata
+  title: "About | Patchworks AI",
+  description: "Learn about Patchworks AI's mission to deliver pragmatic AI solutions with measurable ROI through our fractional leadership model and expertise.",
 };
 
 const AboutPage = () => {
   return (
     <>
-      <Breadcrumb
-        pageName="About Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
-      />
+      <ScrollUp />
       <AboutSectionOne />
-      <AboutSectionTwo />
     </>
   );
 };
