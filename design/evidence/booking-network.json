@@ -1,0 +1,56 @@
+[
+  {
+    "method": "Network.requestWillBeSent",
+    "type": "Script",
+    "url": "https://app.cal.com/embed/embed.js"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "type": "Fetch",
+    "url": "http://127.0.0.1:3017/services?_rsc=1ld0r"
+  },
+  {
+    "method": "Network.responseReceived",
+    "type": "Fetch",
+    "url": "http://127.0.0.1:3017/services?_rsc=1ld0r",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "type": "Script",
+    "url": "http://127.0.0.1:3017/_next/static/chunks/app/services/page-860a171f30cb303b.js"
+  },
+  {
+    "method": "Network.responseReceived",
+    "type": "Script",
+    "url": "http://127.0.0.1:3017/_next/static/chunks/app/services/page-860a171f30cb303b.js",
+    "status": 200
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "type": "Stylesheet",
+    "url": "http://127.0.0.1:3017/_next/static/css/4cd5989de31fc087.css"
+  },
+  {
+    "method": "Network.responseReceived",
+    "type": "Stylesheet",
+    "url": "http://127.0.0.1:3017/_next/static/css/4cd5989de31fc087.css",
+    "status": 200
+  },
+  {
+    "method": "Network.responseReceived",
+    "type": "Script",
+    "url": "https://app.cal.com/embed/embed.js",
+    "status": 304
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "type": "Document",
+    "url": "https://app.cal.com/bryanj/30min/embed?layout=month_view&theme=light&embedType=modal&ui.color-scheme=light&embed="
+  },
+  {
+    "method": "Network.loadingFailed",
+    "type": "Document",
+    "error": "net::ERR_BLOCKED_BY_CLIENT"
+  }
+]

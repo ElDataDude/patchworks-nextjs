@@ -1,0 +1,74 @@
+[
+  {
+    "route": "/",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/services",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/industries",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/about",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/careers",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/contact",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/blog",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/blog-details",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/blog-sidebar",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/signin",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/signup",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "route": "/error",
+    "clipped": [],
+    "scrollWidth": 320,
+    "width": 320
+  }
+]

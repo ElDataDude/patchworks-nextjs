@@ -1,28 +1,34 @@
-import SectionTitle from "../Common/SectionTitle";
-import SingleFeature from "./SingleFeature";
 import featuresData from "./featuresData";
-
-const Features = () => {
+export default function Features() {
   return (
-    <>
-      <section id="features" className="py-12 md:py-16 lg:py-20">
-        <div className="container">
-          <SectionTitle
-            title="Our Services"
-            paragraph="From strategic guidance to hands-on implementation, our services are designed for executives who need AI solutions that deliver measurable ROI within weeks, not years. Each service is built on our pragmatic, business-first approach."
-            center
-            mb="40px"
-          />
-
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-            {featuresData.map((feature) => (
-              <SingleFeature key={feature.id} feature={feature} />
+    <section id="features" className="home-services section-space">
+      <div className="site-container editorial-layout">
+        <h2 className="section-heading editorial-anchor">
+          Our
+          <br /> Services
+        </h2>
+        <div className="editorial-content">
+          <p className="editorial-intro">
+            From strategic guidance to hands-on implementation, our services are
+            designed for executives who need AI solutions that deliver
+            measurable ROI within weeks, not years. Each service is built on our
+            pragmatic, business-first approach.
+          </p>
+          <div>
+            {featuresData.map((feature, index) => (
+              <article className="numbered-item" key={feature.id} data-reveal>
+                <span className="item-number" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className="item-title">{feature.title}</h3>
+                  <p>{feature.paragraph}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
-};
-
-export default Features;
+}

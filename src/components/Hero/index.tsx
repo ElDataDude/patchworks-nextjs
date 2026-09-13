@@ -1,43 +1,41 @@
-import Link from "next/link";
+import Image from "next/image";
 import BookingWidget from "../Common/BookingWidget";
-
-const Hero = () => {
+import EditorialLink from "../Common/EditorialLink";
+export default function Hero() {
   return (
-    <>
-      <section
-        id="home"
-        className="relative z-10 overflow-hidden bg-white pb-12 pt-[100px] dark:bg-gray-dark md:pb-16 md:pt-[120px] xl:pb-20 xl:pt-[140px] 2xl:pb-24 2xl:pt-[160px]"
-      >
-        <div className="container">
-          <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4">
-              <div className="mx-auto max-w-[800px] text-center">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Executive-Level <span className="text-primary">AI</span> Leadership Without the Full-Time Cost
-                </h1>
-                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  Patchworks AI bridges the gap between executive vision and technical execution, delivering measurable ROI from AI investments in weeks, not months or years.
-                </p>
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <BookingWidget 
-                    variant="primary"
-                    buttonText="Book Your Free 30-Minute AI Strategy Call"
-                  />
-                  <Link
-                    href="/services"
-                    className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
-                  >
-                    Explore Services
-                  </Link>
-                </div>
-              </div>
-            </div>
+    <section id="home" className="home-hero">
+      <div className="site-container hero-grid">
+        <h1 className="hero-title">
+          <span>Executive-Level</span> <em>AI Leadership</em>{" "}
+          <span className="hero-qualifier">Without the Full-Time Cost</span>
+        </h1>
+        <div className="hero-aside">
+          <p>
+            Patchworks AI bridges the gap between executive vision and technical
+            execution, delivering measurable ROI from AI investments in weeks,
+            not months or years.
+          </p>
+          <div className="hero-actions">
+            <BookingWidget
+              className="hero-booking"
+              buttonText="Book Your Free 30-Minute AI Strategy Call"
+            />
+            <EditorialLink href="/services" quiet>
+              Explore Services
+            </EditorialLink>
           </div>
         </div>
-        {/* Background decorative elements removed */}
-      </section>
-    </>
+      </div>
+      <div className="hero-art">
+        <Image
+          src="/images/editorial/home-systems.webp"
+          alt="White stone and glass systems connected by a continuous orange route"
+          width={1983}
+          height={793}
+          sizes="100vw"
+          priority
+        />
+      </div>
+    </section>
   );
-};
-
-export default Hero;
+}

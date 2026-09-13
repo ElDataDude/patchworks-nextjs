@@ -1,43 +1,31 @@
+"use client";
 import { useEffect, useState } from "react";
-
+import { ArrowUp } from "lucide-react";
 export default function ScrollToTop() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Top: 0 takes us all the way back to the top of the page
-  // Behavior: smooth keeps it smooth!
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
-    // Button is displayed after scrolling for 500 pixels
-    const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
-
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    const update = () => setVisible(window.scrollY > 600);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
   }, []);
-
-  return (
-    <div className="fixed bottom-8 right-8 z-[99]">
-      {isVisible && (
-        <div
-          onClick={scrollToTop}
-          aria-label="scroll to top"
-          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-primary text-white shadow-md transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp"
-        >
-          <span className="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white"></span>
-        </div>
-      )}
-    </div>
-  );
+  return visible ? (
+    <button
+      className="back-to-top"
+      type="button"
+      aria-label="Scroll to top"
+      onClick={() => {
+        document.getElementById("main-content")?.focus({ preventScroll: true });
+        window.scrollTo({
+          top: 0,
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
+            ? "instant"
+            : "smooth",
+        });
+      }}
+    >
+      <ArrowUp size={18} strokeWidth={1.5} />
+    </button>
+  ) : null;
 }

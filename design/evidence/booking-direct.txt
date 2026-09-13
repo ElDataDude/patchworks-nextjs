@@ -1,0 +1,92 @@
+- main:
+  - switch
+  - generic: Overlay my calendar
+  - group "Layout":
+    - radio "$Switch to monthly view" [checked]:
+      - generic: $Switch to monthly view
+    - radio "$Switch to weekly view":
+      - generic: $Switch to weekly view
+    - radio "$Switch to column view":
+      - generic: $Switch to column view
+  - list:
+    - link "Bryan Johnson":
+      - /url: https://cal.com/bryanj?redirect=false
+      - img "Bryan Johnson"
+  - paragraph: Bryan Johnson
+  - heading "30 Min Meeting" [level=1]
+  - generic: 30m
+  - img "Google Meet icon"
+  - paragraph: Google Meet
+  - paragraph: Europe/London
+  - combobox "Timezone Select"
+  - time:
+    - strong: September
+    - text: "2026"
+  - button "View previous month" [disabled]:
+  - button "View next month":
+  - generic: Sun
+  - generic: Mon
+  - generic: Tue
+  - generic: Wed
+  - generic: Thu
+  - generic: Fri
+  - generic: Sat
+  - button "1" [disabled]
+  - button "2" [disabled]
+  - button "3" [disabled]
+  - button "4" [disabled]
+  - button "5" [disabled]
+  - button "6" [disabled]
+  - button "7" [disabled]
+  - button "8" [disabled]
+  - button "9" [disabled]
+  - button "10" [disabled]
+  - button "11" [disabled]
+  - button "12" [disabled]
+  - button "13 Today" [disabled]:
+    - text: "13"
+    - generic: Today
+  - button "14"
+  - button "15"
+  - button "16"
+  - button "17"
+  - button "18"
+  - button "19" [disabled]
+  - button "20" [disabled]
+  - button "21"
+  - button "22"
+  - button "23" [disabled]
+  - button "24"
+  - button "25"
+  - button "26" [disabled]
+  - button "27" [disabled]
+  - button "28"
+  - button "29"
+  - button "30"
+  - text: Mon
+  - generic: 14th
+  - group "Time format":
+    - radio "12h":
+      - generic: 12h
+    - radio "24h" [checked]:
+      - generic: 24h
+  - button "09:30":
+    - generic: 09:30
+  - button "11:00":
+    - generic: 11:00
+  - button "13:00":
+    - generic: 13:00
+  - button "13:30":
+    - generic: 13:30
+  - button "14:00":
+    - generic: 14:00
+  - button "16:00":
+    - generic: 16:00
+  - button "16:30":
+    - generic: 16:30
+  - link "Cal.com Logo":
+    - /url: https://go.cal.com/booking
+    - img "Cal.com Logo"
+- alert
+- region "Notifications"
+- region "Notifications"

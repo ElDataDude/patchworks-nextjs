@@ -1,0 +1,181 @@
+- link "Skip to content":
+  - /url: "#main-content"
+- banner:
+  - link "Patchworks AI home":
+    - /url: /
+    - generic: patchworks
+    - text: AI
+  - navigation "Main navigation":
+    - list:
+      - link "Home":
+        - /url: /
+      - link "Services":
+        - /url: /services
+      - link "Industries":
+        - /url: /industries
+      - link "About":
+        - /url: /about
+      - link "Careers":
+        - /url: /careers
+      - link "Contact":
+        - /url: /#contact
+  - link "Get Started":
+    - /url: /services
+  - 'generic "Current language: English"': EN
+- main:
+  - heading "Executive-Level AI Leadership Without the Full-Time Cost" [level=1]:
+    - generic: Executive-Level
+    - emphasis: AI Leadership
+    - generic: Without the Full-Time Cost
+  - paragraph: Patchworks AI bridges the gap between executive vision and technical execution, delivering measurable ROI from AI investments in weeks, not months or years.
+  - link "Book Your Free 30-Minute AI Strategy Call":
+    - /url: https://cal.com/bryanj/30min
+    - generic: Book Your Free 30-Minute AI Strategy Call
+  - link "Explore Services":
+    - /url: /services
+  - img "White stone and glass systems connected by a continuous orange route"
+  - heading "Our Services" [level=2]:
+    - text: Our
+    - text: Services
+  - paragraph: From strategic guidance to hands-on implementation, our services are designed for executives who need AI solutions that deliver measurable ROI within weeks, not years. Each service is built on our pragmatic, business-first approach.
+  - article:
+    - generic: "01"
+    - heading "Fractional Head-of-AI" [level=3]
+    - paragraph: Strategic AI executive guidance at 30% the cost of a full-time hire. Our fractional leaders translate executive vision into technical execution, ensuring your AI initiatives deliver measurable business impact from day one.
+  - article:
+    - generic: "02"
+    - heading "Getting Started Workshop" [level=3]
+    - paragraph: Transform uncertainty into clarity in just one day. Our workshop identifies your highest-ROI AI opportunities and delivers an actionable roadmap with specific use cases prioritized by business impact and implementation feasibility.
+  - article:
+    - generic: "03"
+    - heading "Full AI Roadmap Package" [level=3]
+    - paragraph: Accelerate from concept to implementation in 4-6 weeks. This comprehensive engagement delivers a complete AI strategy, executive alignment, and a working proof-of-value application that demonstrates tangible ROI before major investment.
+  - article:
+    - generic: "04"
+    - heading "Bespoke AI Applications" [level=3]
+    - paragraph: Custom AI solutions built for your specific business challenges. We develop and implement AI-embedded applications that automate workflows, augment decision-making, and deliver documented ROI within the first 90 days of deployment.
+  - article:
+    - generic: "05"
+    - heading "Pragmatic ROI Focus" [level=3]
+    - paragraph: Unlike theoretical AI consultancies, we focus exclusively on practical applications with measurable financial returns. Our approach prioritizes quick wins that build momentum while establishing the foundation for sustainable long-term value.
+  - article:
+    - generic: "06"
+    - heading "Team Development" [level=3]
+    - paragraph: We transfer knowledge, not just deliver solutions. Our approach empowers your existing team to become citizen developers of AI solutions, reducing external dependencies and creating sustainable internal capabilities that continue delivering value.
+  - heading "What Makes Us Different" [level=2]
+  - paragraph: Our unique approach combines strategic vision with pragmatic execution, delivering measurable AI results where others only promise potential.
+  - article:
+    - generic: "01"
+    - heading "Fractional Head-of-AI" [level=3]
+    - paragraph: Executive-level AI leadership without the full-time cost. Our fractional model gives you strategic guidance, team coaching, and implementation expertise at 30% the cost of a full-time hire.
+  - article:
+    - generic: "02"
+    - heading "Pragmatic, ROI-First Delivery" [level=3]
+    - paragraph: We focus exclusively on AI applications with measurable financial returns. Our approach prioritizes quick wins that build momentum while establishing the foundation for sustainable long-term value.
+  - article:
+    - generic: "03"
+    - heading "Executive + Engineer Fluency" [level=3]
+    - paragraph: We bridge the gap between executive vision and technical execution, speaking both languages fluently. This dual communication capability ensures alignment between business goals and technical implementation.
+  - heading "Our Services" [level=2]
+  - paragraph: We offer a range of services designed to help businesses achieve measurable ROI from AI investments, from strategic guidance to custom implementation.
+  - link "View All Services":
+    - /url: /services
+    - text: View All Services
+  - 'heading "Case Study: Oil & Gas Drilling Analytics" [level=2]'
+  - img "Conceptual illustration of geological layers connected to transparent analytical systems"
+  - article:
+    - paragraph: A major energy company was losing £2.3M annually due to drilling inefficiencies. Their engineers spent 15+ hours weekly on manual Excel analysis, resulting in delayed decision-making and missed optimization opportunities that directly impacted the bottom line.
+  - article:
+    - heading "Our Approach" [level=3]
+    - paragraph: Rather than building a complex solution requiring new hires, we empowered existing engineers as citizen developers. We implemented a pragmatic AI solution that automated data collection, applied machine learning to identify optimization opportunities, and created real-time dashboards that translated technical data into actionable business insights.
+  - article:
+    - heading "The Results" [level=3]
+    - paragraph:
+      - text: "Within 90 days, our solution delivered:"
+      - strong: 85% reduction
+      - text: in manual data processing time,
+      - strong: 3.2x faster
+      - text: identification of drilling anomalies, and
+      - strong: £1.2M annual cost savings
+      - text: from optimized operations. The client achieved full ROI within 5 months, with zero additional headcount required.
+  - heading "Follow Us on LinkedIn" [level=2]
+  - paragraph: Stay updated with our latest AI insights, industry trends, and practical implementation tips. We regularly share thought leadership content on how businesses can achieve measurable ROI from AI investments.
+  - link "Follow on LinkedIn":
+    - /url: https://www.linkedin.com/company/patchworks-ai
+    - text: Follow on LinkedIn
+  - link "Contact Us":
+    - /url: /contact
+  - heading "Start Your AI Journey Today" [level=2]
+  - paragraph: Ready to see measurable ROI from AI within weeks, not years? Our executive-level AI expertise is just a message away. Tell us about your business challenges, and we'll show you how our pragmatic approach can deliver tangible results.
+  - heading "Prefer to Talk? Book a Free Consultation" [level=3]
+  - paragraph: Skip the form and speak directly with our AI experts. Book a free 30-minute strategy call to discuss your specific needs.
+  - link "Book Free 30-Minute Call":
+    - /url: https://cal.com/bryanj/30min
+    - generic: Book Free 30-Minute Call
+  - form "Contact Patchworks AI":
+    - generic: Your Name
+    - textbox "Your Name":
+      - /placeholder: Enter your name
+    - generic: Your Email
+    - textbox "Your Email":
+      - /placeholder: Enter your email
+    - generic: Company
+    - textbox "Company":
+      - /placeholder: Enter your company name
+    - generic: I'm interested in
+    - combobox "I'm interested in":
+      - option "Please select" [selected]
+      - option "Fractional Head-of-AI"
+      - option "Getting Started Workshop"
+      - option "Full AI Roadmap"
+      - option "Bespoke AI Applications"
+      - option "Other"
+    - generic: Your Message
+    - textbox "Your Message":
+      - /placeholder: Enter your message
+    - button "Send Message":
+      - text: Send Message
+  - heading "Join Our AI Insights Newsletter" [level=3]
+  - paragraph: Stay updated with the latest AI trends, practical implementation tips, and case studies that demonstrate measurable ROI from AI investments.
+  - form "AI Insights Newsletter":
+    - textbox "Newsletter name":
+      - /placeholder: Enter your name
+    - textbox "Newsletter email":
+      - /placeholder: Enter your email
+    - button "Subscribe":
+      - text: Subscribe
+    - paragraph: We respect your privacy. No spam, just valuable AI insights.
+- contentinfo:
+  - link "Patchworks AI home":
+    - /url: /
+    - generic: patchworks
+    - text: AI
+  - paragraph: Patchworks AI provides fractional head-of-AI services and pragmatic AI implementation expertise to help businesses achieve measurable ROI from AI investments.
+  - link "LinkedIn":
+    - /url: https://www.linkedin.com/company/patchworks-ai
+  - heading "Services" [level=2]
+  - list:
+    - link "Fractional Head-of-AI":
+      - /url: /services
+    - link "AI Workshops":
+      - /url: /services
+    - link "Custom AI Solutions":
+      - /url: /services
+  - heading "Company" [level=2]
+  - list:
+    - link "About Us":
+      - /url: /about
+    - link "Careers":
+      - /url: /careers
+    - link "Contact":
+      - /url: /contact
+  - heading "Resources" [level=2]
+  - list:
+    - link "Blog":
+      - /url: /blog
+    - link "Industries":
+      - /url: /industries
+    - link "Get in Touch":
+      - /url: /contact
+  - paragraph: © 2026 Patchworks AI. All rights reserved.
+  - paragraph: "Patchworks AI is a trading name of PATCHWORKS AI CONSULTING LTD, registered in England and Wales under company number 16144699. Registered office: 14 David Mews, London, W1U 6EQ."

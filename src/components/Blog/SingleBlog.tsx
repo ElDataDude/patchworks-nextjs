@@ -5,53 +5,42 @@ import Link from "next/link";
 const SingleBlog = ({ blog }: { blog: Blog }) => {
   const { title, image, paragraph, author, tags, publishDate } = blog;
   return (
-    <>
-      <div className="group relative overflow-hidden rounded-sm bg-white shadow-one duration-300 hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark">
-        <Link
-          href="/blog-details"
-          className="relative block aspect-[37/22] w-full"
-        >
-          <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
-            {tags[0]}
+    <article className="rule-section py-8 first:border-t-0 first:pt-0">
+      <div className="grid gap-7 md:grid-cols-[minmax(220px,0.9fr)_1.1fr] md:items-start md:gap-10">
+        <Link href="/blog-details" className="group block w-full">
+          <span className="media-frame relative block aspect-[16/10] overflow-hidden">
+            <Image
+              src={image}
+              alt={title}
+              fill
+              sizes="(max-width: 767px) 100vw, 45vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            />
           </span>
-          <Image src={image} alt="image" fill />
         </Link>
-        <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
-          <h3>
+        <div>
+          <p className="eyebrow mb-4 text-[#626875]">{tags[0]}</p>
+          <h3 className="mb-4 text-[clamp(28px,3vw,44px)] leading-[1.05]">
             <Link
               href="/blog-details"
-              className="mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
+              className="block text-inherit hover:text-[#d16013]"
             >
               {title}
             </Link>
           </h3>
-          <p className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10">
+          <p className="mb-6 max-w-2xl text-base leading-7 text-[#4b5260]">
             {paragraph}
           </p>
-          <div className="flex items-center">
-            <div className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
-              <div className="mr-4">
-                <div className="relative h-10 w-10 overflow-hidden rounded-full">
-                  <Image src={author.image} alt="author" fill />
-                </div>
-              </div>
-              <div className="w-full">
-                <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                  By {author.name}
-                </h4>
-                <p className="text-xs text-body-color">{author.designation}</p>
-              </div>
-            </div>
-            <div className="inline-block">
-              <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                Date
-              </h4>
-              <p className="text-xs text-body-color">{publishDate}</p>
-            </div>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[#E3E8EF] pt-4 text-xs text-[#626875]">
+            <span>By {author.name}</span>
+            <span>{author.designation}</span>
+            <span>
+              <span>Date</span> {publishDate}
+            </span>
           </div>
         </div>
       </div>
-    </>
+    </article>
   );
 };
 

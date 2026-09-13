@@ -1,0 +1,310 @@
+.core-page {
+  background: var(--paper);
+}
+.core-page .page-hero {
+  border-bottom: 1px solid var(--line);
+}
+.core-page .page-hero .media-frame img {
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+.core-list {
+  border-bottom: 1px solid var(--line);
+}
+.core-list .numbered-item:last-child {
+  border-bottom: 0;
+}
+.service-row {
+  grid-template-columns: 52px minmax(0, 1.55fr) minmax(250px, 0.72fr);
+  gap: clamp(24px, 4vw, 72px);
+  padding-block: clamp(42px, 5vw, 72px);
+}
+.service-row-main > p,
+.sector-row p,
+.job-body > p {
+  color: #333333;
+}
+.service-row-main > p {
+  max-width: 760px;
+}
+.service-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  margin-top: 34px;
+}
+.service-details h4,
+.service-commercial h4,
+.tech-row h4,
+.case-field dt,
+.job-columns h4 {
+  margin-bottom: 12px;
+  color: #121723;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.detail-list {
+  display: grid;
+  gap: 9px;
+}
+.detail-list li {
+  position: relative;
+  padding-left: 17px;
+  color: #333333;
+  font-size: 15px;
+  line-height: 1.55;
+}
+.detail-list li::before {
+  position: absolute;
+  top: 0.68em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+  content: "";
+}
+.service-commercial {
+  padding-left: clamp(0px, 2vw, 34px);
+  border-left: 1px solid var(--line);
+}
+.service-commercial .service-price {
+  margin-bottom: 24px;
+  color: var(--orange);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(28px, 2.7vw, 42px);
+  line-height: 1.05;
+}
+.service-commercial .text-link {
+  margin-top: 18px;
+}
+.sector-row {
+  grid-template-columns: 52px minmax(230px, 0.75fr) minmax(0, 1.45fr);
+  gap: clamp(22px, 4vw, 68px);
+  align-items: start;
+  padding-block: clamp(34px, 4.5vw, 58px);
+}
+.sector-row .item-title,
+.case-file .item-title,
+.tech-row .item-title {
+  margin: 0;
+}
+.sector-row p {
+  max-width: 760px;
+}
+.use-cases,
+.tech-stack {
+  background: #fff;
+}
+.case-file {
+  display: grid;
+  grid-template-columns: 52px minmax(210px, 0.8fr) minmax(0, 1.1fr) minmax(
+      220px,
+      0.8fr
+    );
+  gap: clamp(20px, 3.5vw, 56px);
+  padding-block: clamp(38px, 4vw, 58px);
+  border-top: 1px solid var(--line);
+}
+.case-file:last-child,
+.tech-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
+.case-copy,
+.case-outcome {
+  display: grid;
+  gap: 28px;
+}
+.case-field dd,
+.tech-copy > p {
+  color: #333333;
+  font-size: 15px;
+  line-height: 1.62;
+}
+.case-field--result dd {
+  color: var(--ink);
+  font-weight: 500;
+}
+.tech-row {
+  display: grid;
+  grid-template-columns: 48px minmax(230px, 0.75fr) minmax(0, 1fr) minmax(
+      220px,
+      0.8fr
+    );
+  gap: clamp(22px, 3.5vw, 56px);
+  padding-block: clamp(38px, 4vw, 58px);
+  border-top: 1px solid var(--line);
+}
+.tech-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.tech-logo {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.careers-values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.career-value {
+  min-height: 230px;
+  padding: clamp(28px, 3vw, 44px);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.career-value .item-number {
+  display: block;
+  margin-bottom: 42px;
+}
+.career-value h3 {
+  margin-bottom: 12px;
+  font-size: clamp(26px, 2.3vw, 34px);
+  line-height: 1.08;
+}
+.career-value p {
+  color: #333333;
+  font-size: 15px;
+  line-height: 1.62;
+}
+.jobs-list {
+  border-bottom: 1px solid var(--line);
+}
+.job-row {
+  display: grid;
+  grid-template-columns: 52px minmax(220px, 0.72fr) minmax(0, 1.48fr);
+  gap: clamp(24px, 4vw, 68px);
+  padding-block: clamp(42px, 5vw, 68px);
+  border-top: 1px solid var(--line);
+}
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 16px;
+  color: #626875;
+  font-size: 13px;
+}
+.job-body > p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.job-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+  margin-top: 34px;
+}
+.job-body .text-link {
+  margin-top: 30px;
+}
+.careers-apply {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 34px;
+}
+.about-capabilities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+.about-capability {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 20px;
+  min-height: 150px;
+  padding: 32px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.about-capability:nth-child(2n) {
+  border-right: 0;
+}
+.about-capability h2 {
+  font-size: clamp(27px, 2.5vw, 38px);
+  line-height: 1.08;
+}
+@media (max-width: 991px) {
+  .service-row,
+  .case-file,
+  .tech-row,
+  .job-row {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+  .service-commercial,
+  .case-copy,
+  .case-outcome,
+  .tech-copy,
+  .tech-capabilities,
+  .job-body {
+    grid-column: 2;
+  }
+  .service-commercial {
+    padding-top: 28px;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+  .careers-values {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  .core-page .page-hero-grid {
+    gap: 22px;
+  }
+  .core-page .page-hero .media-frame img {
+    width: 116%;
+    max-width: none;
+    margin-left: -8%;
+  }
+  .service-row,
+  .sector-row,
+  .case-file,
+  .tech-row,
+  .job-row {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 18px;
+  }
+  .sector-row p,
+  .service-commercial,
+  .case-copy,
+  .case-outcome,
+  .tech-copy,
+  .tech-capabilities,
+  .job-body {
+    grid-column: 1/-1;
+  }
+  .service-details,
+  .job-columns,
+  .careers-values,
+  .about-capabilities {
+    grid-template-columns: 1fr;
+  }
+  .career-value {
+    min-height: 0;
+  }
+  .career-value .item-number {
+    margin-bottom: 28px;
+  }
+  .about-capability,
+  .about-capability:nth-child(2n) {
+    padding-inline: 0;
+    border-right: 0;
+  }
+}
+
+.core-page .section-space + .section-space {
+  padding-top: 32px;
+}

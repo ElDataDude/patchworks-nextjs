@@ -1,0 +1,77 @@
+{
+  "routes": {
+    "/": {
+      "checkedBlocks": 74,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/services": {
+      "checkedBlocks": 124,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/industries": {
+      "checkedBlocks": 92,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/about": {
+      "checkedBlocks": 30,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/careers": {
+      "checkedBlocks": 75,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/contact": {
+      "checkedBlocks": 40,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/blog": {
+      "checkedBlocks": 50,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/blog-details": {
+      "checkedBlocks": 39,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/blog-sidebar": {
+      "checkedBlocks": 59,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/signin": {
+      "checkedBlocks": 29,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/signup": {
+      "checkedBlocks": 30,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    },
+    "/error": {
+      "checkedBlocks": 24,
+      "missing": [],
+      "missingPlaceholders": [],
+      "metadataTitlePreserved": true
+    }
+  },
+  "availabilityDataUnchanged": true
+}
