@@ -88,3 +88,9 @@ Theme switching, next-themes and its provider were removed. Scroll and observer 
 This is an English-only local design implementation. Italian, Portuguese, Spanish and German will become selectable only after translated revised content exists. Forms, account screens, legacy search/pagination and other ancillary functionality retain their existing backend scope; this report does not claim submissions or authentication work. No production deployment or external message was sent.
 
 To restart the preview: npm run start -- --hostname 127.0.0.1 --port 3017 (after npm run build).
+
+## Production release follow-up — 13 September 2026
+
+The user subsequently authorized merging and production deployment. The redesign was merged into main as 454d454. Vercel compiled that revision but rejected its inherited Next.js 15.1.6 dependency as vulnerable. The release therefore updates Next.js and eslint-config-next to 15.5.25, React and React DOM to 19.0.8, and ESLint to compatible 8.57.1. No application wording, layout or business data changed in this dependency follow-up.
+
+Next.js 15.5 is the maintained major-15 release line; see the [official August security advisory](https://nextjs.org/blog/august-2026-security-release). The production build, lint and booking harness pass with the patched dependencies. Deployment outcome is recorded separately in the task.
