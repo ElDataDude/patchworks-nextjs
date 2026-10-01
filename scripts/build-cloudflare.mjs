@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { cpSync, existsSync, readFileSync, rmSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 
 const target = process.argv[2] ?? "preview";
@@ -24,4 +24,19 @@ const result = spawnSync(process.execPath, args, {
     WRANGLER_WRITE_LOGS: "false",
   },
 });
-process.exit(result.status ?? 1);
+if (result.status !== 0) process.exit(result.status ?? 1);
+
+// open-next.config.ts serves prerendered pages from the static-assets
+// incremental cache. `opennextjs-cloudflare deploy` would copy them into the
+// assets directory; our scripts deploy with wrangler, so copy them here
+// (the same step as `opennextjs-cloudflare populateCache`).
+const outputDir = new URL("../.open-next/", import.meta.url);
+const cacheSource = new URL("cache/", outputDir);
+const cacheTarget = new URL("assets/cdn-cgi/_next_cache/", outputDir);
+if (!existsSync(cacheSource)) {
+  console.error("OpenNext build produced no prerendered cache to publish");
+  process.exit(1);
+}
+rmSync(cacheTarget, { recursive: true, force: true });
+cpSync(cacheSource, cacheTarget, { recursive: true });
+process.exit(0);
