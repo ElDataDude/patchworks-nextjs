@@ -19,7 +19,8 @@
     "test:seo": "node scripts/verify-seo.mjs",
     "typecheck": "tsc --noEmit",
     "test:worker": "node scripts/test-worker.cjs",
-    "test:catalogue": "node --test scripts/test-catalogue.cjs"
+    "test:catalogue": "node --test scripts/test-catalogue.cjs",
+    "test:session": "node --test scripts/test-session-apps.cjs"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.6",

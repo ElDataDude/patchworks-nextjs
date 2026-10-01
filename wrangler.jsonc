@@ -32,7 +32,10 @@
     "NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN": "",
     "TURNSTILE_EXPECTED_HOSTNAMES": "patchworks-nextjs-preview.bryan-johnson.workers.dev",
     "CONTACT_ALLOWED_ORIGINS": "https://patchworks-nextjs-preview.bryan-johnson.workers.dev",
-    "CONTACT_FROM_EMAIL": "website@patchworks.ai"
+    "CONTACT_FROM_EMAIL": "website@patchworks.ai",
+    "NEXT_PUBLIC_ID_URL": "https://id-staging.patchworks.ai",
+    "ID_API_ORIGIN": "https://id-staging.patchworks.ai",
+    "ID_SESSION_COOKIE_NAMES": "__Secure-pw-staging.session_token"
   },
   "send_email": [
     {
@@ -64,7 +67,10 @@
         "NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN": "384971dac54f42439bb0873398396c7e",
         "TURNSTILE_EXPECTED_HOSTNAMES": "patchworks.ai",
         "CONTACT_ALLOWED_ORIGINS": "https://patchworks.ai",
-        "CONTACT_FROM_EMAIL": "website@patchworks.ai"
+        "CONTACT_FROM_EMAIL": "website@patchworks.ai",
+        "NEXT_PUBLIC_ID_URL": "https://id.patchworks.ai",
+        "ID_API_ORIGIN": "https://id.patchworks.ai",
+        "ID_SESSION_COOKIE_NAMES": "__Secure-pw.session_token"
       },
       "send_email": [
         {
