@@ -11,6 +11,8 @@ import {
 import {
   CONTACT_INTEREST_OPTIONS,
   CONTACT_LIMITS,
+  describeContactContext,
+  parseContactPrefill,
   validateContactFields,
   type ContactFieldErrors,
   type ContactFormValues,
@@ -27,6 +29,9 @@ const EMPTY: ContactFormValues = {
   interest: "",
   message: "",
   website: "",
+  industry: "",
+  useCase: "",
+  app: "",
 };
 const FIELD_LABELS: Record<keyof ContactFormValues, string> = {
   name: "Name",
@@ -35,17 +40,25 @@ const FIELD_LABELS: Record<keyof ContactFormValues, string> = {
   interest: "Interest",
   message: "Message",
   website: "Website",
+  industry: "Industry",
+  useCase: "Use case",
+  app: "App",
 };
 
 export default function EnquiryForm({
   siteKey,
   enabled,
+  initialValues,
 }: {
   siteKey: string;
   enabled: boolean;
+  initialValues?: Partial<ContactFormValues>;
 }) {
   const formId = useId();
-  const [values, setValues] = useState<ContactFormValues>(EMPTY);
+  const [values, setValues] = useState<ContactFormValues>(() => ({
+    ...EMPTY,
+    ...initialValues,
+  }));
   const [fieldErrors, setFieldErrors] = useState<ContactFieldErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success">(
     "idle",
@@ -64,6 +77,13 @@ export default function EnquiryForm({
   const resetChallenge = useCallback(() => {
     setToken("");
     setResetKey((key) => key + 1);
+  }, []);
+  useEffect(() => {
+    // Catalogue links prefill the form from the query string. Reading it here
+    // keeps the contact page static; values are allow-listed again on submit.
+    const prefill = parseContactPrefill(window.location.search);
+    if (Object.keys(prefill).length)
+      setValues((current) => ({ ...current, ...prefill }));
   }, []);
   useEffect(() => {
     if (retrySeconds <= 0) return;
@@ -150,6 +170,10 @@ export default function EnquiryForm({
       resetChallenge();
     }
   }
+  const context =
+    values.useCase || values.industry || values.app
+      ? describeContactContext(values)
+      : undefined;
   if (status === "success")
     return (
       <div
@@ -177,6 +201,7 @@ export default function EnquiryForm({
     );
   return (
     <form
+      id="enquiry"
       method="post"
       action="/api/contact"
       className="form-grid enquiry-form"
@@ -191,6 +216,15 @@ export default function EnquiryForm({
           Share your priorities and where you would value another perspective.
         </p>
       </div>
+      {context && (
+        <p className="form-wide enquiry-context">
+          {values.interest === "access" ? "Access request" : "Demo request"}
+          {": "}
+          {[context.useCase, context.industry, context.app]
+            .filter(Boolean)
+            .join(" · ")}
+        </p>
+      )}
       {!enabled && (
         <p className="form-wide contact-notice" role="status">
           Online enquiries are temporarily unavailable. Please{" "}

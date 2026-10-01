@@ -103,6 +103,8 @@ function createHarness() {
       if (id === "@/lib/contact")
         return {
           CONTACT_INTEREST_OPTIONS: [],
+          describeContactContext: () => ({}),
+          parseContactPrefill: () => ({}),
           CONTACT_LIMITS: {
             name: 100,
             email: 254,

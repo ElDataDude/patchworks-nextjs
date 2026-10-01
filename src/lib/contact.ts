@@ -1,4 +1,7 @@
 import { pillars } from "../data/positioning";
+import { appBySlug, isAppSlug } from "../data/apps";
+import { industryBySlug, isIndustrySlug } from "../data/industries";
+import { findUseCase, isUseCaseSlug } from "../data/use-cases";
 
 /** Shared browser/server contract. Keep secrets and delivery code out of this file. */
 export const CONTACT_LIMITS = {
@@ -12,6 +15,8 @@ export const CONTACT_INTEREST_OPTIONS = [
   { value: pillars[0].id, label: pillars[0].title },
   { value: pillars[1].id, label: pillars[1].title },
   { value: "both", label: "Both" },
+  { value: "demo", label: "A demo of a use case" },
+  { value: "access", label: "Access to a Patchworks app" },
   { value: "unsure", label: "Not sure yet" },
 ] as const;
 
@@ -26,6 +31,58 @@ export interface ContactFormValues {
   interest: ContactInterest;
   message: string;
   website: string;
+  /** Optional catalogue context. Unknown values are dropped, never stored. */
+  industry: string;
+  useCase: string;
+  app: string;
+}
+
+/** Catalogue fields carried with an enquiry, each validated against its slugs. */
+export const CONTACT_CONTEXT_FIELDS = ["industry", "useCase", "app"] as const;
+export type ContactContextField = (typeof CONTACT_CONTEXT_FIELDS)[number];
+
+const CONTEXT_GUARDS: Record<ContactContextField, (value: unknown) => boolean> =
+  {
+    industry: isIndustrySlug,
+    useCase: isUseCaseSlug,
+    app: isAppSlug,
+  };
+
+/** Returns the value when it is a known catalogue slug, otherwise "". */
+export function allowListedContext(
+  field: ContactContextField,
+  value: unknown,
+): string {
+  return CONTEXT_GUARDS[field](value) ? (value as string) : "";
+}
+
+/**
+ * Reads `?intent=demo|access&useCase=&industry=&app=` from a catalogue link.
+ * Only known values survive; everything else is ignored.
+ */
+export function parseContactPrefill(
+  search: string,
+): Partial<ContactFormValues> {
+  const params = new URLSearchParams(search);
+  const prefill: Partial<ContactFormValues> = {};
+  const intent = params.get("intent");
+  if (intent === "demo" || intent === "access") prefill.interest = intent;
+  for (const field of CONTACT_CONTEXT_FIELDS) {
+    const value = allowListedContext(field, params.get(field));
+    if (value) prefill[field] = value;
+  }
+  return prefill;
+}
+
+/** Human-readable labels for the catalogue context of an enquiry. */
+export function describeContactContext(
+  values: Pick<ContactFormValues, ContactContextField>,
+): { useCase?: string; industry?: string; app?: string } {
+  return {
+    useCase: findUseCase(values.useCase)?.title,
+    industry: industryBySlug(values.industry)?.title,
+    app: appBySlug(values.app)?.name,
+  };
 }
 
 export type ContactRequest = ContactFormValues & {
@@ -93,6 +150,9 @@ export function validateContactFields(input: unknown): ContactValidation {
     interest: "",
     message: "",
     website: "",
+    industry: "",
+    useCase: "",
+    app: "",
   };
 
   for (const field of ["name", "email", "company", "message"] as const) {
@@ -141,6 +201,9 @@ export function validateContactFields(input: unknown): ContactValidation {
       values.website = source.website.trim();
     }
   }
+
+  for (const field of CONTACT_CONTEXT_FIELDS)
+    values[field] = allowListedContext(field, source[field]);
 
   return Object.keys(fieldErrors).length
     ? {

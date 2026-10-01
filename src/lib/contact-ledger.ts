@@ -33,6 +33,8 @@ export async function contactDedupeKey(
     false,
     ["sign"],
   );
+  // Catalogue context joins the key only when present, so keys for
+  // enquiries without it are unchanged from earlier releases.
   const canonical = JSON.stringify({
     version: 1,
     submissionId: submissionId.toLowerCase(),
@@ -41,6 +43,9 @@ export async function contactDedupeKey(
     company: values.company,
     interest: values.interest,
     message: values.message,
+    ...(values.industry ? { industry: values.industry } : {}),
+    ...(values.useCase ? { useCase: values.useCase } : {}),
+    ...(values.app ? { app: values.app } : {}),
   });
   const signature = await crypto.subtle.sign(
     "HMAC",

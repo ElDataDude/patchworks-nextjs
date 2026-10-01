@@ -1,5 +1,6 @@
 import {
   CONTACT_INTEREST_OPTIONS,
+  describeContactContext,
   isValidContactEmail,
   validateContactFields,
   type ContactFormValues,
@@ -235,14 +236,32 @@ async function providerJson(
   }
 }
 
+function emailSubject(
+  values: ContactFormValues,
+  context: ReturnType<typeof describeContactContext>,
+): string {
+  if (values.interest === "demo")
+    return context.useCase
+      ? `Patchworks AI demo request: ${context.useCase}`
+      : "Patchworks AI demo request";
+  if (values.interest === "access") {
+    const topic = context.app ?? context.useCase;
+    return topic
+      ? `Patchworks AI access request: ${topic}`
+      : "Patchworks AI access request";
+  }
+  return CONTACT_SUBJECT;
+}
+
 function emailPayload(values: ContactFormValues, sender: string) {
   const interest =
     CONTACT_INTEREST_OPTIONS.find(({ value }) => value === values.interest)
       ?.label ?? "Not specified";
+  const context = describeContactContext(values);
   return {
     from: { email: sender, name: "Patchworks AI website" },
     to: CONTACT_RECIPIENT,
-    subject: CONTACT_SUBJECT,
+    subject: emailSubject(values, context),
     replyTo: values.email,
     text: [
       "New enquiry from the Patchworks AI website",
@@ -251,6 +270,9 @@ function emailPayload(values: ContactFormValues, sender: string) {
       `Email: ${values.email}`,
       `Company: ${values.company}`,
       `Interest: ${interest}`,
+      ...(context.useCase ? [`Use case: ${context.useCase}`] : []),
+      ...(context.industry ? [`Industry: ${context.industry}`] : []),
+      ...(context.app ? [`App: ${context.app}`] : []),
       "",
       "Message:",
       values.message,

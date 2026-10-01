@@ -44,7 +44,8 @@ const {
   cleanupExpiredContactSubmissions,
   contactDedupeKey,
 } = loadSource("src/lib/contact-ledger.ts");
-const { validateContactFields } = loadSource("src/lib/contact.ts");
+const { validateContactFields, parseContactPrefill } =
+  loadSource("src/lib/contact.ts");
 const { classifyContactResponse, CONTACT_UNEXPECTED_RESPONSE } = loadSource(
   "src/lib/contact-client.ts",
 );
@@ -650,4 +651,123 @@ test("route returns safe no-store JSON when Cloudflare context is unavailable", 
   } finally {
     console.error = originalError;
   }
+});
+
+test("catalogue context keeps known slugs and silently drops unknown values", () => {
+  const known = validateContactFields({
+    ...valid,
+    interest: "demo",
+    industry: "insurance",
+    useCase: "live-claims-calls",
+    app: "pci",
+  });
+  assert.equal(known.ok, true);
+  assert.equal(known.values.industry, "insurance");
+  assert.equal(known.values.useCase, "live-claims-calls");
+  assert.equal(known.values.app, "pci");
+  const unknown = validateContactFields({
+    ...valid,
+    industry: "aerospace",
+    useCase: "<script>",
+    app: ["pci"],
+  });
+  assert.equal(unknown.ok, true);
+  assert.equal(unknown.values.industry, "");
+  assert.equal(unknown.values.useCase, "");
+  assert.equal(unknown.values.app, "");
+  assert.equal(validateContactFields(valid).values.useCase, "");
+});
+
+test("prefill reads intent and allow-listed catalogue slugs only", () => {
+  assert.deepEqual(
+    parseContactPrefill(
+      "?intent=demo&useCase=fund-selection&industry=wealth-management&app=funds",
+    ),
+    {
+      interest: "demo",
+      useCase: "fund-selection",
+      industry: "wealth-management",
+      app: "funds",
+    },
+  );
+  assert.deepEqual(
+    parseContactPrefill("?intent=admin&useCase=unknown&app=billing&x=1"),
+    {},
+  );
+  assert.deepEqual(parseContactPrefill("?intent=access&app=grants"), {
+    interest: "access",
+    app: "grants",
+  });
+});
+
+test("demo requests carry use case, industry and app in subject and body", async () => {
+  const result = await execute({
+    ...valid,
+    interest: "demo",
+    useCase: "live-claims-calls",
+    industry: "insurance",
+    app: "pci",
+  });
+  assert.equal(result.response.status, 200);
+  const message = result.email.calls[0];
+  assert.equal(
+    message.subject,
+    "Patchworks AI demo request: Live claims calls",
+  );
+  assert(message.text.includes("Interest: A demo of a use case\n"));
+  assert(message.text.includes("Use case: Live claims calls\n"));
+  assert(message.text.includes("Industry: Insurance\n"));
+  assert(message.text.includes("App: Patchworks Call Intelligence\n"));
+});
+
+test("access requests name the app; unknown context never reaches the email", async () => {
+  const access = await execute({ ...valid, interest: "access", app: "grants" });
+  assert.equal(
+    access.email.calls[0].subject,
+    "Patchworks AI access request: GrantGranter",
+  );
+  const plain = await execute({ ...valid, useCase: "not-a-use-case" });
+  const message = plain.email.calls[0];
+  assert.equal(message.subject, "Patchworks AI website enquiry");
+  assert(!/Use case:|Industry:|App:/u.test(message.text));
+  assert(!message.text.includes("not-a-use-case"));
+});
+
+test("dedupe keys without catalogue context match the original canonical form", async () => {
+  const secret = "offline-test-dedupe-secret-at-least-32-bytes";
+  const validation = validateContactFields(valid);
+  assert.equal(validation.ok, true);
+  const { values } = validation;
+  const legacyCanonical = JSON.stringify({
+    version: 1,
+    submissionId: valid.submissionId.toLowerCase(),
+    name: values.name,
+    email: values.email,
+    company: values.company,
+    interest: values.interest,
+    message: values.message,
+  });
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const legacy = Buffer.from(
+    await crypto.subtle.sign(
+      "HMAC",
+      key,
+      new TextEncoder().encode(legacyCanonical),
+    ),
+  ).toString("hex");
+  assert.equal(
+    await contactDedupeKey(secret, valid.submissionId, values),
+    legacy,
+  );
+  const withContext = await contactDedupeKey(secret, valid.submissionId, {
+    ...values,
+    useCase: "fund-selection",
+  });
+  assert.notEqual(withContext, legacy);
 });

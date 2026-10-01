@@ -52,7 +52,11 @@ export default function Contact({ page = false }: { page?: boolean }) {
         {enabled ? (
           <EnquiryForm siteKey={siteKey} enabled />
         ) : (
-          <div className="contact-email-enquiry" data-enquiry="email">
+          <div
+            id="enquiry"
+            className="contact-email-enquiry"
+            data-enquiry="email"
+          >
             <Subheading>Tell us what you’re working on.</Subheading>
             <p>
               Email us with a little about your company, the decision you’re
