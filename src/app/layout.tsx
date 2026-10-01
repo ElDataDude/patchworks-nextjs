@@ -4,12 +4,14 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Motion from "@/components/Common/Motion";
 import CloudflareWebAnalytics from "@/components/Common/CloudflareWebAnalytics";
 import PrivacyControls from "@/components/Common/PrivacyControls";
+import SessionAppsProvider from "@/components/Catalogue/SessionAppsProvider";
 import type { Metadata } from "next";
 import { brandIcons, brandSocialImage } from "@/data/brand";
 import { Instrument_Serif, Source_Sans_3 } from "next/font/google";
 import "../styles/index.css";
 import "../styles/enterprise.css";
 import "../styles/contact.css";
+import "../styles/catalogue.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://patchworks.ai"),
@@ -48,11 +50,13 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <Header />
-        <main id="main-content" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
+        <SessionAppsProvider>
+          <Header />
+          <main id="main-content" tabIndex={-1}>
+            {children}
+          </main>
+          <Footer />
+        </SessionAppsProvider>
         <ScrollToTop />
         <Motion />
         <PrivacyControls />

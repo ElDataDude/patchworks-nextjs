@@ -27,7 +27,7 @@ const groups = [
     links: [
       ["Industries", "/industries"],
       ["Case study", "/industries#case-study"],
-      ["Use cases", "/industries#use-cases"],
+      ["Use cases", "/use-cases"],
       ["Blog", "/blog"],
     ],
   },

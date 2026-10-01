@@ -20,9 +20,16 @@ export const pageSeo = {
     follow: true,
   },
   "/industries": {
-    title: "Industries | Patchworks AI",
+    title: "Industries & Use Cases | Patchworks AI",
     description:
-      "AI counsel and hands-on delivery for financial services, retail banking, insurance, consumer goods, supply chain, logistics, audit and professional services.",
+      "Enterprise AI counsel and delivery for insurance, banking, wealth management, charities and schools, audit, consumer goods and supply chain, with working use cases.",
+    index: true,
+    follow: true,
+  },
+  "/use-cases": {
+    title: "AI Use Cases | Patchworks AI",
+    description:
+      "Working AI use cases from Patchworks AI: live call intelligence, decision engines, fund selection, fundraising guides and a governed home for enterprise AI apps.",
     index: true,
     follow: true,
   },
@@ -70,20 +77,8 @@ export const pageSeo = {
   },
   "/blog-sidebar": {
     title: "Legacy Blog Layout | Patchworks AI",
-    description: "An archived Patchworks AI blog layout retained for reference.",
-    index: false,
-    follow: false,
-  },
-  "/signin": {
-    title: "Sign In | Patchworks AI",
-    description: "Patchworks AI account sign-in is not currently available.",
-    index: false,
-    follow: false,
-  },
-  "/signup": {
-    title: "Create an Account | Patchworks AI",
     description:
-      "Patchworks AI account registration is not currently available.",
+      "An archived Patchworks AI blog layout retained for reference.",
     index: false,
     follow: false,
   },
@@ -105,24 +100,29 @@ export function absoluteUrl(path: string) {
   return new URL(path, SITE_URL).toString();
 }
 
-export function createPageMetadata(
-  path: PagePath,
-  titleOverride?: string,
-  descriptionOverride?: string,
-): Metadata {
-  const entry = pageSeo[path];
-  const title = titleOverride ?? entry.title;
-  const description = descriptionOverride ?? entry.description;
+export interface RouteSeo {
+  path: string;
+  title: string;
+  description: string;
+  index: boolean;
+  follow: boolean;
+}
+
+/** Metadata for any route, including generated catalogue pages. */
+export function createRouteMetadata({
+  path,
+  title,
+  description,
+  index,
+  follow,
+}: RouteSeo): Metadata {
   const canonical = absoluteUrl(path);
 
   return {
     title,
     description,
     alternates: { canonical },
-    robots: {
-      index: entry.index,
-      follow: entry.follow,
-    },
+    robots: { index, follow },
     openGraph: {
       title,
       description,
@@ -137,5 +137,36 @@ export function createPageMetadata(
       description,
       images: [brandSocialImage.url],
     },
+  };
+}
+
+export function createPageMetadata(
+  path: PagePath,
+  titleOverride?: string,
+  descriptionOverride?: string,
+): Metadata {
+  const entry = pageSeo[path];
+  return createRouteMetadata({
+    path,
+    title: titleOverride ?? entry.title,
+    description: descriptionOverride ?? entry.description,
+    index: entry.index,
+    follow: entry.follow,
+  });
+}
+
+/** schema.org BreadcrumbList for a page trail of [name, path] pairs. */
+export function breadcrumbJsonLd(
+  trail: readonly (readonly [string, string])[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map(([name, path], index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name,
+      item: absoluteUrl(path),
+    })),
   };
 }

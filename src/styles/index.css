@@ -267,7 +267,7 @@
 .wordmark span {
   color: var(--orange);
 }
-.header-nav ul {
+.header-nav > ul {
   display: flex;
   gap: clamp(22px, 2.7vw, 42px);
 }
@@ -843,7 +843,7 @@ textarea:disabled {
   .header-actions {
     gap: 22px;
   }
-  .header-nav ul {
+  .header-nav > ul {
     gap: 24px;
   }
   .wordmark {
@@ -919,7 +919,7 @@ textarea:disabled {
   .header-nav.is-open {
     display: block;
   }
-  .header-nav ul {
+  .header-nav > ul {
     flex-direction: column;
     gap: 10px;
   }
