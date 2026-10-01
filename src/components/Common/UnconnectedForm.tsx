@@ -1,26 +1,20 @@
-"use client";
-import { useState, type ComponentProps } from "react";
-// Keep presentation-only forms local until their submission endpoints exist.
+import Link from "next/link";
+import type { ComponentProps } from "react";
+
+// Keep presentation-only forms visibly unavailable until their endpoints exist.
 export default function UnconnectedForm({
   children,
   ...props
 }: Omit<ComponentProps<"form">, "onSubmit">) {
-  const [unavailable, setUnavailable] = useState(false);
   return (
-    <form
-      {...props}
-      data-submission="not-connected"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setUnavailable(true);
-      }}
-    >
-      {children}
-      {unavailable && (
-        <p role="status" className="form-wide text-sm leading-relaxed">
-          Online submission is currently unavailable.
-        </p>
-      )}
+    <form {...props} data-submission="not-connected">
+      <p role="status" className="unconnected-form-notice form-wide">
+        This form is unavailable and does not collect or submit details.{" "}
+        <Link href="/contact">Contact Patchworks AI instead</Link>.
+      </p>
+      <fieldset className="unconnected-form-fields" disabled>
+        {children}
+      </fieldset>
     </form>
   );
 }

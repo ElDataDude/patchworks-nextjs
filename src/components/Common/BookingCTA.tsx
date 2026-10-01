@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { BOOKING_LABEL } from "@/data/positioning";
+import { BOOKING_URL } from "@/lib/cal-embed";
 
 interface BookingCTAProps {
   variant?: "primary" | "secondary" | "inline";
@@ -9,11 +11,11 @@ interface BookingCTAProps {
 
 const BookingCTA = ({
   className = "",
-  text = "Book Your Free 30-Minute AI Strategy Call",
+  text = BOOKING_LABEL,
 }: BookingCTAProps) => {
   return (
     <Link
-      href="https://cal.com/bryanj"
+      href={BOOKING_URL}
       target="_blank"
       rel="noopener noreferrer"
       className={`text-link ${className}`}

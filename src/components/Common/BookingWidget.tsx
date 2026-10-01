@@ -1,11 +1,23 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+} from "react";
+import { BOOKING_LABEL } from "@/data/positioning";
+import {
+  readPrivacyPreference,
+  type PrivacyPreference,
+} from "@/lib/privacy-preferences";
 import {
   BOOKING_URL,
   loadCalEmbed,
   openCalBooking,
+  subscribeCalClose,
   subscribeCalFailure,
 } from "@/lib/cal-embed";
 
@@ -15,42 +27,89 @@ interface BookingWidgetProps {
   buttonText?: string;
 }
 
+let activeBookingTrigger: HTMLAnchorElement | null = null;
+
+export function shouldOpenEmbeddedBooking(
+  event: Pick<
+    ReactMouseEvent<HTMLAnchorElement>,
+    "button" | "metaKey" | "ctrlKey" | "shiftKey" | "altKey"
+  >,
+  preference: PrivacyPreference | null,
+) {
+  return (
+    preference === "booking" &&
+    event.button === 0 &&
+    !event.metaKey &&
+    !event.ctrlKey &&
+    !event.shiftKey &&
+    !event.altKey
+  );
+}
+
 const BookingWidget = ({
   className = "",
-  buttonText = "Book Your Free 30-Minute AI Strategy Call",
+  buttonText = BOOKING_LABEL,
 }: BookingWidgetProps) => {
-  const [embedFailed, setEmbedFailed] = useState(false);
+  const statusId = useId();
+  const trigger = useRef<HTMLAnchorElement>(null);
+  const [status, setStatus] = useState<"idle" | "loading" | "failed">("idle");
 
   useEffect(() => {
-    let mounted = true;
-    const unsubscribe = subscribeCalFailure(() => setEmbedFailed(true));
-    void loadCalEmbed().catch(() => {
-      if (mounted) setEmbedFailed(true);
+    const element = trigger.current;
+    const restoreFocus = () => {
+      if (activeBookingTrigger !== element) return;
+      requestAnimationFrame(() => {
+        if (element?.isConnected !== false) element?.focus();
+        if (activeBookingTrigger === element) activeBookingTrigger = null;
+      });
+    };
+    const unsubscribeFailure = subscribeCalFailure(() => {
+      if (activeBookingTrigger !== element) return;
+      setStatus("failed");
+      requestAnimationFrame(() => {
+        if (element?.isConnected !== false) element?.focus();
+      });
     });
+    const unsubscribeClose = subscribeCalClose(restoreFocus);
     return () => {
-      mounted = false;
-      unsubscribe();
+      if (activeBookingTrigger === element) activeBookingTrigger = null;
+      unsubscribeFailure();
+      unsubscribeClose();
     };
   }, []);
+
+  async function selectBooking(event: ReactMouseEvent<HTMLAnchorElement>) {
+    if (!shouldOpenEmbeddedBooking(event, readPrivacyPreference())) return;
+    event.preventDefault();
+    if (status === "loading") return;
+    activeBookingTrigger = trigger.current;
+    setStatus("loading");
+    try {
+      await loadCalEmbed();
+      if (!openCalBooking()) throw new Error("Booking embed unavailable");
+      setStatus("idle");
+    } catch {
+      setStatus("failed");
+      requestAnimationFrame(() => trigger.current?.focus());
+    }
+  }
 
   return (
     <div className="booking-widget">
       <a
+        ref={trigger}
         href={BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
         className={`text-link ${className}`}
-        onClick={(event) => {
-          if (
-            event.button !== 0 ||
-            event.metaKey ||
-            event.ctrlKey ||
-            event.shiftKey ||
-            event.altKey
-          )
-            return;
-          if (openCalBooking()) event.preventDefault();
-        }}
+        onClick={selectBooking}
+        aria-describedby={
+          status === "loading"
+            ? `${statusId}-loading`
+            : status === "failed"
+              ? `${statusId}-fallback`
+              : undefined
+        }
       >
         <span
           className={
@@ -63,8 +122,18 @@ const BookingWidget = ({
         </span>
         <ArrowUpRight aria-hidden="true" strokeWidth={1.5} />
       </a>
-      {embedFailed && (
-        <p className="mt-3 text-sm text-body-color" role="status">
+      {status === "loading" && (
+        <p
+          id={`${statusId}-loading`}
+          className="booking-status"
+          role="status"
+          aria-live="polite"
+        >
+          Opening the booking calendar…
+        </p>
+      )}
+      {status === "failed" && (
+        <p id={`${statusId}-fallback`} className="booking-status" role="status">
           The embedded calendar is unavailable.{" "}
           <a
             href={BOOKING_URL}

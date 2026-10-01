@@ -1,11 +1,8 @@
 import UnconnectedForm from "@/components/Common/UnconnectedForm";
 import Link from "next/link";
-import { Metadata } from "next";
+import { createPageMetadata } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "Sign In Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Sign In Page for Startup Nextjs Template",
-};
+export const metadata = createPageMetadata("/signin");
 
 const SigninPage = () => (
   <div>
@@ -22,12 +19,14 @@ const SigninPage = () => (
         <div className="border-y border-[#E3E8EF] py-8">
           <button
             type="button"
+            disabled
             className="mb-4 flex min-h-12 w-full items-center justify-center border border-[#E3E8EF] px-6 py-3 text-sm text-[#121723] transition-colors hover:border-[#d16013] hover:text-[#d16013]"
           >
             Sign in with Google
           </button>
           <button
             type="button"
+            disabled
             className="flex min-h-12 w-full items-center justify-center border border-[#E3E8EF] px-6 py-3 text-sm text-[#121723] transition-colors hover:border-[#d16013] hover:text-[#d16013]"
           >
             Sign in with Github
@@ -69,9 +68,7 @@ const SigninPage = () => (
               />
               Keep me signed in
             </label>
-            <a href="#0" className="text-[#d16013] hover:underline">
-              Forgot Password?
-            </a>
+            <span className="text-[#626875]">Forgot Password?</span>
           </div>
           <button
             type="submit"

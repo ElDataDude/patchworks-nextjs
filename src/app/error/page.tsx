@@ -1,10 +1,7 @@
 import EditorialLink from "@/components/Common/EditorialLink";
-import { Metadata } from "next";
+import { createPageMetadata } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "Error Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Error Page for Startup Nextjs Template",
-};
+export const metadata = createPageMetadata("/error");
 
 const ErrorPage = () => (
   <div>

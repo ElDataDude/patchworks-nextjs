@@ -1,0 +1,256 @@
+{
+  "schemaVersion": "1.0",
+  "document": {
+    "kind": "publication",
+    "title": "Patchworks publication system",
+    "subtitle": "A visual specimen for repeatable, high-quality client and thought-leadership documents",
+    "date": "September 2026",
+    "documentId": "PW-DS-001",
+    "version": "1.0",
+    "audience": "Internal design-system review",
+    "confidentiality": "Design specimen",
+    "author": "Patchworks AI",
+    "contact": "info@patchworks.ai",
+    "url": "patchworks.ai"
+  },
+  "pages": [
+    {
+      "layout": "cover",
+      "theme": "light",
+      "eyebrow": "Publication design system",
+      "title": "One visual language, many kinds of document",
+      "subtitle": "Reusable page layouts and components for white papers, reports, briefs, case studies, playbooks and proposals",
+      "preparedFor": "Internal design-system review",
+      "note": "System version 1.0"
+    },
+    {
+      "layout": "content",
+      "eyebrow": "Foundations",
+      "title": "Editorial, clear and recognisably Patchworks",
+      "dek": "The system carries the website's approved identity into a more disciplined print environment.",
+      "blocks": [
+        {
+          "type": "lead",
+          "text": "Instrument Serif creates a distinctive editorial voice. Source Sans 3 keeps detailed material calm, compact and easy to scan."
+        },
+        {
+          "type": "paragraph",
+          "text": "Paper, ink and restrained linework provide the base. Orange is used to locate attention, identify sequence and mark decisions. It should not become a decorative field competing with the content."
+        },
+        {
+          "type": "rule"
+        },
+        {
+          "type": "heading",
+          "text": "Hierarchy before decoration"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "One clear argument or purpose per page.",
+            "Short eyebrows orient the reader without repeating the title.",
+            "Body text remains within a controlled measure.",
+            "Every component has a defined role and spacing rhythm."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "orange",
+          "label": "System rule",
+          "title": "Content should determine the component, never the other way around.",
+          "body": "A publication can omit any component it does not need. Consistency comes from using the selected components faithfully."
+        }
+      ]
+    },
+    {
+      "layout": "data",
+      "eyebrow": "Quantitative components",
+      "title": "Statistics with context",
+      "dek": "Numbers are useful only when the reader can understand what they mean and where they came from.",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "A4",
+              "label": "Fixed page canvas",
+              "note": "210 x 297 mm"
+            },
+            {
+              "value": "6",
+              "label": "Page layouts",
+              "note": "Cover through closing"
+            },
+            {
+              "value": "13",
+              "label": "Content blocks",
+              "note": "Narrative, data and evidence"
+            },
+            {
+              "value": "0",
+              "label": "Accepted overflows",
+              "note": "Rendering fails closed"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A value, label and short note form a complete statistic. If a number is externally sourced, the publication should carry a human-readable reference nearby or on a dedicated sources page."
+        },
+        {
+          "type": "callout",
+          "tone": "neutral",
+          "label": "Illustrative data",
+          "title": "This specimen describes the system itself.",
+          "body": "Its numbers are implementation properties, not claims about a market, client or outcome."
+        }
+      ]
+    },
+    {
+      "layout": "columns",
+      "eyebrow": "Structured narrative",
+      "title": "Use the same system at different levels of detail",
+      "dek": "Columns support comparison and sequence without forcing every document into a slide-like format.",
+      "columns": [
+        [
+          {
+            "type": "heading",
+            "text": "Short-form documents"
+          },
+          {
+            "type": "paragraph",
+            "text": "A brief or point of view can use a cover, two or three content pages and a closing page. The typography and chrome stay consistent without padding the argument."
+          },
+          {
+            "type": "callout",
+            "tone": "ink",
+            "label": "Best for",
+            "title": "Decision briefs and concise perspectives",
+            "body": "Use when the reader needs a focused argument, recommendation or course of action."
+          }
+        ],
+        [
+          {
+            "type": "heading",
+            "text": "Long-form documents"
+          },
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "Orient",
+                "body": "Establish purpose, audience and the question being addressed."
+              },
+              {
+                "title": "Develop",
+                "body": "Build the argument with narrative, evidence, tables and examples."
+              },
+              {
+                "title": "Resolve",
+                "body": "State implications, decisions, recommendations or next actions."
+              },
+              {
+                "title": "Evidence",
+                "body": "Retain sources, assumptions and unresolved points in a usable form."
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "layout": "data",
+      "eyebrow": "Comparison components",
+      "title": "Tables remain editorial rather than spreadsheet-like",
+      "dek": "Compact typography, strong headings and alternating rows support dense material without losing the visual system.",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": ["Document", "Primary job", "Typical building blocks"],
+          "rows": [
+            ["White paper", "Develop a sourced argument", "Narrative, evidence, references, implications"],
+            ["Proposal", "Define an engagement and decision", "Context, approach, scope, team, commercials"],
+            ["Report", "Present findings and consequences", "Executive summary, analysis, findings, actions"],
+            ["Brief", "Enable a focused decision", "Question, evidence, options, recommendation"],
+            ["Case study", "Show work and outcomes credibly", "Situation, intervention, evidence, lessons"],
+            ["Playbook", "Guide repeatable action", "Principles, sequence, roles, controls, tools"]
+          ],
+          "caption": "The system is shared; the content architecture changes with the reader's job."
+        },
+        {
+          "type": "paragraph",
+          "text": "Long tables should be split deliberately across pages. The renderer will reject a table that exceeds the printable region rather than silently reducing its type size."
+        }
+      ]
+    },
+    {
+      "layout": "content",
+      "eyebrow": "Image treatment",
+      "title": "Imagery carries meaning, not atmosphere alone",
+      "dek": "Approved editorial images can create pace and clarify systems when their relationship to the argument is explicit.",
+      "blocks": [
+        {
+          "type": "image",
+          "src": "../../editorial-masters/home-systems.png",
+          "alt": "Abstract connected systems artwork from the Patchworks editorial image set",
+          "caption": "Existing Patchworks editorial master used to validate image embedding, cropping and caption treatment."
+        },
+        {
+          "type": "paragraph",
+          "text": "The default treatment uses the full available width and a controlled maximum height. The source remains embedded in the generated document, so the PDF does not depend on a network request."
+        }
+      ]
+    },
+    {
+      "layout": "content",
+      "eyebrow": "Sources and quotations",
+      "title": "Evidence should remain readable after delivery",
+      "dek": "The publication must never expose internal tool tokens or depend on a hidden research trail.",
+      "blocks": [
+        {
+          "type": "quote",
+          "text": "A polished page cannot rescue an unsupported claim. The design system should make evidence easier to inspect.",
+          "attribution": "Patchworks publication principle"
+        },
+        {
+          "type": "heading",
+          "text": "Reference treatment"
+        },
+        {
+          "type": "references",
+          "items": [
+            {
+              "id": "01",
+              "text": "Patchworks AI website",
+              "url": "https://patchworks.ai"
+            },
+            {
+              "id": "02",
+              "text": "Patchworks Lowercase Continuum logo pack and manifest"
+            },
+            {
+              "id": "03",
+              "text": "Publication-system brand tokens and content model"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "neutral",
+          "label": "Final check",
+          "title": "Confirm the destination, not only the build.",
+          "body": "Visual inspection, text extraction and embedded-font checks are all required before a publication is described as complete."
+        }
+      ]
+    },
+    {
+      "layout": "closing",
+      "theme": "dark",
+      "eyebrow": "Patchworks AI publication system",
+      "title": "Consistent by design. Flexible by composition.",
+      "body": "A controlled system for producing clear, credible and recognisably Patchworks publications across different audiences and document types.",
+      "cta": "Create the next publication",
+      "contact": "info@patchworks.ai"
+    }
+  ]
+}

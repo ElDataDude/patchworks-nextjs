@@ -3,6 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Menu as MenuIcon, X } from "lucide-react";
+import BookingWidget from "../Common/BookingWidget";
+import BrandLogo from "../Common/BrandLogo";
 import menuData from "./menuData";
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -34,9 +36,7 @@ export default function Header() {
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="site-container header-inner">
-        <Link href="/" className="wordmark" aria-label="Patchworks AI home">
-          <span>patchworks</span>AI
-        </Link>
+        <BrandLogo />
         <nav
           ref={navigation}
           id="main-navigation"
@@ -45,12 +45,7 @@ export default function Header() {
         >
           <ul>
             {menuData.map((item) => {
-              const href =
-                item.title === "Contact"
-                  ? pathname === "/"
-                    ? "/#contact"
-                    : "/contact"
-                  : item.path || "/";
+              const href = item.path || "/";
               return (
                 <li key={item.id}>
                   <Link
@@ -66,10 +61,10 @@ export default function Header() {
             })}
           </ul>
         </nav>
+        <div className="header-partner-booking">
+          <BookingWidget className="header-start header-booking" />
+        </div>
         <div className="header-actions">
-          <Link className="text-link header-start" href="/services">
-            Get Started
-          </Link>
           <span
             className="language-label"
             lang="en"

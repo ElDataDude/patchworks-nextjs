@@ -1,0 +1,858 @@
+{
+  "checkedAt": "2026-09-14T04:08:17.660Z",
+  "baseUrl": "https://patchworks-nextjs.bryan-johnson.workers.dev",
+  "scope": "GET-only rendered SEO, missing-route and static-asset verification; no submissions or external provider actions",
+  "passed": true,
+  "summary": {
+    "routes": 13,
+    "checks": 166,
+    "failures": 0
+  },
+  "checks": [
+    {
+      "scope": "/",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "index, follow"
+    },
+    {
+      "scope": "/",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "publishes a native responsive editorial image source set",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "image /images/editorial/home-systems.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "index, follow"
+    },
+    {
+      "scope": "/services",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "publishes a native responsive editorial image source set",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "image /images/editorial/services-system.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/services",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "index, follow"
+    },
+    {
+      "scope": "/industries",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "publishes a native responsive editorial image source set",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "image /images/editorial/industries-system.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/industries",
+      "name": "image /images/editorial/drilling-study.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "index, follow"
+    },
+    {
+      "scope": "/about",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "publishes a native responsive editorial image source set",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "image /images/editorial/about-bridge.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/about",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/contact",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/contact",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/contact",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/contact",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/contact",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "index, follow"
+    },
+    {
+      "scope": "/contact",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/contact",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/contact",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/contact",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/contact",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/privacy",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/privacy",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/privacy",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/privacy",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/privacy",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "index, follow"
+    },
+    {
+      "scope": "/privacy",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/privacy",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/privacy",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/privacy",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/privacy",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "noindex, follow"
+    },
+    {
+      "scope": "/careers",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "publishes a native responsive editorial image source set",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/careers",
+      "name": "image /images/editorial/careers-system.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "noindex, follow"
+    },
+    {
+      "scope": "/blog",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "publishes a native responsive editorial image source set",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "image /images/editorial/article-leadership.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "image /images/editorial/article-manufacturing.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "image /images/editorial/article-roi.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "noindex, follow"
+    },
+    {
+      "scope": "/blog-details",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "publishes a native responsive editorial image source set",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "image /images/blog/author-02.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-details",
+      "name": "image /images/editorial/article-leadership.webp has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "noindex, nofollow"
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "image /images/blog/author-02.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "image /images/blog/blog-details-01.jpg has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "image /images/blog/post-01.jpg has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "image /images/blog/post-02.jpg has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/blog-sidebar",
+      "name": "image /images/blog/post-03.jpg has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/signin",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/signin",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/signin",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/signin",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/signin",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "noindex, nofollow"
+    },
+    {
+      "scope": "/signin",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/signin",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/signin",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/signin",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/signin",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/signup",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/signup",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/signup",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/signup",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/signup",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "noindex, nofollow"
+    },
+    {
+      "scope": "/signup",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/signup",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/signup",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/signup",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/signup",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/error",
+      "name": "returns HTML with HTTP 200",
+      "passed": true
+    },
+    {
+      "scope": "/error",
+      "name": "has the approved unique title",
+      "passed": true
+    },
+    {
+      "scope": "/error",
+      "name": "has a useful meta description",
+      "passed": true
+    },
+    {
+      "scope": "/error",
+      "name": "has one absolute self-canonical",
+      "passed": true
+    },
+    {
+      "scope": "/error",
+      "name": "has the intended robots policy",
+      "passed": true,
+      "detail": "noindex, nofollow"
+    },
+    {
+      "scope": "/error",
+      "name": "has canonical Open Graph metadata",
+      "passed": true
+    },
+    {
+      "scope": "/error",
+      "name": "uses the large Twitter card",
+      "passed": true
+    },
+    {
+      "scope": "/error",
+      "name": "does not depend on the Next image optimizer",
+      "passed": true
+    },
+    {
+      "scope": "/error",
+      "name": "image /images/brand/patchworks-ai-full-colour-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/error",
+      "name": "image /images/brand/patchworks-ai-dark-background-600.png has alt text semantics",
+      "passed": true
+    },
+    {
+      "scope": "/robots.txt",
+      "name": "returns plain text",
+      "passed": true
+    },
+    {
+      "scope": "/robots.txt",
+      "name": "allows the site and protects the API",
+      "passed": true
+    },
+    {
+      "scope": "/robots.txt",
+      "name": "declares the canonical sitemap",
+      "passed": true
+    },
+    {
+      "scope": "/sitemap.xml",
+      "name": "returns XML",
+      "passed": true
+    },
+    {
+      "scope": "/sitemap.xml",
+      "name": "contains exactly the six indexable pages",
+      "passed": true,
+      "detail": "https://patchworks.ai/, https://patchworks.ai/services, https://patchworks.ai/industries, https://patchworks.ai/about, https://patchworks.ai/contact, https://patchworks.ai/privacy"
+    },
+    {
+      "scope": "missing route",
+      "name": "returns HTTP 404",
+      "passed": true
+    },
+    {
+      "scope": "missing route",
+      "name": "renders the branded missing-page content",
+      "passed": true
+    },
+    {
+      "scope": "missing route",
+      "name": "is noindex",
+      "passed": true
+    },
+    {
+      "scope": "favicons",
+      "name": "publishes the approved favicon and Apple icon links",
+      "passed": true
+    },
+    {
+      "scope": "favicons",
+      "name": "favicon assets exist at their declared dimensions",
+      "passed": true
+    },
+    {
+      "scope": "social image",
+      "name": "is a compressed 1200x630 PNG",
+      "passed": true,
+      "detail": "1200x630, 113108 bytes"
+    },
+    {
+      "scope": "image assets",
+      "name": "source masters are outside public",
+      "passed": true
+    },
+    {
+      "scope": "image assets",
+      "name": "all 27 responsive editorial variants exist",
+      "passed": true
+    }
+  ]
+}

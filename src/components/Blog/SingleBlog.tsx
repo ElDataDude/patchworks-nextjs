@@ -1,5 +1,5 @@
 import { Blog } from "@/types/blog";
-import Image from "next/image";
+import ResponsiveImage from "../Common/ResponsiveImage";
 import Link from "next/link";
 
 const SingleBlog = ({ blog }: { blog: Blog }) => {
@@ -9,7 +9,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
       <div className="grid gap-7 md:grid-cols-[minmax(220px,0.9fr)_1.1fr] md:items-start md:gap-10">
         <Link href="/blog-details" className="group block w-full">
           <span className="media-frame relative block aspect-[16/10] overflow-hidden">
-            <Image
+            <ResponsiveImage
               src={image}
               alt={title}
               fill

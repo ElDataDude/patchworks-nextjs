@@ -68,7 +68,7 @@ Nine coordinated image masters were generated: homepage, drilling case study, Se
 
 [Asset manifest and hashes](/Users/bryanj/dev/patchworks/patchworks-nextjs/design/assets.json) · [Astra prompts](/Users/bryanj/dev/patchworks/patchworks-nextjs/design/asset-prompts-astra.md) · [Sol prompts](/Users/bryanj/dev/patchworks/patchworks-nextjs/design/asset-prompts-sol.md) · [Luna prompts](/Users/bryanj/dev/patchworks/patchworks-nextjs/design/asset-prompts-luna.md)
 
-The existing ancillary sidebar article retains its original blue stock photograph as source content. Generated masters are retained locally under public/images/editorial/masters.
+The existing ancillary sidebar article retains its original blue stock photograph as source content. Generated masters are retained locally under design/editorial-masters so they are not published as website assets.
 
 ## Technical validation
 

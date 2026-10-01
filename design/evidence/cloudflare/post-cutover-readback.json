@@ -1,0 +1,528 @@
+{
+  "capturedAt": "2026-09-14T05:21:49.250Z",
+  "dns": [
+    {
+      "id": "1e3af7894cbf2d3f5f144ff827dcd0cf",
+      "name": "patchworks.ai",
+      "type": "A",
+      "content": "216.198.79.193",
+      "proxiable": true,
+      "proxied": true,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:24.929614Z",
+      "modified_on": "2025-10-09T07:06:24.929614Z"
+    },
+    {
+      "id": "2f4ee72a3df362afbe0a604441f6257d",
+      "name": "_domainconnect.patchworks.ai",
+      "type": "CNAME",
+      "content": "_domainconnect.gd.domaincontrol.com",
+      "proxiable": true,
+      "proxied": true,
+      "ttl": 1,
+      "settings": {
+        "flatten_cname": false
+      },
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:25.016612Z",
+      "modified_on": "2025-10-09T07:06:25.016612Z"
+    },
+    {
+      "id": "67bcc31cdca4644a5c41512efeca03a5",
+      "name": "n8n.patchworks.ai",
+      "type": "CNAME",
+      "content": "zfud9lht.up.railway.app",
+      "proxiable": true,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {
+        "flatten_cname": false
+      },
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-11T18:12:32.878478Z",
+      "modified_on": "2025-10-11T18:12:32.878478Z"
+    },
+    {
+      "id": "45e00312e5d942c2e31d0b083f5a4218",
+      "name": "www.patchworks.ai",
+      "type": "CNAME",
+      "content": "cname.vercel-dns.com",
+      "proxiable": true,
+      "proxied": true,
+      "ttl": 1,
+      "settings": {
+        "flatten_cname": false
+      },
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:24.942881Z",
+      "modified_on": "2025-10-09T07:06:24.942881Z"
+    },
+    {
+      "id": "7f4dfb584e9d4e70722db4c47255a062",
+      "name": "cf-bounce.patchworks.ai",
+      "type": "MX",
+      "content": "route3.mx.cloudflare.net",
+      "priority": 41,
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {
+        "email_routing": true,
+        "read_only": true
+      },
+      "comment": null,
+      "tags": [],
+      "created_on": "2026-06-12T09:57:31.582331Z",
+      "modified_on": "2026-06-12T09:57:31.582331Z"
+    },
+    {
+      "id": "bfdb51022491ebda2d5855773e0e06a8",
+      "name": "cf-bounce.patchworks.ai",
+      "type": "MX",
+      "content": "route2.mx.cloudflare.net",
+      "priority": 18,
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {
+        "email_routing": true,
+        "read_only": true
+      },
+      "comment": null,
+      "tags": [],
+      "created_on": "2026-06-12T09:57:31.572838Z",
+      "modified_on": "2026-06-12T09:57:31.572838Z"
+    },
+    {
+      "id": "68d8c0c64798221c7b0fb20ee5dc3f7d",
+      "name": "cf-bounce.patchworks.ai",
+      "type": "MX",
+      "content": "route1.mx.cloudflare.net",
+      "priority": 95,
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {
+        "email_routing": true,
+        "read_only": true
+      },
+      "comment": null,
+      "tags": [],
+      "created_on": "2026-06-12T09:57:31.561113Z",
+      "modified_on": "2026-06-12T09:57:31.561113Z"
+    },
+    {
+      "id": "66a99c093ce9c3c33d10f1b4ed07efe5",
+      "name": "patchworks.ai",
+      "type": "MX",
+      "content": "alt4.aspmx.l.google.com",
+      "priority": 10,
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:24.991161Z",
+      "modified_on": "2025-10-09T07:06:24.991161Z"
+    },
+    {
+      "id": "7278f91de54bc2e8b124053326691663",
+      "name": "patchworks.ai",
+      "type": "MX",
+      "content": "alt3.aspmx.l.google.com",
+      "priority": 10,
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:24.981398Z",
+      "modified_on": "2025-10-09T07:06:24.981398Z"
+    },
+    {
+      "id": "66984fa1fbe4cf8b875dc5409ddeedf3",
+      "name": "patchworks.ai",
+      "type": "MX",
+      "content": "alt2.aspmx.l.google.com",
+      "priority": 5,
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:24.972514Z",
+      "modified_on": "2025-10-09T07:06:24.972514Z"
+    },
+    {
+      "id": "de3e62c6d918740b00c04011fa0a9201",
+      "name": "patchworks.ai",
+      "type": "MX",
+      "content": "alt1.aspmx.l.google.com",
+      "priority": 5,
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:24.963239Z",
+      "modified_on": "2025-10-09T07:06:24.963239Z"
+    },
+    {
+      "id": "a9cd2433f9feb845ddd6548cecad924d",
+      "name": "patchworks.ai",
+      "type": "MX",
+      "content": "aspmx.l.google.com",
+      "priority": 1,
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:24.954003Z",
+      "modified_on": "2025-10-09T07:06:24.954003Z"
+    },
+    {
+      "id": "8650c2576cf08c2fe96f1a696b6949fe",
+      "name": "send.patchworks.ai",
+      "type": "MX",
+      "content": "feedback-smtp.eu-west-1.amazonses.com",
+      "priority": 10,
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 3600,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-22T06:56:46.097242Z",
+      "modified_on": "2025-10-22T06:56:46.097242Z"
+    },
+    {
+      "id": "4e40c7c77111c612a10ff5ab7222bfc8",
+      "name": "patchworks.ai",
+      "type": "NS",
+      "content": "ns60.domaincontrol.com",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:25.037294Z",
+      "modified_on": "2025-10-09T07:06:25.037294Z"
+    },
+    {
+      "id": "3bb9761b491bdb6092310b8f3cbe54de",
+      "name": "patchworks.ai",
+      "type": "NS",
+      "content": "ns59.domaincontrol.com",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:25.028596Z",
+      "modified_on": "2025-10-09T07:06:25.028596Z"
+    },
+    {
+      "id": "695ef7235bb7d59f4d21e188eb46b533",
+      "name": "cf-bounce._domainkey.patchworks.ai",
+      "type": "TXT",
+      "content": "\"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiweykoi+o48IOGuP7GR3X0MOExCUDY/BCRHoWBnh3rChl7WhdyCxW3jgq1daEjPPqoi7sJvdg5hEQVsgVRQP4DcnQDVjGMbASQtrY4WmB1VebF+RPJB2ECPsEDTpeiI5ZyUAwJaVX7r6bznU67g7LvFq35yIo4sdlmtZGV+i0H4cpYH9+3JJ78k\" \"m4KXwaf9xUJCWF6nxeD+qG6Fyruw1Qlbds2r85U9dkNDVAS3gioCvELryh1TxKGiVTkg4wqHTyHfWsp7KD3WQHYJn0RyfJJu6YEmL77zonn7p2SRMvTMP3ZEXibnC9gz3nnhR6wcYL8Q7zXypKTMD58bTixDSJwIDAQAB\"",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {
+        "email_routing": true,
+        "read_only": true
+      },
+      "comment": null,
+      "tags": [],
+      "created_on": "2026-06-12T09:57:31.602884Z",
+      "modified_on": "2026-06-12T09:57:31.602884Z"
+    },
+    {
+      "id": "52ff7d4d3f6e7e3be511d7e7cdbee126",
+      "name": "cf-bounce.patchworks.ai",
+      "type": "TXT",
+      "content": "\"v=spf1 include:_spf.mx.cloudflare.net ~all\"",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {
+        "email_routing": true,
+        "read_only": true
+      },
+      "comment": null,
+      "tags": [],
+      "created_on": "2026-06-12T09:57:31.591154Z",
+      "modified_on": "2026-06-12T09:57:31.591154Z"
+    },
+    {
+      "id": "c7c1a54f7a85888753dbdf730b5524d5",
+      "name": "dc-aa8e722993._spfm.patchworks.ai",
+      "type": "TXT",
+      "content": "\"v=spf1 include:_spf.google.com ~all\"",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2026-07-31T13:00:45.715974Z",
+      "modified_on": "2026-07-31T13:00:45.715974Z"
+    },
+    {
+      "id": "b394cfc124858715b68338f7a420dcd3",
+      "name": "_dmarc.patchworks.ai",
+      "type": "TXT",
+      "content": "\"v=DMARC1; p=reject;\"",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2026-06-12T09:57:31.613094Z",
+      "modified_on": "2026-06-12T09:57:31.613094Z"
+    },
+    {
+      "id": "cc44c5e040fe50c61436a2ccd392fb3e",
+      "name": "patchworks.ai",
+      "type": "TXT",
+      "content": "\"v=spf1 include:dc-aa8e722993._spfm.patchworks.ai ~all\"",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:25.007521Z",
+      "modified_on": "2025-10-09T07:06:25.007521Z"
+    },
+    {
+      "id": "3bed35212904423b9430376e0637d5ee",
+      "name": "patchworks.ai",
+      "type": "TXT",
+      "content": "\"google-site-verification=k1-N2KlhYUqx1Wydq8xzerkb8Ajy2jHBbzWHCWxoWUg\"",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 1,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-09T07:06:24.999993Z",
+      "modified_on": "2025-10-09T07:06:24.999993Z"
+    },
+    {
+      "id": "ed54acee72835990b37a9ad29d6238b5",
+      "name": "resend._domainkey.patchworks.ai",
+      "type": "TXT",
+      "content": "\"p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCv/HOFeM5wom6yyXOON9mUOYPyn9am3hgqL3QPLZDuPZ7kCaiYfS5cSIwybPNT7Z/EAGTsG2H5hDgHOwCPYwBdTEPRT+U5/R2Dwd4p2f5GOV8IdHLFSd56dhZBJtBD/aXeL/9vii3zMgMRKgOtBqNjB5Yn1rOhSZSklpocHrejkwIDAQAB\"",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 3600,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-22T06:56:46.003769Z",
+      "modified_on": "2025-10-22T06:56:46.003769Z"
+    },
+    {
+      "id": "a7dc0d0ccbc2d7d1ee1685c8b6f114e4",
+      "name": "send.patchworks.ai",
+      "type": "TXT",
+      "content": "\"v=spf1 include:amazonses.com -all\"",
+      "proxiable": false,
+      "proxied": false,
+      "ttl": 3600,
+      "settings": {},
+      "meta": {},
+      "comment": null,
+      "tags": [],
+      "created_on": "2025-10-22T06:56:46.073025Z",
+      "modified_on": "2025-10-22T06:56:46.073025Z"
+    },
+    {
+      "id": "0590d44187ee3cc299a727b8ae2f8929",
+      "name": "bridge.patchworks.ai",
+      "type": "AAAA",
+      "content": "100::",
+      "proxiable": true,
+      "proxied": true,
+      "ttl": 1,
+      "settings": {},
+      "meta": {
+        "origin_worker_id": "3cc16a5bcf2eb08bf5b8af9a27bb95d7535076f4",
+        "read_only": true
+      },
+      "comment": null,
+      "tags": [],
+      "created_on": "2026-05-07T20:05:41.596505Z",
+      "modified_on": "2026-05-07T20:05:41.596505Z"
+    },
+    {
+      "id": "3e00a62ff1d0fc828ccd02ed4ccde734",
+      "name": "tickets.patchworks.ai",
+      "type": "AAAA",
+      "content": "100::",
+      "proxiable": true,
+      "proxied": true,
+      "ttl": 1,
+      "settings": {},
+      "meta": {
+        "origin_worker_id": "d1f5dfc168d3fbcf28097ddf0d7b126f4386cc24",
+        "read_only": true
+      },
+      "comment": null,
+      "tags": [],
+      "created_on": "2026-09-05T12:17:20.721557Z",
+      "modified_on": "2026-09-05T12:17:20.721557Z"
+    }
+  ],
+  "routes": [
+    {
+      "id": "cb57b22324264d5e8c23aa80cb66ab22",
+      "pattern": "www.patchworks.ai/*",
+      "script": "patchworks-nextjs",
+      "request_limit_fail_open": false
+    },
+    {
+      "id": "f6fe05c2b67d4778aa8887f43e497b68",
+      "pattern": "patchworks.ai/*",
+      "script": "patchworks-nextjs",
+      "request_limit_fail_open": false
+    }
+  ],
+  "rum": {
+    "id_please_delete": 0,
+    "site_tag": "4f8a5a5f42f548399f594862801d80c0",
+    "site_token": "384971dac54f42439bb0873398396c7e",
+    "created": "2025-10-09T08:32:30.329106Z",
+    "snippet": "<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{\"token\": \"384971dac54f42439bb0873398396c7e\"}'></script><!-- End Cloudflare Web Analytics -->",
+    "auto_install": false,
+    "ruleset": {
+      "zone_tag": "297e95702f61d279bb714ae71dba194c",
+      "zone_name": "patchworks.ai",
+      "enabled": true,
+      "id": "cecd5421-5015-4495-85ba-4d220189d3cb",
+      "lite": false
+    },
+    "rules": [
+      {
+        "host": "*",
+        "paths": [
+          "*"
+        ],
+        "inclusive": true,
+        "created": "2025-10-09T08:32:30.32785Z",
+        "is_paused": false,
+        "priority": 1000,
+        "id": "a8e41e83-3e23-4a27-9e22-6eaae7fe6122"
+      }
+    ]
+  },
+  "recipient": {
+    "id": "ff0ffd78ec964753bcd5051d457bb858",
+    "tag": "ff0ffd78ec964753bcd5051d457bb858",
+    "email": "info@patchworks.ai",
+    "verified": "2026-09-14T04:54:57.325176Z",
+    "created": "2026-09-13T20:43:35.271963Z",
+    "modified": "2026-09-14T04:54:57.325176Z",
+    "status": "verified"
+  },
+  "prodLedger": [
+    {
+      "results": [
+        {
+          "status": "accepted",
+          "message_id": "<eLgPthz8guDjULY57efm8V3R22Nbn6jxyTgs@patchworks.ai>",
+          "created_at": 1789362704,
+          "updated_at": 1789362704
+        }
+      ],
+      "success": true,
+      "meta": {
+        "served_by": "v3-prod",
+        "served_by_region": "WEUR",
+        "served_by_colo": "AMS",
+        "served_by_primary": true,
+        "timings": {
+          "sql_duration_ms": 0.3218
+        },
+        "duration": 0.3218,
+        "changes": 0,
+        "last_row_id": 0,
+        "changed_db": false,
+        "size_after": 20480,
+        "rows_read": 2,
+        "rows_written": 0,
+        "total_attempts": 1
+      }
+    }
+  ],
+  "previewLedger": [
+    {
+      "results": [
+        {
+          "status": "accepted",
+          "message_id": "<JTdPRd7Kd5AG63TNlReEgMhul3UsAIo4hS2z@patchworks.ai>",
+          "created_at": 1789361838,
+          "updated_at": 1789361838
+        }
+      ],
+      "success": true,
+      "meta": {
+        "served_by": "v3-prod",
+        "served_by_region": "WEUR",
+        "served_by_colo": "LHR",
+        "served_by_primary": true,
+        "timings": {
+          "sql_duration_ms": 0.3129
+        },
+        "duration": 0.3129,
+        "changes": 0,
+        "last_row_id": 0,
+        "changed_db": false,
+        "size_after": 20480,
+        "rows_read": 2,
+        "rows_written": 0,
+        "total_attempts": 1
+      }
+    }
+  ],
+  "dnsUnchanged": true
+}

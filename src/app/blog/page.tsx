@@ -2,15 +2,11 @@ import PageIntro from "@/components/Common/PageIntro";
 import BookingCTA from "@/components/Common/BookingCTA";
 import SingleBlog from "@/components/Blog/SingleBlog";
 import blogData from "@/components/Blog/blogData";
-import { Metadata } from "next";
-import Image from "next/image";
+import { createPageMetadata } from "@/data/seo";
+import ResponsiveImage from "@/components/Common/ResponsiveImage";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "AI Insights Blog | Patchworks AI",
-  description:
-    "Explore the latest insights, trends, and practical advice on AI implementation, strategy, and ROI from the experts at Patchworks AI.",
-};
+export const metadata = createPageMetadata("/blog");
 
 const Blog = () => {
   const [featured, ...articles] = blogData;
@@ -23,7 +19,7 @@ const Blog = () => {
           description="Stay informed with the latest AI trends, implementation strategies, and success stories. Our experts share practical advice to help you maximize ROI from your AI investments."
         >
           <div className="mt-9 flex flex-col items-start gap-4">
-            <BookingCTA text="Get Personalized AI Insights" />
+            <BookingCTA />
             <p className="text-sm text-[#626875]">
               Practical AI insights for business leaders
             </p>
@@ -48,7 +44,7 @@ const Blog = () => {
           <article className="grid gap-8 border-b border-[#E3E8EF] pb-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
             <Link href="/blog-details" className="group block w-full">
               <span className="media-frame relative block aspect-[16/9] overflow-hidden">
-                <Image
+                <ResponsiveImage
                   src={featured.image}
                   alt={featured.title}
                   fill
@@ -87,30 +83,18 @@ const Blog = () => {
             ))}
           </div>
 
-          <nav
-            aria-label="Blog pagination"
+          <div
+            aria-label="Archived pagination"
             className="mt-14 flex flex-wrap items-center gap-6 border-t border-[#E3E8EF] pt-6 text-sm"
           >
-            <a href="#0" className="text-link text-link--quiet">
-              Prev
-            </a>
-            <a href="#0" className="text-link text-link--quiet">
-              1
-            </a>
-            <a href="#0" className="text-link text-link--quiet">
-              2
-            </a>
-            <a href="#0" className="text-link text-link--quiet">
-              3
-            </a>
+            <span className="text-[#959ca9]">Prev</span>
+            <span className="text-[#959ca9]">1</span>
+            <span className="text-[#959ca9]">2</span>
+            <span className="text-[#959ca9]">3</span>
             <span className="px-1 text-[#626875]">...</span>
-            <a href="#0" className="text-link text-link--quiet">
-              12
-            </a>
-            <a href="#0" className="text-link text-link--quiet">
-              Next
-            </a>
-          </nav>
+            <span className="text-[#959ca9]">12</span>
+            <span className="text-[#959ca9]">Next</span>
+          </div>
         </section>
       </div>
     </div>

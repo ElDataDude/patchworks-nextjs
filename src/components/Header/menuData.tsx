@@ -2,12 +2,6 @@ import { Menu } from "@/types/menu";
 
 const menuData: Menu[] = [
   {
-    id: 1,
-    title: "Home",
-    path: "/",
-    newTab: false,
-  },
-  {
     id: 2,
     title: "Services",
     path: "/services",
@@ -26,15 +20,9 @@ const menuData: Menu[] = [
     newTab: false,
   },
   {
-    id: 5,
-    title: "Careers",
-    path: "/careers",
-    newTab: false,
-  },
-  {
     id: 6,
     title: "Contact",
-    path: "#contact",
+    path: "/contact",
     newTab: false,
   },
 ];

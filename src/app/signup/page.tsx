@@ -1,11 +1,8 @@
 import UnconnectedForm from "@/components/Common/UnconnectedForm";
 import Link from "next/link";
-import { Metadata } from "next";
+import { createPageMetadata } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "Sign Up Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Sign Up Page for Startup Nextjs Template",
-};
+export const metadata = createPageMetadata("/signup");
 
 const SignupPage = () => (
   <div>
@@ -20,12 +17,14 @@ const SignupPage = () => (
         <div className="border-y border-[#E3E8EF] py-8">
           <button
             type="button"
+            disabled
             className="mb-4 flex min-h-12 w-full items-center justify-center border border-[#E3E8EF] px-6 py-3 text-sm text-[#121723] transition-colors hover:border-[#d16013] hover:text-[#d16013]"
           >
             Sign in with Google
           </button>
           <button
             type="button"
+            disabled
             className="flex min-h-12 w-full items-center justify-center border border-[#E3E8EF] px-6 py-3 text-sm text-[#121723] transition-colors hover:border-[#d16013] hover:text-[#d16013]"
           >
             Sign in with Github
@@ -75,16 +74,11 @@ const SignupPage = () => (
               className="mt-1 h-4 w-4 shrink-0 accent-[#d16013]"
             />
             <span>
-              By creating account means you agree to the{" "}
-              <a href="#0" className="text-[#d16013] hover:underline">
-                {" "}
-                Terms and Conditions{" "}
-              </a>
-              , and our{" "}
-              <a href="#0" className="text-[#d16013] hover:underline">
-                {" "}
-                Privacy Policy{" "}
-              </a>
+              Registration is unavailable. You can still read our{" "}
+              <Link href="/privacy" className="text-[#d16013] hover:underline">
+                privacy notice
+              </Link>
+              .
             </span>
           </label>
           <button

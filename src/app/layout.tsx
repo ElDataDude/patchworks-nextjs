@@ -2,12 +2,32 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import Motion from "@/components/Common/Motion";
-import { Instrument_Serif, Inter } from "next/font/google";
+import CloudflareWebAnalytics from "@/components/Common/CloudflareWebAnalytics";
+import PrivacyControls from "@/components/Common/PrivacyControls";
+import type { Metadata } from "next";
+import { brandIcons, brandSocialImage } from "@/data/brand";
+import { Instrument_Serif, Source_Sans_3 } from "next/font/google";
 import "../styles/index.css";
+import "../styles/enterprise.css";
+import "../styles/contact.css";
 
-const inter = Inter({
+export const metadata: Metadata = {
+  metadataBase: new URL("https://patchworks.ai"),
+  icons: brandIcons,
+  openGraph: {
+    siteName: "Patchworks AI",
+    type: "website",
+    images: [brandSocialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [brandSocialImage.url],
+  },
+};
+
+const body = Source_Sans_3({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-body",
   display: "swap",
 });
 const display = Instrument_Serif({
@@ -24,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${display.variable}`}>
+      <body className={`${body.variable} ${display.variable}`}>
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
@@ -35,6 +55,8 @@ export default function RootLayout({
         <Footer />
         <ScrollToTop />
         <Motion />
+        <PrivacyControls />
+        <CloudflareWebAnalytics />
       </body>
     </html>
   );

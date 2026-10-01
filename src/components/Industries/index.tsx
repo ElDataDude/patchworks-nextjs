@@ -1,33 +1,28 @@
 const industries = [
   {
-    title: "Oil & Gas",
+    title: "Financial Services & Retail Banking",
     description:
-      "Specialized expertise in drilling analytics, operational optimization, and predictive maintenance. We've helped energy companies reduce downtime, optimize production, and improve safety through AI-driven insights.",
+      "Customer operations, internal knowledge and risk workflows all present opportunities for AI. The right decisions account for sensitive data, existing controls and the complexity of delivering across markets and business lines.",
   },
   {
-    title: "Professional Services",
+    title: "Insurance",
     description:
-      "Transforming how consulting, legal, and accounting firms deliver value through AI. Our solutions help professional services firms automate routine tasks, enhance knowledge work, and deliver more value to clients with fewer billable hours.",
+      "From underwriting and claims to distribution and service, AI needs to work within the realities of insurance. We help teams examine where it can support decisions and workflows, how proposals stand up to scrutiny and what implementation requires.",
   },
   {
-    title: "Financial Services",
+    title: "Consumer Goods",
     description:
-      "Enhancing financial operations through AI-powered analytics, risk assessment, and process automation. We help financial institutions improve decision-making, reduce operational costs, and enhance customer experiences.",
+      "Large brand portfolios connect commercial decisions, operations and customer insight across regions. We help teams assess AI opportunities against those dependencies and focus effort where there is a clear business case.",
   },
   {
-    title: "Manufacturing",
+    title: "Supply Chain & Logistics",
     description:
-      "Optimizing production processes, quality control, and supply chain management through AI. Our manufacturing solutions reduce waste, improve quality, and increase throughput while reducing operational costs.",
+      "Networks of suppliers, systems and geographies make promising demonstrations difficult to put into practice. We help teams review AI for planning, operational knowledge and exception handling in the context of their data and existing workflows.",
   },
   {
-    title: "Healthcare",
+    title: "Audit & Professional Services",
     description:
-      "Enhancing patient care and operational efficiency through AI-powered solutions. We help healthcare providers improve diagnostics, optimize resource allocation, and streamline administrative processes while maintaining compliance.",
-  },
-  {
-    title: "Retail & E-commerce",
-    description:
-      "Transforming customer experiences and operational efficiency through AI. Our retail solutions optimize inventory management, personalize customer experiences, and streamline fulfillment operations for increased sales and reduced costs.",
+      "Knowledge-intensive work demands careful judgement about evidence, confidentiality and accountability. We help teams evaluate AI across research, document workflows and client delivery while keeping professional judgement central.",
   },
 ];
 

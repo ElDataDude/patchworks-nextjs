@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-14T06:00:43.563073Z",
+  "deployments": {
+    "preview": {
+      "id": "patchworks-nextjs-preview",
+      "etag": "43798ea6238628ba789b7c6384d4c40ef165451d862b805fa33f958255d6224b",
+      "modified_on": "2026-09-14T05:57:45.554473Z",
+      "handlers": ["fetch", "scheduled"]
+    },
+    "production": {
+      "id": "patchworks-nextjs",
+      "etag": "fababde670999b0e4fe13627750ed534fe163e4fd05e46894b040456c1ff3faa",
+      "modified_on": "2026-09-14T06:00:43.563073Z",
+      "handlers": ["fetch", "scheduled"]
+    }
+  },
+  "sourceDirectory": "design/logo-assets-lowercase-continuum/icons",
+  "favicon": {
+    "url": "/images/brand/patchworks-favicon-lowercase-continuum.ico",
+    "type": "image/x-icon",
+    "sizes": [16, 32, 64],
+    "normalIconLink": true,
+    "shortcutIconLink": true,
+    "rootFallback": "/favicon.ico",
+    "approvedPngFramesUnchanged": true,
+    "servedBytesMatchSource": true,
+    "sha256": "38317082a93d5322e3b15b7bb517ddceb8072db656d17e5dee9ac03e67a5fac5"
+  },
+  "banner": {
+    "order": ["Allow embedded booking", "Essential only"],
+    "highlightedChoice": "Allow embedded booking",
+    "background": "#d16013",
+    "textColor": "#121723",
+    "minimumTouchTargetHeight": 44,
+    "verifiedWidths": [320, 1440],
+    "noHorizontalOverflow": true,
+    "preferencesDialogUsesSameOrder": true,
+    "optInCookieAfterClick": "v1.booking",
+    "calScriptsBeforeBookingClick": 0
+  },
+  "validation": {
+    "previewSeo": 167,
+    "productionSeo": 167,
+    "routes": 13,
+    "bookingHarness": "passed",
+    "typecheck": "passed",
+    "lint": "passed",
+    "previewBuild": "passed",
+    "productionBuild": "passed"
+  }
+}

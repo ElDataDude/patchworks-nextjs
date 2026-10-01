@@ -14,6 +14,7 @@ let ready = false;
 let failed = false;
 let bookingTimer: ReturnType<typeof setTimeout> | undefined;
 const failureListeners = new Set<CalCallback>();
+const closeListeners = new Set<CalCallback>();
 
 function calWindow() {
   return window as Window & { Cal?: CalApi };
@@ -43,6 +44,22 @@ export function subscribeCalFailure(listener: CalCallback) {
   };
 }
 
+export function subscribeCalClose(listener: CalCallback) {
+  closeListeners.add(listener);
+  return () => {
+    closeListeners.delete(listener);
+  };
+}
+
+function handleCalModalClose(event: Event) {
+  // Cal registers its modal as <cal-modal-box> and dispatches a native `close`
+  // event from that host for its close button, backdrop and Escape paths.
+  const target = event.target as (EventTarget & { localName?: string }) | null;
+  if (target?.localName !== "cal-modal-box") return;
+  clearBookingTimer();
+  closeListeners.forEach((listener) => listener());
+}
+
 export function loadCalEmbed(): Promise<void> {
   if (loading) return loading;
   loading = new Promise<void>((resolve, reject) => {
@@ -64,8 +81,9 @@ export function loadCalEmbed(): Promise<void> {
     cal("init", { origin: "https://cal.com" });
     cal("on", { action: "linkReady", callback: clearBookingTimer });
     cal("on", { action: "linkFailed", callback: failBooking });
-    // Native close events also cover dismissal before the booker is ready.
-    document.addEventListener("close", clearBookingTimer, true);
+    // Cal's modal host emits this native close event for button and Escape
+    // dismissal; capture is needed because the event itself does not bubble.
+    document.addEventListener("close", handleCalModalClose, true);
 
     const existing = document.querySelector<HTMLScriptElement>(
       `script[src="${SCRIPT_URL}"]`,

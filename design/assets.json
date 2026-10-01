@@ -9,7 +9,7 @@
       "height": 1254,
       "bytes": 76200,
       "sha256": "34c074e7e090cf0ee5b10f80bf7829f12d4d16ea9ff026f2e1306ac27dd9f620",
-      "master": "public/images/editorial/masters/about-bridge.png"
+      "master": "design/editorial-masters/about-bridge.png"
     },
     {
       "name": "article-leadership.webp",
@@ -18,7 +18,7 @@
       "height": 900,
       "bytes": 67984,
       "sha256": "d76971dd4e423173b5206898489ff06f3aed3c49a0200d67552f71012d616b68",
-      "master": "public/images/editorial/masters/article-leadership.png"
+      "master": "design/editorial-masters/article-leadership.png"
     },
     {
       "name": "article-manufacturing.webp",
@@ -27,7 +27,7 @@
       "height": 900,
       "bytes": 67080,
       "sha256": "b0f2c87422b3e18e77f57ac69848ef36563ce4eff4dd588588dc39d70cc5f34a",
-      "master": "public/images/editorial/masters/article-manufacturing.png"
+      "master": "design/editorial-masters/article-manufacturing.png"
     },
     {
       "name": "article-roi.webp",
@@ -36,7 +36,7 @@
       "height": 900,
       "bytes": 69272,
       "sha256": "1d0d8834af8fc36723d33ee2435204e84d1cdc129f33ba16ac7c980bcc86af97",
-      "master": "public/images/editorial/masters/article-roi.png"
+      "master": "design/editorial-masters/article-roi.png"
     },
     {
       "name": "careers-system.webp",
@@ -45,7 +45,7 @@
       "height": 1200,
       "bytes": 82530,
       "sha256": "012fabe9ffe3fbc03256c53ef252e3420151393ae6056350df5cb16a773eea19",
-      "master": "public/images/editorial/masters/careers-system.png"
+      "master": "design/editorial-masters/careers-system.png"
     },
     {
       "name": "drilling-study.webp",
@@ -54,7 +54,7 @@
       "height": 1026,
       "bytes": 137108,
       "sha256": "8421cefe8ea6ac8fa7c7b1b37c0f07fec43811a0b3559bdbd14b0ced920f7053",
-      "master": "public/images/editorial/masters/drilling-study.png"
+      "master": "design/editorial-masters/drilling-study.png"
     },
     {
       "name": "home-systems.webp",
@@ -63,7 +63,7 @@
       "height": 793,
       "bytes": 81176,
       "sha256": "de4007f9447090633ccd19d7fa01bba5fc5da1145c5a28fe7aaa2727147a21c4",
-      "master": "public/images/editorial/masters/home-systems.png"
+      "master": "design/editorial-masters/home-systems.png"
     },
     {
       "name": "industries-system.webp",
@@ -72,7 +72,7 @@
       "height": 1200,
       "bytes": 84184,
       "sha256": "451e15c8346459b24abbd61f5e5a430e93d18efe2bbe12b675a1cf44b4f8e58b",
-      "master": "public/images/editorial/masters/industries-system.png"
+      "master": "design/editorial-masters/industries-system.png"
     },
     {
       "name": "services-system.webp",
@@ -81,7 +81,7 @@
       "height": 1200,
       "bytes": 56536,
       "sha256": "b890ac90903ce0b20ece3169e2e2f6ddfe2613cda5cd14ba8a803aca2179eee6",
-      "master": "public/images/editorial/masters/services-system.png"
+      "master": "design/editorial-masters/services-system.png"
     }
   ]
 }

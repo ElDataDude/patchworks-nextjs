@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "files": [
+    {
+      "path": "fonts/source-sans-3-latin.woff2",
+      "sha256": "ac057a5593cbe3df0d2585da5dd5f33b8efa84aa30550c710fe061b37fc5c54b"
+    },
+    {
+      "path": "fonts/instrument-serif-regular-latin.woff2",
+      "sha256": "60c06664b5a95c7de6cc3e00d1f9034d78bd1e40b564016b241674449a067d4d"
+    },
+    {
+      "path": "fonts/instrument-serif-italic-latin.woff2",
+      "sha256": "6ee678c33f388dd7ba59700ebea635deb98821baafd817b09891f7927177f702"
+    },
+    {
+      "path": "logos/patchworks-ai-full-colour-1200.png",
+      "sha256": "14027213796bf3b7452b40aa3a2e3370d142a1dd4744a7ae6e48eebabb02a966"
+    },
+    {
+      "path": "logos/patchworks-ai-dark-background-1200.png",
+      "sha256": "c7c28d381b82fb2bfdae646e2eed58371acc82675c8eafd1eaae5821fa40b644"
+    },
+    {
+      "path": "logos/patchworks-wo-orange-512.png",
+      "sha256": "7e7769ae42e585ee618ef2c548ab203a077bb0ec6ea52f6f3b0c846c7e121211"
+    }
+  ]
+}

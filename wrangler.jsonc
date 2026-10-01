@@ -1,0 +1,100 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "patchworks-nextjs-preview",
+  "account_id": "b04a0ff6ee4ad5e277e56cb06d237e90",
+  "main": "worker.ts",
+  "compatibility_date": "2026-09-13",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "redact_query_string": true
+  },
+  "triggers": {
+    "crons": [
+      "0 3 * * *"
+    ]
+  },
+  "vars": {
+    "ENVIRONMENT": "preview",
+    "NEXT_PUBLIC_SITE_ENV": "preview",
+    "NEXT_PUBLIC_CONTACT_ENABLED": "true",
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAAEy-cyZwpul8PJCH",
+    "NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN": "",
+    "TURNSTILE_EXPECTED_HOSTNAMES": "patchworks-nextjs-preview.bryan-johnson.workers.dev",
+    "CONTACT_ALLOWED_ORIGINS": "https://patchworks-nextjs-preview.bryan-johnson.workers.dev",
+    "CONTACT_FROM_EMAIL": "website@patchworks.ai"
+  },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_destination_addresses": [
+        "info@patchworks.ai"
+      ],
+      "allowed_sender_addresses": [
+        "website@patchworks.ai"
+      ]
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "CONTACT_DB",
+      "database_name": "patchworks-contact-preview",
+      "database_id": "9bbf02b4-4339-42de-81e6-bf501ee78586",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "env": {
+    "production": {
+      "name": "patchworks-nextjs",
+      "vars": {
+        "ENVIRONMENT": "production",
+        "NEXT_PUBLIC_SITE_ENV": "production",
+        "NEXT_PUBLIC_CONTACT_ENABLED": "true",
+        "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAAEy3DZlhWnTsbZ8K",
+        "NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN": "384971dac54f42439bb0873398396c7e",
+        "TURNSTILE_EXPECTED_HOSTNAMES": "patchworks.ai",
+        "CONTACT_ALLOWED_ORIGINS": "https://patchworks.ai",
+        "CONTACT_FROM_EMAIL": "website@patchworks.ai"
+      },
+      "send_email": [
+        {
+          "name": "EMAIL",
+          "allowed_destination_addresses": [
+            "info@patchworks.ai"
+          ],
+          "allowed_sender_addresses": [
+            "website@patchworks.ai"
+          ]
+        }
+      ],
+      "d1_databases": [
+        {
+          "binding": "CONTACT_DB",
+          "database_name": "patchworks-contact-production",
+          "database_id": "86235363-3d71-48e7-963b-3c2f71fb98d4",
+          "migrations_dir": "migrations"
+        }
+      ],
+      "routes": [
+        {
+          "pattern": "patchworks.ai/*",
+          "zone_name": "patchworks.ai"
+        },
+        {
+          "pattern": "www.patchworks.ai/*",
+          "zone_name": "patchworks.ai"
+        }
+      ]
+    }
+  }
+}

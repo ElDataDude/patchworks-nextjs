@@ -1,0 +1,266 @@
+.enquiry-heading h3,
+.enquiry-success h3 {
+  font-size: clamp(32px, 3vw, 42px);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.enquiry-heading p,
+.enquiry-success p {
+  font-size: 15px;
+  line-height: 1.65;
+}
+.contact-intro > .eyebrow {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+.contact-email {
+  margin-top: 28px;
+}
+.contact-email p {
+  font-size: 14px;
+}
+.contact-email a {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.contact-address {
+  margin-top: 22px;
+  color: #626875;
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1.6;
+}
+.contact-email-enquiry {
+  align-self: start;
+  padding-top: 28px;
+  border-top: 1px solid var(--orange);
+}
+.contact-email-enquiry h2,
+.contact-email-enquiry h3 {
+  font-size: clamp(32px, 3vw, 42px);
+  line-height: 1.1;
+  margin-bottom: 22px;
+}
+.contact-email-enquiry > p {
+  max-width: 38rem;
+  font-size: 18px;
+  line-height: 1.65;
+}
+.contact-email-enquiry > .text-link {
+  margin-block: 24px 30px;
+  font-size: clamp(17px, 1.6vw, 22px);
+  overflow-wrap: anywhere;
+}
+.contact-email-enquiry > .enquiry-privacy {
+  font-size: 13px;
+}
+.field-required {
+  color: #626875;
+  font-size: 11px;
+}
+.field-error,
+.form-error-summary,
+.verification-error {
+  color: #9d3211;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.form-error-summary {
+  padding: 20px;
+  border-left: 2px solid #9d3211;
+  background: #fff8f3;
+}
+.form-error-summary ul {
+  margin-top: 12px;
+  list-style: disc;
+  padding-left: 20px;
+}
+.form-error-summary a,
+.contact-notice a,
+.enquiry-form noscript a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.contact-notice {
+  padding: 20px;
+  background: #f1f3f5;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.enquiry-privacy {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #626875;
+}
+.enquiry-submit button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.enquiry-form [aria-invalid="true"] {
+  border-color: #9d3211;
+}
+.enquiry-form {
+  position: relative;
+  align-content: start;
+}
+.contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.contact-verification {
+  width: 100%;
+  min-height: 65px;
+}
+.contact-challenge {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.challenge-status {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  color: #4b5260;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.challenge-status--loading span {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  border: 2px solid var(--line);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: route-loading-spin 800ms linear infinite;
+}
+.challenge-status--error {
+  color: #9d3211;
+}
+.contact-challenge > .text-link {
+  justify-self: start;
+  font-size: 13px;
+}
+.enquiry-success {
+  padding: 32px;
+  border-top: 1px solid var(--orange);
+}
+.enquiry-success button {
+  margin-top: 24px;
+}
+.verification-error {
+  margin-top: 12px;
+}
+.verification-error .text-link {
+  font-size: 13px;
+}
+.enquiry-form select {
+  white-space: normal;
+  padding-right: 12px;
+}
+.header-partner-booking {
+  margin-left: auto;
+}
+.header-booking {
+  font-size: 12px;
+  gap: 10px;
+}
+.header-booking svg {
+  width: 18px;
+  height: 18px;
+}
+.retained-disclosure {
+  border-top: 1px solid var(--line);
+}
+.retained-summary {
+  cursor: pointer;
+  padding-block: 32px;
+  color: var(--ink);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(26px, 3vw, 42px);
+  line-height: 1.2;
+}
+.retained-disclosure[open] {
+  padding-bottom: 32px;
+}
+.retained-body > section {
+  padding-top: 30px;
+}
+.retained-disclosure .editorial-anchor {
+  position: static;
+}
+@media (min-width: 768px) and (max-width: 1050px) {
+  .header-inner {
+    gap: 14px;
+  }
+  .header-nav ul {
+    gap: 16px;
+  }
+  .header-actions {
+    gap: 10px;
+  }
+  .header-booking {
+    max-width: 155px;
+    white-space: normal;
+  }
+}
+@media (max-width: 767px) {
+  .contact-grid,
+  .enquiry-form {
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .contact-grid > *,
+  .enquiry-form > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .enquiry-form :is(input, select, textarea),
+  .contact-challenge,
+  .contact-verification {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .site-header {
+    height: auto;
+    min-height: 110px;
+  }
+  .header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 12px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+  }
+  .header-inner > .wordmark {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .header-actions {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .header-partner-booking {
+    grid-column: 1/-1;
+    grid-row: 2;
+    margin: 0;
+  }
+  .header-start.header-booking {
+    display: inline-flex;
+    min-height: 44px;
+    font-size: 13px;
+    white-space: normal;
+  }
+  .header-nav {
+    top: 100%;
+  }
+  html {
+    scroll-padding-top: 125px;
+  }
+}

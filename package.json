@@ -6,9 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:contact": "node scripts/test-contact.cjs",
+    "test:booking": "node design/evidence/test-booking.cjs",
+    "test:content": "node scripts/verify-enterprise-content.mjs",
+    "cf:build": "node scripts/build-cloudflare.mjs preview",
+    "cf:build:production": "node scripts/build-cloudflare.mjs production",
+    "cf:preview": "wrangler dev",
+    "cf:deploy:preview": "npm run cf:build && wrangler deploy",
+    "cf:deploy:production": "npm run cf:build:production && wrangler deploy --env production",
+    "cf:typegen": "wrangler types --env-interface CloudflareEnv --strict-vars false cloudflare-env.d.ts",
+    "test:seo": "node scripts/verify-seo.mjs",
+    "typecheck": "tsc --noEmit",
+    "test:worker": "node scripts/test-worker.cjs"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^1.20.6",
     "eslint": "8.57.1",
     "eslint-config-next": "15.5.25",
     "lucide-react": "^0.514.0",
@@ -17,13 +30,17 @@
     "react-dom": "19.0.8"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260911.1",
     "@types/node": "^20.8.9",
     "@types/react": "19.0.8",
     "autoprefixer": "^10.4.17",
+    "blake3-wasm": "^2.1.5",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "sharp": "^0.35.4",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "wrangler": "^4.131.1"
   }
 }

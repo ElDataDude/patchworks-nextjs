@@ -6,7 +6,7 @@ All three assets used the approved homepage at `/Users/bryanj/dev/patchworks/pat
 
 - Original generation: `/Users/bryanj/.codex/generated_images/01a09b48-a503-7be2-b819-2b16cd55189d/exec-d41f6ea1-f9b4-48cc-84b5-baeadb7a5fd5.png`
 - Original dimensions: 1533 x 1026
-- Master: `public/images/editorial/masters/services-system.png` (1792 x 1200)
+- Master: `design/editorial-masters/services-system.png` (1792 x 1200)
 - Web asset: `public/images/editorial/services-system.webp` (1792 x 1200)
 
 ```text
@@ -28,7 +28,7 @@ Avoid: domestic buildings, houses, office towers, city skyline, people, faces, h
 
 - Original generation: `/Users/bryanj/.codex/generated_images/01a09b48-a503-7be2-b819-2b16cd55189d/exec-7c52a30b-76f4-4c1a-96c5-ccb635b808b8.png`
 - Original dimensions: 1533 x 1026
-- Master: `public/images/editorial/masters/industries-system.png` (1792 x 1200)
+- Master: `design/editorial-masters/industries-system.png` (1792 x 1200)
 - Web asset: `public/images/editorial/industries-system.webp` (1792 x 1200)
 
 ```text
@@ -50,7 +50,7 @@ Avoid: literal pictograms, industry icons, factories, oil rigs, hospitals, banks
 
 - Original generation: `/Users/bryanj/.codex/generated_images/01a09b48-a503-7be2-b819-2b16cd55189d/exec-f27f7cc9-74da-48d9-8bb6-5e13f75a704f.png`
 - Original dimensions: 1533 x 1026
-- Master: `public/images/editorial/masters/careers-system.png` (1792 x 1200)
+- Master: `design/editorial-masters/careers-system.png` (1792 x 1200)
 - Web asset: `public/images/editorial/careers-system.webp` (1792 x 1200)
 
 ```text

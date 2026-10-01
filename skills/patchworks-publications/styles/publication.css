@@ -1,0 +1,753 @@
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("__SOURCE_SANS__") format("woff2");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("__INSTRUMENT_SERIF__") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("__INSTRUMENT_SERIF_ITALIC__") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: block;
+}
+
+:root {
+  --paper: __COLOR_PAPER__;
+  --white: __COLOR_WHITE__;
+  --ink: __COLOR_INK__;
+  --navy: __COLOR_NAVY__;
+  --orange: __COLOR_ORANGE__;
+  --orange-dark: __COLOR_ORANGE_DARK__;
+  --body: __COLOR_BODY__;
+  --muted: __COLOR_MUTED__;
+  --line: __COLOR_LINE__;
+  --wash: __COLOR_WASH__;
+  --orange-wash: __COLOR_ORANGE_WASH__;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #d9dde3;
+  color: var(--body);
+  font-family: "Source Sans 3", Arial, sans-serif;
+  font-size: 10.25pt;
+  line-height: 1.48;
+  -webkit-font-smoothing: antialiased;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  width: 210mm;
+}
+
+.publication-page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  break-after: page;
+  page-break-after: always;
+  background: var(--paper);
+}
+
+.publication-page:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+
+.publication-page.theme-dark {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.page-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5mm;
+  height: 100%;
+  background: var(--orange);
+}
+
+.page-header {
+  position: absolute;
+  top: 14mm;
+  right: 18mm;
+  left: 18mm;
+  height: 12mm;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12mm;
+  border-bottom: 0.35mm solid var(--line);
+}
+
+.theme-dark .page-header {
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+.page-header__logo {
+  display: block;
+  width: 47mm;
+  height: auto;
+}
+
+.page-header__meta {
+  max-width: 72mm;
+  color: var(--muted);
+  font-size: 7.5pt;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  line-height: 1.25;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.theme-dark .page-header__meta {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.page-footer {
+  position: absolute;
+  right: 18mm;
+  bottom: 10mm;
+  left: 18mm;
+  height: 8mm;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 8mm;
+  border-top: 0.35mm solid var(--line);
+  padding-top: 3mm;
+  color: var(--muted);
+  font-size: 7.25pt;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.theme-dark .page-footer {
+  border-top-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.page-footer__centre {
+  text-align: center;
+}
+
+.page-footer__right {
+  text-align: right;
+}
+
+.page-number {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.page-content {
+  position: absolute;
+  top: 34mm;
+  right: 18mm;
+  bottom: 22mm;
+  left: 18mm;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 4.5mm;
+  color: var(--orange);
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.page-title {
+  max-width: 158mm;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 28pt;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  line-height: 0.98;
+}
+
+.theme-dark .page-title {
+  color: var(--white);
+}
+
+.page-dek {
+  max-width: 145mm;
+  margin: 5mm 0 0;
+  color: var(--muted);
+  font-size: 12pt;
+  line-height: 1.42;
+}
+
+.theme-dark .page-dek {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.title-rule {
+  width: 22mm;
+  height: 1mm;
+  margin: 7mm 0 8mm;
+  background: var(--orange);
+}
+
+.body-stack {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5.2mm;
+}
+
+.block {
+  min-width: 0;
+  break-inside: avoid;
+}
+
+.block-lead {
+  max-width: 150mm;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 17.25pt;
+  line-height: 1.24;
+}
+
+.theme-dark .block-lead {
+  color: var(--white);
+}
+
+.block-paragraph {
+  margin: 0;
+  color: var(--body);
+  font-size: 10.25pt;
+  line-height: 1.52;
+}
+
+.theme-dark .block-paragraph {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.block-heading {
+  margin: 1mm 0 -1mm;
+  color: var(--ink);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 16pt;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.theme-dark .block-heading {
+  color: var(--white);
+}
+
+.block-bullets {
+  display: grid;
+  gap: 3.2mm;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.block-bullets li {
+  position: relative;
+  padding-left: 6mm;
+}
+
+.block-bullets li::before {
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+  width: 2.2mm;
+  height: 2.2mm;
+  background: var(--orange);
+  content: "";
+}
+
+.block-callout {
+  border-left: 1.2mm solid var(--orange);
+  background: var(--orange-wash);
+  padding: 5mm 6mm 5.2mm;
+}
+
+.block-callout.tone-ink {
+  border-left-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.block-callout.tone-neutral {
+  border-left-color: var(--line);
+  background: var(--wash);
+}
+
+.callout-label {
+  margin: 0 0 1.5mm;
+  color: var(--orange-dark);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tone-ink .callout-label {
+  color: var(--orange);
+}
+
+.callout-title {
+  margin: 0;
+  color: inherit;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 15pt;
+  font-weight: 400;
+  line-height: 1.14;
+}
+
+.callout-body {
+  margin: 2mm 0 0;
+  color: inherit;
+  font-size: 9.5pt;
+  line-height: 1.45;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--stats-count, 3), minmax(0, 1fr));
+  border-top: 0.35mm solid var(--line);
+  border-bottom: 0.35mm solid var(--line);
+}
+
+.stat {
+  min-width: 0;
+  padding: 5mm 5mm 5.5mm 0;
+}
+
+.stat + .stat {
+  border-left: 0.35mm solid var(--line);
+  padding-left: 5mm;
+}
+
+.stat-value {
+  color: var(--orange);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 24pt;
+  line-height: 0.95;
+}
+
+.stat-label {
+  margin-top: 2.5mm;
+  color: var(--ink);
+  font-size: 9pt;
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+.stat-note {
+  margin-top: 1.5mm;
+  color: var(--muted);
+  font-size: 7.5pt;
+  line-height: 1.3;
+}
+
+.publication-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 8.5pt;
+  line-height: 1.35;
+}
+
+.publication-table th,
+.publication-table td {
+  overflow-wrap: anywhere;
+  border-bottom: 0.35mm solid var(--line);
+  padding: 3.3mm 3.5mm;
+  text-align: left;
+  vertical-align: top;
+}
+
+.publication-table th {
+  background: var(--ink);
+  color: var(--white);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.publication-table tbody tr:nth-child(even) td {
+  background: var(--wash);
+}
+
+.table-caption,
+.image-caption {
+  margin: 2.3mm 0 0;
+  color: var(--muted);
+  font-size: 7.25pt;
+  line-height: 1.32;
+}
+
+.block-quote {
+  margin: 0;
+  border-top: 0.7mm solid var(--orange);
+  padding: 5mm 0 0;
+}
+
+.quote-text {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 20pt;
+  font-style: italic;
+  line-height: 1.18;
+}
+
+.quote-attribution {
+  margin: 3.5mm 0 0;
+  color: var(--muted);
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.steps {
+  display: grid;
+  gap: 0;
+  counter-reset: publication-step;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 11mm minmax(0, 1fr);
+  gap: 4mm;
+  border-top: 0.35mm solid var(--line);
+  padding: 4mm 0;
+  counter-increment: publication-step;
+}
+
+.step::before {
+  color: var(--orange);
+  content: counter(publication-step, decimal-leading-zero);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 15pt;
+  line-height: 1.1;
+}
+
+.step-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: 9.5pt;
+  font-weight: 700;
+}
+
+.step-body {
+  margin: 1mm 0 0;
+  color: var(--muted);
+  font-size: 8.5pt;
+  line-height: 1.38;
+}
+
+.references {
+  display: grid;
+  gap: 2.5mm;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reference {
+  display: grid;
+  grid-template-columns: 7mm minmax(0, 1fr);
+  gap: 2.5mm;
+  color: var(--muted);
+  font-size: 7.5pt;
+  line-height: 1.35;
+}
+
+.reference-id {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.reference a {
+  color: inherit;
+  text-decoration-color: var(--orange);
+  text-underline-offset: 1.2pt;
+}
+
+.block-image img {
+  display: block;
+  width: 100%;
+  max-height: 112mm;
+  object-fit: var(--image-fit, cover);
+  object-position: center;
+}
+
+.block-rule {
+  height: 0.35mm;
+  background: var(--line);
+}
+
+.block-spacer.size-small {
+  height: 2mm;
+}
+
+.block-spacer.size-medium {
+  height: 5mm;
+}
+
+.block-spacer.size-large {
+  height: 9mm;
+}
+
+.columns-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12mm;
+}
+
+.columns-grid > .body-stack + .body-stack {
+  border-left: 0.35mm solid var(--line);
+  padding-left: 12mm;
+}
+
+.cover-page {
+  padding: 18mm;
+}
+
+.cover-logo {
+  display: block;
+  width: 63mm;
+  height: auto;
+}
+
+.cover-brand-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12mm;
+}
+
+.cover-client-logo {
+  display: block;
+  width: 82mm;
+  max-height: 12mm;
+  object-fit: contain;
+  object-position: right top;
+}
+
+.cover-content {
+  position: absolute;
+  top: 67mm;
+  right: 18mm;
+  left: 18mm;
+}
+
+.cover-eyebrow {
+  margin: 0 0 7mm;
+  color: var(--orange);
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.cover-title {
+  max-width: 166mm;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 39pt;
+  font-weight: 400;
+  letter-spacing: -0.026em;
+  line-height: 0.94;
+}
+
+.theme-dark .cover-title {
+  color: var(--white);
+}
+
+.cover-subtitle {
+  max-width: 140mm;
+  margin: 8mm 0 0;
+  color: var(--muted);
+  font-size: 14pt;
+  line-height: 1.35;
+}
+
+.theme-dark .cover-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cover-footer {
+  position: absolute;
+  right: 18mm;
+  bottom: 17mm;
+  left: 18mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10mm;
+  border-top: 0.35mm solid var(--line);
+  padding-top: 5mm;
+  color: var(--muted);
+  font-size: 8pt;
+  line-height: 1.4;
+}
+
+.theme-dark .cover-footer {
+  border-top-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.cover-footer__right {
+  text-align: right;
+}
+
+.section-page .page-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 15mm;
+}
+
+.section-number {
+  margin: 0 0 7mm;
+  color: var(--orange);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 54pt;
+  line-height: 0.8;
+}
+
+.section-title {
+  max-width: 155mm;
+  margin: 0;
+  color: var(--ink);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 38pt;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.96;
+}
+
+.theme-dark .section-title {
+  color: var(--white);
+}
+
+.section-summary {
+  max-width: 132mm;
+  margin: 8mm 0 0;
+  color: var(--muted);
+  font-size: 13pt;
+  line-height: 1.42;
+}
+
+.theme-dark .section-summary {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.closing-page {
+  padding: 18mm;
+}
+
+.closing-logo {
+  display: block;
+  width: 58mm;
+  height: auto;
+}
+
+.closing-content {
+  position: absolute;
+  right: 18mm;
+  bottom: 55mm;
+  left: 18mm;
+}
+
+.closing-title {
+  max-width: 158mm;
+  margin: 0;
+  color: var(--white);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 36pt;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.96;
+}
+
+.closing-body {
+  max-width: 135mm;
+  margin: 7mm 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12pt;
+  line-height: 1.45;
+}
+
+.closing-cta {
+  display: inline-block;
+  margin-top: 8mm;
+  border-bottom: 0.6mm solid var(--orange);
+  padding-bottom: 1.5mm;
+  color: var(--white);
+  font-size: 10pt;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.closing-contact {
+  position: absolute;
+  right: 18mm;
+  bottom: 18mm;
+  left: 18mm;
+  display: flex;
+  justify-content: space-between;
+  gap: 12mm;
+  border-top: 0.35mm solid rgba(255, 255, 255, 0.18);
+  padding-top: 5mm;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 8pt;
+}
+
+@media screen {
+  .publication-page {
+    margin: 0 auto 8mm;
+    box-shadow: 0 3mm 11mm rgba(9, 14, 52, 0.18);
+  }
+}
+
+@media print {
+  html,
+  body {
+    background: transparent;
+  }
+
+  .publication-page {
+    margin: 0;
+    box-shadow: none;
+  }
+}

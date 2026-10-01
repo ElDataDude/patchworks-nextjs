@@ -65,7 +65,7 @@ const useCases = [
 
 export default function UseCases() {
   return (
-    <section id="use-cases" className="section-space use-cases">
+    <section className="section-space use-cases">
       <div className="site-container">
         <div className="editorial-layout">
           <div className="editorial-anchor">
