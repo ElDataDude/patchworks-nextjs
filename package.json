@@ -18,7 +18,8 @@
     "cf:typegen": "wrangler types --env-interface CloudflareEnv --strict-vars false cloudflare-env.d.ts",
     "test:seo": "node scripts/verify-seo.mjs",
     "typecheck": "tsc --noEmit",
-    "test:worker": "node scripts/test-worker.cjs"
+    "test:worker": "node scripts/test-worker.cjs",
+    "test:catalogue": "node --test scripts/test-catalogue.cjs"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.6",
