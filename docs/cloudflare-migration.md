@@ -25,7 +25,7 @@ The existing working tree was preserved before implementation in `/private/tmp/p
 
 ## Build and release commands
 
-Use Node with `npm ci`, then `npm run cf:typegen`, `npm run typecheck`, `npm run lint`, `npm run test:contact`, `npm run test:booking`, and `npm run test:worker`.
+Use Node with `npm ci`, then `npm run cf:typegen`, `npm run typecheck`, `npm run lint`, `npm run test:catalogue`, `npm run test:contact`, `npm run test:session`, `npm run test:booking`, and `npm run test:worker`. After a build, run `npm run test:content -- <url>` and `npm run test:seo -- <url>` against the local preview or a deployed host.
 
 - `npm run cf:build`: production Next/OpenNext compilation with isolated preview public settings.
 - `npm run cf:preview -- --port 3037`: local Workers runtime.
@@ -34,6 +34,30 @@ Use Node with `npm ci`, then `npm run cf:typegen`, `npm run typecheck`, `npm run
 - `npm run cf:typegen`: regenerate ignored binding types.
 
 The build wrapper explicitly sets both `NODE_ENV` and `NEXTJS_ENV` to `production`, including for previews. Next development runtime modules must never enter the deployed Worker.
+
+### Prerendered pages: static-assets incremental cache
+
+`open-next.config.ts` uses OpenNext's read-only `staticAssetsIncrementalCache`. The site is fully prerendered and has no ISR or `revalidate`. Prerendered pages are therefore served from Workers static assets under `cdn-cgi/_next_cache/<BUILD_ID>/`.
+
+The catalogue routes `/industries/[slug]` and `/use-cases/[slug]` set `dynamicParams = false` and depend on this cache:
+
+- **With the cache:** unknown slugs return a real, noindex HTTP 404.
+- **Without it:** OpenNext answers 404 (`NoFallbackError`) for every prerendered slug.
+- **If the flag is dropped instead:** unknown slugs return a soft 404 that is cacheable for a year.
+
+`opennextjs-cloudflare deploy` would normally copy the prerender cache into the assets directory, but the release commands here use `wrangler deploy` directly. `scripts/build-cloudflare.mjs` (used by `cf:build` and `cf:build:production`) therefore copies `.open-next/cache/` to `.open-next/assets/cdn-cgi/_next_cache/` after every build, and fails if that cache is missing. Never deploy an `.open-next` directory that was not produced by those scripts. Page `Cache-Control` headers are unchanged: prerendered pages already sent `s-maxage=31536000`.
+
+### Patchworks ID variables
+
+`wrangler.jsonc` sets three non-secret variables for the header's "Sign in" link and the "Open app" island (`/api/session-apps`). Run `npm run cf:typegen` after pulling so `CloudflareEnv` includes them.
+
+| Variable                  | Preview                             | Production                  | Purpose                                                                                                             |
+| ------------------------- | ----------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_ID_URL`      | `https://id-staging.patchworks.ai`  | `https://id.patchworks.ai`  | Sign-in link and the `/signin` and `/signup` 307 redirects. It is read at build time, so rebuild after changing it. |
+| `ID_API_ORIGIN`           | `https://id-staging.patchworks.ai`  | `https://id.patchworks.ai`  | Origin for `GET /api/v1/me/apps`.                                                                                   |
+| `ID_SESSION_COOKIE_NAMES` | `__Secure-pw-staging.session_token` | `__Secure-pw.session_token` | The only cookies forwarded to identity. Preview deliberately accepts only the staging cookie.                       |
+
+`/api/session-apps` always answers HTTP 200 with `Cache-Control: private, no-store` and `Vary: Cookie`. With no Patchworks ID cookie it answers `signed-out` without calling identity. When identity fails or takes longer than 1.5 s it answers `unavailable`. No `ID` service binding is declared yet. When the identity Worker exists, add a `services` binding named `ID`; the route already prefers it over public fetch.
 
 This release uses the Cloudflare plugin for account configuration and Worker uploads. No Cloudflare dashboard browser access or persistent local Cloudflare account credential is used. For this mode, generate the bundle with `wrangler deploy --dry-run --outdir .wrangler/plugin-upload`, then run `node scripts/prepare-plugin-upload.cjs`. Create an asset upload session with the plugin using `.wrangler/plugin-payload/manifest.json`; write its response privately to the ignored `asset-session.json`, and complete its upload-only, expiring token using `node scripts/upload-plugin-assets.cjs`. Upload the generated modules plus Wrangler-equivalent metadata through the plugin's multipart Worker API. Keep existing secret bindings. Never put session/completion tokens or `.dev.vars` into source control.
 
@@ -68,6 +92,8 @@ Workers routes `patchworks.ai/*` (`f6fe05c2b67d4778aa8887f43e497b68`) and `www.p
 The exact pre-cutover DNS/ruleset snapshot is in `design/evidence/cloudflare/pre-cutover-dns-and-rulesets.json`. Apex origin is `216.198.79.193`; `www` is `cname.vercel-dns.com`. A rollback to the older Vercel release must remove or disable Configuration Rule `e24ac05640b249dd8cd0741d6656e4f2` and restore Web Analytics `auto_install: true`, because that release does not include the manual beacon.
 
 ## Verification evidence
+
+The checks below record the September 2026 release. Since then the route list has grown: the verifiers derive the catalogue routes (Industries & Use Cases) from `src/data/*.ts`. They also check the disclosure menu, Request a demo links, 307 redirects for `/signin` and `/signup`, BreadcrumbList data, real 404s for unknown catalogue slugs, and `no-store` on `/api/session-apps`.
 
 The final isolated Cloudflare preview and live production site each passed 166 SEO/asset checks and 149 content checks across all 13 page routes. The current files `preview-seo.json`, `preview-content.json`, `production-seo.json` and `production-content.json` include individual assertions. A random missing route returned genuine HTTP 404. Contact/backend/client tests passed 47 cases including concurrency, ambiguous provider outcomes, replay, exact origins, unavailable runtime bindings, HTML/non-JSON recovery and responsive Turnstile sizing. Booking/privacy tests cover consent and loading/failure/focus behavior.
 
