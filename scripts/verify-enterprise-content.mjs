@@ -1,7 +1,17 @@
 import fs from "node:fs/promises";
+import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import ts from "typescript";
+import { findForbiddenCopy } from "./lib/forbidden-copy.mjs";
+
+const { loadSource } = createRequire(import.meta.url)("./lib/load-ts.cjs");
+const { industries } = loadSource("src/data/industries.ts");
+const { useCases, casesForIndustry } = loadSource("src/data/use-cases.ts");
+const { openableAppSlugs } = loadSource("src/data/apps.ts");
+const { catalogueRoutes, primaryNavigation } = loadSource(
+  "src/data/navigation.ts",
+);
 
 // Usage: node scripts/verify-enterprise-content.mjs [baseUrl] [newReportPath]
 // GET-only checks of server-rendered HTML. This does not submit forms, load
@@ -20,9 +30,8 @@ const routes = [
   "/blog",
   "/blog-details",
   "/blog-sidebar",
-  "/signin",
-  "/signup",
   "/error",
+  ...catalogueRoutes(),
 ];
 const coreRoutes = new Set([
   "/",
@@ -30,7 +39,16 @@ const coreRoutes = new Set([
   "/industries",
   "/about",
   "/contact",
+  ...catalogueRoutes(),
 ]);
+const topLevelHrefs = ["/services", "/industries", "/about", "/contact"];
+const industriesPanel = primaryNavigation.find((item) => item.panel).panel;
+const catalogueLinks = [
+  ...industries.map((industry) => `/industries/${industry.slug}`),
+  ...useCases.map((useCase) => `/use-cases/${useCase.slug}`),
+];
+const signInPattern =
+  /^https:\/\/id(?:-staging)?\.patchworks\.ai\/sign-in\?return=https?%3A%2F%2F/u;
 const bookingLabel = "Book a partner conversation";
 const bookingUrl = "https://cal.com/bryanj/30min";
 const pillarTitles = [
@@ -38,31 +56,7 @@ const pillarTitles = [
   "Enterprise AI Review & Delivery",
 ];
 const pillarLinks = ["/services#ai-counsel", "/services#review-delivery"];
-const sectors = [
-  "Financial Services & Retail Banking",
-  "Insurance",
-  "Consumer Goods",
-  "Supply Chain & Logistics",
-  "Audit & Professional Services",
-];
-const forbidden = [
-  ["public price", /[£€$]\s*\d/iu],
-  [
-    "pricing or availability offer",
-    /\b(?:pricing|VAT|availability|slots booked)\b/iu,
-  ],
-  ["free offer", /\bfree\b/iu],
-  ["fractional leadership", /\bfractional\b/iu],
-  ["full-time cost comparison", /full[- ]time cost|30% (?:the )?cost/iu],
-  [
-    "old service package",
-    /getting started (?:with AI )?workshop|full AI roadmap package|3.month trial/iu,
-  ],
-  [
-    "fixed ROI deadline",
-    /within (?:the first )?(?:\d+ )?(?:weeks|days)|weeks,? not months|weeks,? not years|ROI.{0,45}(?:\d+ days|\d+ months)/iu,
-  ],
-];
+const sectors = industries.map((industry) => industry.title);
 const checks = [];
 const pages = new Map();
 function check(route, name, passed, detail) {
@@ -138,9 +132,7 @@ function openings(html, tag) {
   );
 }
 function rejectOldOffer(route, label, content) {
-  const found = forbidden
-    .filter(([, pattern]) => pattern.test(content))
-    .map(([name]) => name);
+  const found = findForbiddenCopy(content);
   check(
     route,
     `${label} omits old commercial positioning`,
@@ -150,41 +142,6 @@ function rejectOldOffer(route, label, content) {
 }
 
 async function retainedSource() {
-  const casesFile = "src/components/UseCases/index.tsx";
-  const casesSource = ts.createSourceFile(
-    casesFile,
-    await fs.readFile(path.join(root, casesFile), "utf8"),
-    ts.ScriptTarget.Latest,
-    true,
-    ts.ScriptKind.TSX,
-  );
-  const cases = [];
-  function visitCases(node) {
-    if (
-      ts.isVariableDeclaration(node) &&
-      node.name.getText(casesSource) === "useCases" &&
-      node.initializer &&
-      ts.isArrayLiteralExpression(node.initializer)
-    ) {
-      for (const item of node.initializer.elements) {
-        if (!ts.isObjectLiteralExpression(item)) continue;
-        const fields = {};
-        for (const property of item.properties) {
-          if (
-            ts.isPropertyAssignment(property) &&
-            ts.isStringLiteral(property.initializer)
-          ) {
-            fields[property.name.getText(casesSource)] = normalized(
-              property.initializer.text,
-            );
-          }
-        }
-        cases.push(fields);
-      }
-    }
-    ts.forEachChild(node, visitCases);
-  }
-  visitCases(casesSource);
   const drillingFile = "src/components/About/AboutSectionTwo.tsx";
   const drillingSource = ts.createSourceFile(
     drillingFile,
@@ -216,7 +173,7 @@ async function retainedSource() {
     ts.forEachChild(node, visitDrilling);
   }
   visitDrilling(drillingSource);
-  return { cases, drilling };
+  return { drilling };
 }
 
 await Promise.all(
@@ -259,8 +216,48 @@ for (const route of routes) {
     check(
       route,
       "primary navigation contains the four enterprise routes",
-      JSON.stringify(navLinks.map((item) => item.attrs.href)) ===
-        JSON.stringify(["/services", "/industries", "/about", "/contact"]),
+      JSON.stringify(
+        navLinks
+          .filter((item) => item.attrs["data-nav-level"] === "1")
+          .map((item) => item.attrs.href),
+      ) === JSON.stringify(topLevelHrefs),
+    );
+    const disclosure = nav
+      ? openings(nav.html, "button").find(
+          (item) => item["aria-controls"] === industriesPanel.id,
+        )
+      : undefined;
+    check(
+      route,
+      "Industries disclosure button is collapsed and named",
+      disclosure?.["aria-expanded"] === "false" &&
+        Boolean(disclosure["aria-label"]),
+    );
+    const panelOpening = nav
+      ? openings(nav.html, "div").find((item) => item.id === industriesPanel.id)
+      : undefined;
+    const panelLinks = navLinks
+      .filter((item) => item.attrs["data-nav-level"] === "2")
+      .map((item) => item.attrs.href);
+    check(
+      route,
+      "Industries panel is server-rendered, inert when closed and matches the catalogue",
+      panelOpening &&
+        "inert" in panelOpening &&
+        catalogueLinks.every((href) => panelLinks.includes(href)) &&
+        ["/industries", "/use-cases"].every((href) =>
+          panelLinks.includes(href),
+        ),
+    );
+    check(
+      route,
+      "header offers Patchworks ID sign-in",
+      elements(header.html, "a").some(
+        (item) =>
+          item.attrs["data-account"] === "sign-in" &&
+          item.text === "Sign in" &&
+          signInPattern.test(item.attrs.href ?? ""),
+      ),
     );
     check(
       route,
@@ -279,7 +276,7 @@ for (const route of routes) {
       [
         ...pillarLinks,
         "/industries#case-study",
-        "/industries#use-cases",
+        "/use-cases",
         "/blog",
         "/careers",
       ].every((href) => links.includes(href)),
@@ -324,8 +321,8 @@ for (const route of routes) {
   const details = elements(renderedMainHtml, "details");
   let revisedHtml = renderedMainHtml;
   if (route === "/industries") {
-    for (const detail of details.filter((item) =>
-      ["case-study", "use-cases"].includes(item.attrs.id),
+    for (const detail of details.filter(
+      (item) => item.attrs.id === "case-study",
     ))
       revisedHtml = revisedHtml.replace(detail.full, "");
   }
@@ -368,10 +365,13 @@ for (const route of routes) {
     check(
       route,
       "enquiries use a POST form or the direct-email release fallback",
-      (enquiry.length === 1 && enquiry[0].attrs.method?.toLowerCase() === "post") ||
+      (enquiry.length === 1 &&
+        enquiry[0].attrs.method?.toLowerCase() === "post") ||
         (enquiry.length === 0 &&
           revisedHtml.includes('data-enquiry="email"') &&
-          elements(revisedHtml, "a").some((link) => link.attrs.href === "mailto:info@patchworks.ai")),
+          elements(revisedHtml, "a").some(
+            (link) => link.attrs.href === "mailto:info@patchworks.ai",
+          )),
     );
     check(
       route,
@@ -389,51 +389,184 @@ if (industriesHtml) {
   const allIds = [...industriesHtml.matchAll(/\bid="([^"]*)"/gu)].map((match) =>
     decode(match[1]),
   );
-  for (const id of ["case-study", "use-cases"]) {
-    const match = details.filter((item) => item.attrs.id === id);
-    check(
-      "/industries",
-      `${id} is one native disclosure with a unique anchor`,
-      match.length === 1 && allIds.filter((value) => value === id).length === 1,
-    );
-    check(
-      "/industries",
-      `${id} starts collapsed with a readable summary`,
-      match.length === 1 &&
-        !("open" in match[0].attrs) &&
-        elements(match[0].html, "summary")[0]?.text.length > 0,
-    );
-  }
+  const caseStudy = details.filter((item) => item.attrs.id === "case-study");
+  check(
+    "/industries",
+    "case-study is one native disclosure with a unique anchor",
+    caseStudy.length === 1 &&
+      allIds.filter((value) => value === "case-study").length === 1,
+  );
+  check(
+    "/industries",
+    "case-study starts collapsed with a readable summary",
+    caseStudy.length === 1 &&
+      !("open" in caseStudy[0].attrs) &&
+      elements(caseStudy[0].html, "summary")[0]?.text.length > 0,
+  );
+  const useCaseSection = elements(industriesHtml, "section").filter(
+    (item) => item.attrs.id === "use-cases",
+  );
+  const useCaseHrefs = useCaseSection.flatMap((item) =>
+    elements(item.html, "a").map((link) => link.attrs.href),
+  );
+  check(
+    "/industries",
+    "use-cases anchor is unique and links to every catalogue use case",
+    useCaseSection.length === 1 &&
+      allIds.filter((value) => value === "use-cases").length === 1 &&
+      useCases.every((useCase) =>
+        useCaseHrefs.includes(`/use-cases/${useCase.slug}`),
+      ),
+  );
   const headings = elements(industriesHtml, "h2").map((item) => item.text);
   const sectorPositions = sectors.map((sector) => headings.indexOf(sector));
   check(
     "/industries",
-    "five approved sectors appear in order",
+    "catalogue industries appear in order",
     sectorPositions.every(
       (position, index) =>
         position >= 0 && (index === 0 || position > sectorPositions[index - 1]),
     ),
   );
+  check(
+    "/industries",
+    "every industry heading links to its page",
+    industries.every((industry) =>
+      elements(industriesHtml, "h2").some(
+        (item) =>
+          item.text === industry.title &&
+          elements(item.html, "a")[0]?.attrs.href ===
+            `/industries/${industry.slug}`,
+      ),
+    ),
+  );
   const retained = await retainedSource();
-  const caseText =
-    details.find((item) => item.attrs.id === "case-study")?.text ?? "";
-  const useCaseText =
-    details.find((item) => item.attrs.id === "use-cases")?.text ?? "";
+  const caseText = caseStudy[0]?.text ?? "";
   check(
     "/industries",
     "complete drilling narrative remains server-rendered",
     retained.drilling.length >= 6 &&
       retained.drilling.every((block) => caseText.includes(block)),
   );
+}
+
+function expectedEnquiry(intent, fields) {
+  const params = new URLSearchParams({ intent });
+  for (const [key, value] of Object.entries(fields))
+    if (value) params.set(key, value);
+  return `/contact?${params.toString()}#enquiry`;
+}
+function ctaMatches(href, expected, topic) {
+  return (
+    href === expected ||
+    (href?.startsWith("mailto:info@patchworks.ai?subject=") &&
+      decodeURIComponent(href).includes(topic))
+  );
+}
+
+const openable = new Set(openableAppSlugs());
+for (const useCase of useCases) {
+  const route = `/use-cases/${useCase.slug}`;
+  const html = pages.get(route);
+  if (!html) continue;
+  const headings = elements(html, "h2").map((item) => item.text);
   check(
-    "/industries",
-    "six complete use-case bodies remain server-rendered",
-    retained.cases.length === 6 &&
-      retained.cases.every((item) =>
-        ["title", "problem", "solution", "tool", "result"].every(
-          (key) => item[key] && useCaseText.includes(item[key]),
+    route,
+    "use-case sections are present",
+    [
+      "The job",
+      "How it works",
+      "What it shows",
+      "Where it stops",
+      "Industries",
+    ].every((heading) => headings.includes(heading)),
+  );
+  const showcase = elements(html, "figure").find(
+    (item) => item.attrs["data-showcase"] === useCase.showcase.kind,
+  );
+  check(
+    route,
+    "showcase panel is illustrative HTML, not a screenshot",
+    showcase &&
+      showcase.text.includes("Illustrative") &&
+      openings(showcase.html, "img").length === 0,
+  );
+  const scope =
+    useCase.industries !== "all" && useCase.industries.length === 1
+      ? useCase.industries[0]
+      : undefined;
+  const anchors = elements(html, "a");
+  check(
+    route,
+    "Request a demo carries the use case and industry",
+    anchors.some(
+      (item) =>
+        item.attrs["data-cta"] === "request-demo" &&
+        item.text === "Request a demo" &&
+        ctaMatches(
+          item.attrs.href,
+          expectedEnquiry("demo", { useCase: useCase.slug, industry: scope }),
+          useCase.title,
         ),
+    ),
+  );
+  for (const link of useCase.apps) {
+    const expected = expectedEnquiry(link.ctaKind, {
+      useCase: useCase.slug,
+      industry: scope,
+      app: link.app,
+    });
+    check(
+      route,
+      `${link.app} link asks for ${link.ctaKind === "access" ? "access" : "a demo"}`,
+      anchors.some(
+        (item) =>
+          item.attrs["data-cta"] ===
+            (link.ctaKind === "access" ? "request-access" : "request-demo") &&
+          ctaMatches(item.attrs.href, expected, useCase.title),
       ),
+    );
+  }
+  const slots = openings(html, "span").filter(
+    (item) => "data-open-app" in item,
+  );
+  const expectedSlots = useCase.apps.filter(
+    (link) => openable.has(link.app) && link.launchPath,
+  );
+  check(
+    route,
+    "Open app slots render hidden, only for Patchworks ID apps",
+    slots.length === expectedSlots.length &&
+      slots.every(
+        (item) => "hidden" in item && openable.has(item["data-open-app"]),
+      ) &&
+      !anchors.some((item) => /^Open /u.test(item.text)),
+  );
+}
+for (const industry of industries) {
+  const route = `/industries/${industry.slug}`;
+  const html = pages.get(route);
+  if (!html) continue;
+  const hrefs = elements(html, "a").map((item) => item.attrs.href);
+  check(
+    route,
+    "industry page links to each of its use cases",
+    casesForIndustry(industry.slug).every((useCase) =>
+      hrefs.includes(`/use-cases/${useCase.slug}`),
+    ),
+  );
+  check(
+    route,
+    "Request a demo carries the industry",
+    elements(html, "a").some(
+      (item) =>
+        item.attrs["data-cta"] === "request-demo" &&
+        ctaMatches(
+          item.attrs.href,
+          expectedEnquiry("demo", { industry: industry.slug }),
+          industry.title,
+        ),
+    ),
   );
 }
 

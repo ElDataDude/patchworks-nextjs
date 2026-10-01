@@ -1,7 +1,12 @@
 import fs from "node:fs/promises";
+import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+
+const { loadSource } = createRequire(import.meta.url)("./lib/load-ts.cjs");
+const { industries } = loadSource("src/data/industries.ts");
+const { useCases } = loadSource("src/data/use-cases.ts");
 
 // Usage: node scripts/verify-seo.mjs [baseUrl]
 // GET-only verification of rendered SEO metadata and static asset contracts.
@@ -24,7 +29,12 @@ const pages = {
     follow: true,
   },
   "/industries": {
-    title: "Industries | Patchworks AI",
+    title: "Industries & Use Cases | Patchworks AI",
+    index: true,
+    follow: true,
+  },
+  "/use-cases": {
+    title: "AI Use Cases | Patchworks AI",
     index: true,
     follow: true,
   },
@@ -63,22 +73,33 @@ const pages = {
     index: false,
     follow: false,
   },
-  "/signin": {
-    title: "Sign In | Patchworks AI",
-    index: false,
-    follow: false,
-  },
-  "/signup": {
-    title: "Create an Account | Patchworks AI",
-    index: false,
-    follow: false,
-  },
   "/error": {
     title: "Error | Patchworks AI",
     index: false,
     follow: false,
   },
 };
+// Catalogue pages are generated from the same data the site renders.
+const breadcrumbs = new Map();
+for (const industry of industries) {
+  const route = `/industries/${industry.slug}`;
+  pages[route] = {
+    title: `${industry.title} | Industries | Patchworks AI`,
+    index: true,
+    follow: true,
+  };
+  breadcrumbs.set(route, ["Home", "Industries", industry.title]);
+}
+for (const useCase of useCases) {
+  const route = `/use-cases/${useCase.slug}`;
+  pages[route] = {
+    title: `${useCase.title} | Use Cases | Patchworks AI`,
+    index: true,
+    follow: true,
+  };
+  breadcrumbs.set(route, ["Home", "Use cases", useCase.title]);
+}
+breadcrumbs.set("/use-cases", ["Home", "Use cases"]);
 const routesWithResponsiveEditorialImages = new Set([
   "/",
   "/services",
@@ -244,6 +265,32 @@ for (const [route, expected] of Object.entries(pages)) {
     );
   }
 
+  if (breadcrumbs.has(route)) {
+    const lists = [
+      ...html.matchAll(
+        /<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gu,
+      ),
+    ]
+      .map((match) => {
+        try {
+          return JSON.parse(match[1]);
+        } catch {
+          return null;
+        }
+      })
+      .filter((item) => item?.["@type"] === "BreadcrumbList");
+    const items = lists[0]?.itemListElement ?? [];
+    check(
+      scope,
+      "has one BreadcrumbList ending at the canonical URL",
+      lists.length === 1 &&
+        JSON.stringify(items.map((item) => item.name)) ===
+          JSON.stringify(breadcrumbs.get(route)) &&
+        items.every((item, index) => item.position === index + 1) &&
+        sameUrl(items.at(-1)?.item ?? "", canonical),
+    );
+  }
+
   for (const image of openings(html, "img")) {
     check(
       scope,
@@ -278,9 +325,44 @@ const expectedSitemapLocations = Object.entries(pages)
 check("/sitemap.xml", "returns XML", sitemapResponse.status === 200);
 check(
   "/sitemap.xml",
-  "contains exactly the six indexable pages",
-  JSON.stringify(sitemapLocations) === JSON.stringify(expectedSitemapLocations),
+  "contains exactly the indexable pages, including the catalogue",
+  sitemapLocations.length === expectedSitemapLocations.length &&
+    JSON.stringify([...sitemapLocations].sort()) ===
+      JSON.stringify([...expectedSitemapLocations].sort()),
   sitemapLocations.join(", "),
+);
+
+for (const legacy of ["/signin", "/signup"]) {
+  const response = await fetch(new URL(legacy, baseUrl), {
+    redirect: "manual",
+  });
+  check(
+    legacy,
+    "redirects temporarily (307) to Patchworks ID sign-in",
+    response.status === 307 &&
+      /^https:\/\/id(?:-staging)?\.patchworks\.ai\/sign-in$/u.test(
+        response.headers.get("location") ?? "",
+      ),
+    `${response.status} ${response.headers.get("location") ?? ""}`,
+  );
+}
+
+const sessionResponse = await fetch(new URL("/api/session-apps", baseUrl), {
+  redirect: "manual",
+});
+const sessionCache = sessionResponse.headers.get("cache-control") ?? "";
+const sessionBody = await sessionResponse.json().catch(() => null);
+check(
+  "/api/session-apps",
+  "answers signed-out privately with no-store and Vary: Cookie",
+  sessionResponse.status === 200 &&
+    /\bno-store\b/u.test(sessionCache) &&
+    /\bprivate\b/u.test(sessionCache) &&
+    /\bcookie\b/iu.test(sessionResponse.headers.get("vary") ?? "") &&
+    sessionBody?.status === "signed-out" &&
+    Array.isArray(sessionBody.apps) &&
+    sessionBody.apps.length === 0,
+  `${sessionResponse.status} ${sessionCache}`,
 );
 
 const missingResponse = await fetch(
@@ -300,6 +382,24 @@ check(
   "is noindex",
   (meta(missingHtml, "name", "robots") ?? "").includes("noindex"),
 );
+
+for (const unknown of [
+  "/industries/__patchworks_unknown__",
+  "/use-cases/__patchworks_unknown__",
+]) {
+  const response = await fetch(new URL(unknown, baseUrl), {
+    redirect: "manual",
+  });
+  const html = await response.text();
+  check(
+    unknown,
+    "unknown catalogue slug is a real, noindex 404",
+    response.status === 404 &&
+      (meta(html, "name", "robots") ?? "").includes("noindex") &&
+      !/s-maxage=\d{6,}/u.test(response.headers.get("cache-control") ?? ""),
+    `${response.status} ${response.headers.get("cache-control") ?? ""}`,
+  );
+}
 
 const socialImagePath = path.join(
   root,
