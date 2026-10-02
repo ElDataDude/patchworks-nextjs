@@ -13,6 +13,22 @@
   align-items: center;
   gap: 2px;
 }
+/* Invisible hover bridge from the trigger down to the panel, which starts at
+   the header's bottom edge. It belongs to the nav item, so the pointer never
+   "leaves" while crossing the gap. Pointer devices with hover only. */
+@media (hover: hover) and (min-width: 768px) {
+  .nav-item-row {
+    position: relative;
+  }
+  .nav-item-panel[data-open="true"] .nav-item-row::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: -24px;
+    right: -24px;
+    height: 48px;
+  }
+}
 .nav-disclosure {
   display: inline-flex;
   align-items: center;

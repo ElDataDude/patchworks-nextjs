@@ -1,7 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState, type FocusEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FocusEvent,
+  type PointerEvent,
+} from "react";
 import { ChevronDown, Menu as MenuIcon, X } from "lucide-react";
 import BookingWidget from "../Common/BookingWidget";
 import BrandLogo from "../Common/BrandLogo";
@@ -11,6 +17,8 @@ import { SITE_URL } from "@/data/seo";
 import { signInUrl, YOUR_APPS_URL } from "@/lib/identity";
 
 const HOVER_QUERY = "(hover: hover) and (min-width: 768px)";
+/** Grace period before a hover-opened panel closes, cancelled on re-entry. */
+const HOVER_CLOSE_DELAY_MS = 200;
 
 function groupId(panelId: string, title: string) {
   return `${panelId}-${title.toLowerCase().replace(/\s+/g, "-")}`;
@@ -148,7 +156,9 @@ export default function Header() {
 /**
  * WAI-ARIA disclosure navigation: the section link navigates and the chevron
  * button shows or hides the panel. The panel is always in the server HTML and
- * inert while closed. Hover opens it only on devices that can hover.
+ * inert while closed. Hover opens it only on devices that can hover; leaving
+ * the item closes it after a short delay so the pointer can cross from the
+ * trigger to the panel (an invisible bridge in CSS covers the gap as well).
  */
 function PanelItem({
   item,
@@ -168,7 +178,27 @@ function PanelItem({
   onNavigate: () => void;
 }) {
   const panel = item.panel!;
-  const canHover = () => window.matchMedia(HOVER_QUERY).matches;
+  const closeTimer = useRef<number | undefined>(undefined);
+  const cancelClose = () => {
+    window.clearTimeout(closeTimer.current);
+    closeTimer.current = undefined;
+  };
+  useEffect(() => () => window.clearTimeout(closeTimer.current), []);
+  const canHover = (event: PointerEvent<HTMLLIElement>) =>
+    event.pointerType === "mouse" && window.matchMedia(HOVER_QUERY).matches;
+  const onPointerEnter = (event: PointerEvent<HTMLLIElement>) => {
+    if (!canHover(event)) return;
+    cancelClose();
+    onToggle(true);
+  };
+  const onPointerLeave = (event: PointerEvent<HTMLLIElement>) => {
+    if (!canHover(event)) return;
+    cancelClose();
+    closeTimer.current = window.setTimeout(() => {
+      closeTimer.current = undefined;
+      onToggle(false);
+    }, HOVER_CLOSE_DELAY_MS);
+  };
   const onBlur = (event: FocusEvent<HTMLLIElement>) => {
     if (drawerOpen) return;
     const next = event.relatedTarget as Node | null;
@@ -180,8 +210,8 @@ function PanelItem({
     <li
       className="nav-item-panel"
       data-open={expanded}
-      onPointerEnter={() => canHover() && onToggle(true)}
-      onPointerLeave={() => canHover() && onToggle(false)}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
       onBlur={onBlur}
     >
       <div className="nav-item-row">
@@ -202,7 +232,10 @@ function PanelItem({
           aria-expanded={expanded}
           aria-controls={panel.id}
           aria-label={panel.label}
-          onClick={() => onToggle(!expanded)}
+          onClick={() => {
+            cancelClose();
+            onToggle(!expanded);
+          }}
         >
           <ChevronDown aria-hidden="true" strokeWidth={1.5} />
         </button>
