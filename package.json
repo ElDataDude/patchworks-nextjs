@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint src",
     "test:contact": "node scripts/test-contact.cjs",
     "test:booking": "node design/evidence/test-booking.cjs",
     "test:content": "node scripts/verify-enterprise-content.mjs",
@@ -23,26 +23,26 @@
     "test:session": "node --test scripts/test-session-apps.cjs"
   },
   "dependencies": {
-    "@opennextjs/cloudflare": "^1.20.6",
-    "eslint": "8.57.1",
-    "eslint-config-next": "15.5.25",
+    "@opennextjs/cloudflare": "^1.20.13",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "16.4.1",
     "lucide-react": "^0.514.0",
-    "next": "15.5.25",
-    "react": "19.0.8",
-    "react-dom": "19.0.8"
+    "next": "16.4.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260911.1",
     "@types/node": "^20.8.9",
-    "@types/react": "19.0.8",
+    "@types/react": "19.3.0",
     "autoprefixer": "^10.4.17",
     "blake3-wasm": "^2.1.5",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
-    "wrangler": "^4.131.1"
+    "wrangler": "^4.151.3"
   }
 }
