@@ -1,7 +1,9 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+const noSubscription = () => () => {};
 
 export function shouldLoadCloudflareAnalytics({
   nodeEnvironment,
@@ -24,9 +26,12 @@ export function shouldLoadCloudflareAnalytics({
 
 export default function CloudflareWebAnalytics() {
   const token = process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN?.trim();
-  const [hostname, setHostname] = useState("");
-
-  useEffect(() => setHostname(window.location.hostname), []);
+  // Empty on the server, so the prerendered page never includes the beacon.
+  const hostname = useSyncExternalStore(
+    noSubscription,
+    () => window.location.hostname,
+    () => "",
+  );
 
   if (
     !shouldLoadCloudflareAnalytics({

@@ -1,7 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import availabilityData from "@/data/availability.json";
+
+const noSubscription = () => () => {};
+
+/** Months since year 0 in the visitor's time zone; null while prerendering. */
+function useCurrentMonth() {
+  return useSyncExternalStore(
+    noSubscription,
+    () => {
+      const now = new Date();
+      return now.getFullYear() * 12 + now.getMonth();
+    },
+    () => null,
+  );
+}
 
 interface AvailabilityDisplayProps {
   productId: string;
@@ -13,47 +27,35 @@ interface MonthlySlot {
 }
 
 const AvailabilityDisplay = ({ productId }: AvailabilityDisplayProps) => {
-  const [months, setMonths] = useState<string[]>([]);
-  const [serviceType, setServiceType] = useState<"monthly" | "retainer">(
-    "monthly",
-  );
-  const [monthlySlots, setMonthlySlots] = useState<MonthlySlot[]>([]);
-  const [retainerCapacity, setRetainerCapacity] = useState({
-    total: 0,
-    booked: 0,
-  });
+  const currentMonth = useCurrentMonth();
 
-  useEffect(() => {
-    // Get the current date
-    const currentDate = new Date();
+  // Calculate the next 4 months (including current)
+  const months =
+    currentMonth === null
+      ? []
+      : Array.from({ length: 4 }, (_, i) =>
+          new Date(
+            Math.floor(currentMonth / 12),
+            (currentMonth % 12) + i,
+            1,
+          ).toLocaleString("en-GB", { month: "long" }),
+        );
 
-    // Calculate the next 4 months (including current)
-    const nextMonths = Array.from({ length: 4 }, (_, i) => {
-      const date = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth() + i,
-        1,
-      );
-      return date.toLocaleString("en-GB", { month: "long" });
-    });
-
-    setMonths(nextMonths);
-
-    // Get the data for the product
-    if (productId in availabilityData) {
-      const productData = (availabilityData as any)[productId];
-      setServiceType(productData.type);
-
-      if (productData.type === "monthly") {
-        setMonthlySlots(productData.slots);
-      } else if (productData.type === "retainer") {
-        setRetainerCapacity({
+  // Get the data for the product
+  const productData =
+    productId in availabilityData
+      ? (availabilityData as any)[productId]
+      : undefined;
+  const serviceType: "monthly" | "retainer" = productData?.type ?? "monthly";
+  const monthlySlots: MonthlySlot[] =
+    productData?.type === "monthly" ? productData.slots : [];
+  const retainerCapacity =
+    productData?.type === "retainer"
+      ? {
           total: productData.totalCapacity,
           booked: productData.bookedCapacity,
-        });
-      }
-    }
-  }, [productId]);
+        }
+      : { total: 0, booked: 0 };
 
   // Helper function to determine text color based on availability
   const getAvailabilityColor = (total: number, booked: number) => {

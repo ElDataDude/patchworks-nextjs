@@ -83,6 +83,7 @@ export default function EnquiryForm({
     // keeps the contact page static; values are allow-listed again on submit.
     const prefill = parseContactPrefill(window.location.search);
     if (Object.keys(prefill).length)
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setValues((current) => ({ ...current, ...prefill }));
   }, []);
   useEffect(() => {

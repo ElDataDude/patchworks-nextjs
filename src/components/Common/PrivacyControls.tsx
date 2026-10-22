@@ -34,6 +34,9 @@ export default function PrivacyControls() {
   const returnFocus = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    // Storage is read after hydration so the prerendered page stays the same
+    // for every visitor.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPreference(readPrivacyPreference());
     setReady(true);
     const open = () => {

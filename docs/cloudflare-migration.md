@@ -35,6 +35,15 @@ Use Node with `npm ci`, then `npm run cf:typegen`, `npm run typecheck`, `npm run
 
 The build wrapper explicitly sets both `NODE_ENV` and `NEXTJS_ENV` to `production`, including for previews. Next development runtime modules must never enter the deployed Worker.
 
+### Framework versions (Next.js 16, 22 October 2026)
+
+The site runs Next.js 16 (Turbopack builds) with React 19.3 and needs Node 20.9 or later. Build and deploy on a patched Node release: 26.12.1, 24.22.1 or 22.23.4 or later, per the Node.js security release of 21 October 2026.
+
+- OpenNext refuses to build any Next.js major more than two years after its release. The dates are in `@opennextjs/aws`'s build helper. Next.js 15 stopped building on 21 October 2026, the day its support ended. Upgrade the major version rather than passing `--dangerouslyUseUnsupportedNextVersion`; Next.js 16's window ends on 21 October 2027.
+- Check each Next.js security release against the exact `next` version, not `npm audit`. `@opennextjs/cloudflare` also pins a minimum patched `next` in its peer range.
+- `next lint` no longer exists. `npm run lint` runs ESLint 9 (`eslint src`) with the flat config in `eslint.config.mjs`. React Compiler rules such as `react-hooks/set-state-in-effect` are errors. Effects that deliberately set state after hydration or around an external widget carry a commented disable.
+- Image optimisation stays off (`images.unoptimized`), so `/_next/image` answers 404. The Worker doesn't send `X-Powered-By`.
+
 ### Prerendered pages: static-assets incremental cache
 
 `open-next.config.ts` uses OpenNext's read-only `staticAssetsIncrementalCache`. The site is fully prerendered and has no ISR or `revalidate`. Prerendered pages are therefore served from Workers static assets under `cdn-cgi/_next_cache/<BUILD_ID>/`.

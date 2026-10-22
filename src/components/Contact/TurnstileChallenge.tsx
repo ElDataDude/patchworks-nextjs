@@ -47,6 +47,8 @@ export default function TurnstileChallenge({
     let cancelled = false;
     let stopped = false;
     let widget: string | undefined;
+    // Each (re)render of the external widget starts from the loading state.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStatus("loading");
     setMessage("Loading secure verification…");
     onToken("");

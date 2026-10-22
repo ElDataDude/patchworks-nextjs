@@ -41,6 +41,9 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   useEffect(() => {
+    // Close menus and refresh the sign-in return URL (which needs the browser
+    // URL, query included) after each navigation.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
     setPanel(null);
     setReturnTo(window.location.href);
