@@ -1,0 +1,74 @@
+{
+  "id": "patchworks-publication-system",
+  "name": "Patchworks AI Publication System",
+  "version": "1.0.0",
+  "page": {
+    "size": "A4",
+    "widthMm": 210,
+    "heightMm": 297,
+    "marginMm": 18
+  },
+  "colour": {
+    "paper": "#fcfcfc",
+    "white": "#ffffff",
+    "ink": "#121723",
+    "navy": "#090e34",
+    "orange": "#d16013",
+    "orangeDark": "#aa4d0f",
+    "body": "#333333",
+    "muted": "#626875",
+    "line": "#e3e8ef",
+    "wash": "#f2f4f7",
+    "orangeWash": "#f8eee7"
+  },
+  "typography": {
+    "display": {
+      "family": "Instrument Serif",
+      "regular": "assets/fonts/instrument-serif-regular-latin.woff2",
+      "italic": "assets/fonts/instrument-serif-italic-latin.woff2"
+    },
+    "body": {
+      "family": "Source Sans 3",
+      "regular": "assets/fonts/source-sans-3-latin.woff2"
+    }
+  },
+  "logo": {
+    "light": "assets/logos/patchworks-ai-full-colour-1200.png",
+    "dark": "assets/logos/patchworks-ai-dark-background-1200.png",
+    "mark": "assets/logos/patchworks-wo-orange-512.png",
+    "note": "Approved Lowercase Continuum raster artwork. Do not redraw, recolour, distort or regenerate it."
+  },
+  "supportedDocumentKinds": [
+    "white-paper",
+    "proposal",
+    "report",
+    "brief",
+    "point-of-view",
+    "case-study",
+    "playbook",
+    "publication"
+  ],
+  "supportedPageLayouts": [
+    "cover",
+    "section",
+    "content",
+    "columns",
+    "data",
+    "closing"
+  ],
+  "supportedBlockTypes": [
+    "lead",
+    "paragraph",
+    "heading",
+    "bullets",
+    "callout",
+    "stats",
+    "table",
+    "quote",
+    "steps",
+    "references",
+    "image",
+    "rule",
+    "spacer"
+  ]
+}

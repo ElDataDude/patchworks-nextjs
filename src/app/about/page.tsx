@@ -1,12 +1,8 @@
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import "../../styles/core-pages.css";
-import { Metadata } from "next";
+import { createPageMetadata } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "About | Patchworks AI",
-  description:
-    "Learn about Patchworks AI's mission to deliver pragmatic AI solutions with measurable ROI through our fractional leadership model and expertise.",
-};
+export const metadata = createPageMetadata("/about");
 
 export default function AboutPage() {
   return (

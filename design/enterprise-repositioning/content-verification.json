@@ -1,0 +1,730 @@
+{
+  "checkedAt": "2026-09-13T18:50:18.473Z",
+  "baseUrl": "http://127.0.0.1:3027",
+  "scope": "GET-only server-rendered content; no submissions, external provider checks or visual assertions",
+  "passed": true,
+  "summary": {
+    "routes": 12,
+    "checks": 141,
+    "failures": 0
+  },
+  "checks": [
+    {
+      "route": "/",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/industries",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/careers",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/contact",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/services",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/about",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/blog",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/signup",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/blog-sidebar",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/signin",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/error",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/blog-details",
+      "name": "existing route returns HTML without redirect",
+      "passed": true,
+      "detail": "HTTP 200"
+    },
+    {
+      "route": "/",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "one main landmark and one nonempty H1",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "core content includes section headings",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "Revised core content omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "no newsletter in revised core content",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "enterprise metadata is present",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "Metadata omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "both pillars appear in main content",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "enquiry form uses POST /api/contact",
+      "passed": true
+    },
+    {
+      "route": "/",
+      "name": "no disconnected placeholder form",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "one main landmark and one nonempty H1",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "core content includes section headings",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "Revised core content omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "no newsletter in revised core content",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "enterprise metadata is present",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "Metadata omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "both pillars appear in main content",
+      "passed": true
+    },
+    {
+      "route": "/services",
+      "name": "both service anchors exist",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "one main landmark and one nonempty H1",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "core content includes section headings",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "Revised core content omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "no newsletter in revised core content",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "enterprise metadata is present",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "Metadata omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "one main landmark and one nonempty H1",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "core content includes section headings",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "Revised core content omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "no newsletter in revised core content",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "enterprise metadata is present",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "Metadata omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/about",
+      "name": "both pillars appear in main content",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "one main landmark and one nonempty H1",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "core content includes section headings",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "Revised core content omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "no newsletter in revised core content",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "enterprise metadata is present",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "Metadata omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "enquiry form uses POST /api/contact",
+      "passed": true
+    },
+    {
+      "route": "/contact",
+      "name": "no disconnected placeholder form",
+      "passed": true
+    },
+    {
+      "route": "/careers",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/careers",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/careers",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/careers",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/careers",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/careers",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/careers",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/blog",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/blog",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/blog",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/blog",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/blog",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/blog",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/blog",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/blog-details",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/blog-details",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/blog-details",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/blog-details",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/blog-details",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/blog-details",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/blog-details",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/blog-sidebar",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/blog-sidebar",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/blog-sidebar",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/blog-sidebar",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/blog-sidebar",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/blog-sidebar",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/blog-sidebar",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/signin",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/signin",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/signin",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/signin",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/signin",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/signin",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/signin",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/signup",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/signup",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/signup",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/signup",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/signup",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/signup",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/signup",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/error",
+      "name": "shared header and footer render",
+      "passed": true
+    },
+    {
+      "route": "/error",
+      "name": "primary navigation contains the four enterprise routes",
+      "passed": true
+    },
+    {
+      "route": "/error",
+      "name": "header provides partner booking",
+      "passed": true
+    },
+    {
+      "route": "/error",
+      "name": "Header omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/error",
+      "name": "footer preserves pillar and retained-content access",
+      "passed": true
+    },
+    {
+      "route": "/error",
+      "name": "Footer omits old commercial positioning",
+      "passed": true
+    },
+    {
+      "route": "/error",
+      "name": "booking anchors use the shared destination and label",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "case-study is one native disclosure with a unique anchor",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "case-study starts collapsed with a readable summary",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "use-cases is one native disclosure with a unique anchor",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "use-cases starts collapsed with a readable summary",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "five approved sectors appear in order",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "complete drilling narrative remains server-rendered",
+      "passed": true
+    },
+    {
+      "route": "/industries",
+      "name": "six complete use-case bodies remain server-rendered",
+      "passed": true
+    }
+  ]
+}

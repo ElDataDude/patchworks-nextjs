@@ -1,0 +1,16 @@
+{
+  "name": "patchworks-publications-skill",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portable Patchworks AI publication design system and Agent Skill",
+  "scripts": {
+    "test": "node scripts/test-portable.cjs",
+    "render:sample": "node scripts/render-publication.cjs examples/white-paper.json patchworks-white-paper.pdf"
+  },
+  "optionalDependencies": {
+    "playwright": "1.62.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

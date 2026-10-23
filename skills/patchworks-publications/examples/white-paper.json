@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "1.0",
+  "document": {
+    "kind": "white-paper",
+    "title": "From AI experiments to governed capability",
+    "subtitle": "A practical operating model for making better decisions, proving value and retaining control",
+    "date": "September 2026",
+    "documentId": "PW-WP-001",
+    "version": "1.0",
+    "audience": "Enterprise leaders and transformation teams",
+    "confidentiality": "Illustrative sample",
+    "author": "Patchworks AI",
+    "contact": "info@patchworks.ai",
+    "url": "patchworks.ai"
+  },
+  "pages": [
+    {
+      "layout": "cover",
+      "theme": "dark",
+      "eyebrow": "Patchworks AI white paper",
+      "title": "From AI experiments to governed capability",
+      "subtitle": "A practical operating model for making better decisions, proving value and retaining control",
+      "preparedFor": "Enterprise leaders and transformation teams",
+      "note": "Illustrative content for design-system validation"
+    },
+    {
+      "layout": "content",
+      "eyebrow": "Executive perspective",
+      "title": "The constraint is rarely a shortage of ideas",
+      "dek": "Organisations need a disciplined way to decide what deserves investment and what evidence is required before scale.",
+      "blocks": [
+        {
+          "type": "lead",
+          "text": "AI activity becomes valuable when it is connected to decisions, operating realities and accountable ownership."
+        },
+        {
+          "type": "paragraph",
+          "text": "Many teams can produce a compelling demonstration. Fewer can explain how the capability will work with real data, existing controls, frontline practice and the people responsible for outcomes. That gap is where promising experiments often stall."
+        },
+        {
+          "type": "paragraph",
+          "text": "A better model treats each initiative as a sequence of evidence-building decisions. It makes assumptions visible, tests the highest-risk claims first and creates a clear threshold for continuing, changing direction or stopping."
+        },
+        {
+          "type": "callout",
+          "tone": "orange",
+          "label": "Core principle",
+          "title": "Governance should improve the decision, not merely document it.",
+          "body": "The useful question is not whether a project passed a generic gate. It is whether the available evidence justifies the next commitment of money, data, operational attention and trust."
+        }
+      ]
+    },
+    {
+      "layout": "section",
+      "theme": "light",
+      "eyebrow": "Operating model",
+      "number": "01",
+      "title": "Move from enthusiasm to evidence",
+      "summary": "A small number of explicit decisions can turn a loose portfolio of experiments into a governed learning system."
+    },
+    {
+      "layout": "columns",
+      "eyebrow": "Decision sequence",
+      "section": "Operating model",
+      "title": "A repeatable path from question to capability",
+      "dek": "The sequence is stable even when the technology, business function and level of ambition change.",
+      "columns": [
+        [
+          {
+            "type": "heading",
+            "text": "Start with the decision"
+          },
+          {
+            "type": "paragraph",
+            "text": "Define what must be decided, who owns that decision and what would make the answer useful. This prevents a technology demonstration from becoming the objective."
+          },
+          {
+            "type": "bullets",
+            "items": [
+              "Name the operational outcome and current constraint.",
+              "Separate confirmed facts from assumptions and unknowns.",
+              "Agree the evidence required for the next commitment."
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "neutral",
+            "label": "Decision quality",
+            "title": "A useful stop is a successful outcome.",
+            "body": "Stopping weak work early protects attention for initiatives that can withstand scrutiny."
+          }
+        ],
+        [
+          {
+            "type": "steps",
+            "items": [
+              {
+                "title": "Frame",
+                "body": "State the business decision, scope, owner and material constraints."
+              },
+              {
+                "title": "Test",
+                "body": "Design the cheapest credible test of the most consequential assumption."
+              },
+              {
+                "title": "Observe",
+                "body": "Capture user, operational, technical and control evidence separately."
+              },
+              {
+                "title": "Decide",
+                "body": "Continue, reshape or stop using a threshold agreed before the test."
+              },
+              {
+                "title": "Industrialise",
+                "body": "Add service ownership, monitoring, support and change only after value is evidenced."
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "layout": "data",
+      "eyebrow": "Evidence model",
+      "section": "Operating model",
+      "title": "Keep different kinds of evidence distinct",
+      "dek": "A technically successful test does not, by itself, establish operational value or permission to scale.",
+      "blocks": [
+        {
+          "type": "table",
+          "columns": ["Evidence", "Question", "Example acceptance signal"],
+          "rows": [
+            ["User", "Does it improve the work?", "Representative users complete the real task with an agreed improvement."],
+            ["Operational", "Can the organisation run it?", "Ownership, exception handling and support are exercised in context."],
+            ["Technical", "Does the system behave reliably?", "Performance, security and failure paths pass defined thresholds."],
+            ["Economic", "Is the value worth the full cost?", "Benefits and ongoing costs are evidenced with stated assumptions."],
+            ["Control", "Is use acceptable and governable?", "Required legal, risk, data and stakeholder approvals are recorded."]
+          ],
+          "caption": "Illustrative evidence categories. The applicable acceptance signals should be agreed for each initiative."
+        },
+        {
+          "type": "callout",
+          "tone": "ink",
+          "label": "Release discipline",
+          "title": "Build success is not operational acceptance.",
+          "body": "Keep test evidence, provider status, organisational approval and live operating proof as separate gates."
+        }
+      ]
+    },
+    {
+      "layout": "content",
+      "eyebrow": "Management practice",
+      "section": "Operating model",
+      "title": "Make the portfolio legible",
+      "dek": "Leadership should be able to see what is known, what is being tested and what decision comes next.",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "01",
+              "label": "Named decision owner",
+              "note": "One accountable person for the next decision"
+            },
+            {
+              "value": "02",
+              "label": "Explicit evidence threshold",
+              "note": "Agreed before the test begins"
+            },
+            {
+              "value": "03",
+              "label": "Visible next action",
+              "note": "Continue, reshape or stop"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "A useful portfolio view is concise. It should identify the decision being made, the current evidence, the largest unresolved risk, the next test and the owner. Activity counts are secondary because they do not show whether uncertainty is actually reducing."
+        },
+        {
+          "type": "quote",
+          "text": "Progress is evidence that changes a decision, not activity that fills a status report.",
+          "attribution": "Patchworks AI working principle"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            "Use a common evidence language across initiatives.",
+            "Record failed assumptions and negative findings, not only successes.",
+            "Require fresh operating proof before describing a capability as live."
+          ]
+        }
+      ]
+    },
+    {
+      "layout": "closing",
+      "theme": "dark",
+      "eyebrow": "Patchworks AI",
+      "title": "Know what is real. Know what to do next.",
+      "body": "We help enterprise teams examine AI opportunities, test the claims that matter and turn justified choices into governed delivery.",
+      "cta": "Book a partner conversation",
+      "contact": "info@patchworks.ai"
+    }
+  ]
+}

@@ -1,28 +1,35 @@
 import PageIntro from "@/components/Common/PageIntro";
 import Services from "@/components/Services";
-import TechStack from "@/components/TechStack";
+import EditorialLink from "@/components/Common/EditorialLink";
+import { pillars } from "@/data/positioning";
 import "../../styles/core-pages.css";
-import { Metadata } from "next";
+import { createPageMetadata } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "Services | Patchworks AI",
-  description:
-    "Explore our range of AI services designed to deliver measurable ROI, from fractional head-of-AI to custom AI application development.",
-};
+export const metadata = createPageMetadata("/services");
 
 export default function ServicesPage() {
   return (
     <div className="core-page">
       <section className="site-container">
         <PageIntro
-          title="Our Services"
-          description="We offer a range of services designed to help businesses achieve measurable ROI from AI investments, from strategic guidance to custom implementation."
+          title="Clear direction. Practical delivery."
+          description="Two ways to work with Patchworks AI: counsel on the decisions that matter, and hands-on support to carry them through. Each engagement starts with your priorities and the work already under way."
           image="/images/editorial/services-system.webp"
-          imageAlt="Five connected abstract capability platforms"
-        />
+          imageAlt="Connected abstract platforms illustrating an enterprise system"
+        >
+          <nav
+            className="enterprise-service-nav"
+            aria-label="Explore our services"
+          >
+            {pillars.map((pillar) => (
+              <EditorialLink href={`#${pillar.id}`} key={pillar.id} quiet>
+                {pillar.title}
+              </EditorialLink>
+            ))}
+          </nav>
+        </PageIntro>
       </section>
       <Services />
-      <TechStack />
     </div>
   );
 }

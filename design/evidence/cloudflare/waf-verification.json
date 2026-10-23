@@ -1,0 +1,22 @@
+{
+  "endpoint": "https://patchworks.ai/api/contact",
+  "method": "POST",
+  "body": {},
+  "scope": "Eight sequential invalid empty requests; no email can be sent from this payload.",
+  "colo": "LHR",
+  "statuses": [
+    400,
+    400,
+    400,
+    400,
+    400,
+    429,
+    429,
+    429
+  ],
+  "blockedContentType": "text/html; charset=UTF-8",
+  "ruleId": "a19adb9b5ddd4bec90be37b4318d7fc6",
+  "rulesetId": "a663aa4016ac467bb4a38c6b089cdaa7",
+  "passed": true,
+  "checkedDate": "2026-09-13"
+}

@@ -1,28 +1,33 @@
-import featuresData from "./featuresData";
+import { pillars } from "@/data/positioning";
+import EditorialLink from "../Common/EditorialLink";
 export default function Features() {
   return (
-    <section id="features" className="home-services section-space">
+    <section
+      id="how-we-help"
+      className="home-services enterprise-pillars section-space"
+    >
       <div className="site-container editorial-layout">
-        <h2 className="section-heading editorial-anchor">
-          Our
-          <br /> Services
-        </h2>
+        <h2 className="section-heading editorial-anchor">How we help</h2>
         <div className="editorial-content">
           <p className="editorial-intro">
-            From strategic guidance to hands-on implementation, our services are
-            designed for executives who need AI solutions that deliver
-            measurable ROI within weeks, not years. Each service is built on our
-            pragmatic, business-first approach.
+            Clear counsel on where to go. Practical support to get there. Two
+            ways to work with us, shaped around the decisions and delivery
+            challenges your team faces.
           </p>
           <div>
-            {featuresData.map((feature, index) => (
-              <article className="numbered-item" key={feature.id} data-reveal>
+            {pillars.map((pillar, index) => (
+              <article className="numbered-item" key={pillar.id} data-reveal>
                 <span className="item-number" aria-hidden="true">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <h3 className="item-title">{feature.title}</h3>
-                  <p>{feature.paragraph}</p>
+                  <h3 className="item-title">{pillar.title}</h3>
+                  <p>{pillar.summary}</p>
+                  <EditorialLink href={pillar.href}>
+                    {index === 0
+                      ? "Explore AI counsel"
+                      : "Explore review and delivery"}
+                  </EditorialLink>
                 </div>
               </article>
             ))}

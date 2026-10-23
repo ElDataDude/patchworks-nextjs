@@ -1,0 +1,250 @@
+{
+  "source": "/Users/bryanj/dev/patchworks/patchworks-nextjs/design/logo-joined-wordmark-iterations-2026-09-13/03-lowercase-continuum.png",
+  "sourceSha256": "674e17c7911fecd52c6c514e81162b5d9f1f9a4d5c163d71f02a3abd8f99f4c0",
+  "nativeWordmarkBounds": {
+    "x": 104,
+    "y": 180,
+    "w": 1329,
+    "h": 202
+  },
+  "nativeMarkBounds": {
+    "x": 228,
+    "y": 548,
+    "w": 249,
+    "h": 106
+  },
+  "method": "Direct extraction from the approved raster board, flat brand colour normalisation, alpha matte and Lanczos PNG size exports. Larger files are upscaled raster exports, not new vector artwork.",
+  "files": [
+    {
+      "file": "wordmark/patchworks-ai-full-colour-2400.png",
+      "width": 2400,
+      "height": 422,
+      "transparent": true,
+      "sha256": "dceeb4f4fcba6e2c7e6758e3c739ef227fd58acd415c9ba387cca550629f3128"
+    },
+    {
+      "file": "wordmark/patchworks-ai-full-colour-1200.png",
+      "width": 1200,
+      "height": 211,
+      "transparent": true,
+      "sha256": "14027213796bf3b7452b40aa3a2e3370d142a1dd4744a7ae6e48eebabb02a966"
+    },
+    {
+      "file": "wordmark/patchworks-ai-full-colour-600.png",
+      "width": 600,
+      "height": 105,
+      "transparent": true,
+      "sha256": "dc9d4848b1f3be99218e6285c85f2ebeb9e92d0c83207604b01bbb8e1bb36eee"
+    },
+    {
+      "file": "wordmark/patchworks-ai-full-colour-300.png",
+      "width": 300,
+      "height": 53,
+      "transparent": true,
+      "sha256": "93beadda4b3992078182ffc1944128f29752a63fad2d08987f4730f19a6a29ee"
+    },
+    {
+      "file": "wordmark/patchworks-ai-dark-background-2400.png",
+      "width": 2400,
+      "height": 422,
+      "transparent": true,
+      "sha256": "5b3948266eae13b5e339509408dbc941889838affd06e5f590ec560334e3de3e"
+    },
+    {
+      "file": "wordmark/patchworks-ai-dark-background-1200.png",
+      "width": 1200,
+      "height": 211,
+      "transparent": true,
+      "sha256": "c7c28d381b82fb2bfdae646e2eed58371acc82675c8eafd1eaae5821fa40b644"
+    },
+    {
+      "file": "wordmark/patchworks-ai-dark-background-600.png",
+      "width": 600,
+      "height": 105,
+      "transparent": true,
+      "sha256": "b8b8881406af2dc3fd920018ac1f8331e4baf96bb11601540ea7bdeebe672893"
+    },
+    {
+      "file": "wordmark/patchworks-ai-dark-background-300.png",
+      "width": 300,
+      "height": 53,
+      "transparent": true,
+      "sha256": "f81c81980ea0cf35a720fdd095c4bbc4e03f32825b4e7f0166fa2d16deffb5f8"
+    },
+    {
+      "file": "wordmark/patchworks-ai-single-colour-ink-2400.png",
+      "width": 2400,
+      "height": 422,
+      "transparent": true,
+      "sha256": "d59c276cd4f25cdc4c41324013f988f455cb4dbc378e80da922e722bbeaf2a26"
+    },
+    {
+      "file": "wordmark/patchworks-ai-single-colour-ink-1200.png",
+      "width": 1200,
+      "height": 211,
+      "transparent": true,
+      "sha256": "520e586cba2b6d7bed9838cbb7e5ac459974585a786bfdb87e192b077dd76975"
+    },
+    {
+      "file": "wordmark/patchworks-ai-single-colour-ink-600.png",
+      "width": 600,
+      "height": 105,
+      "transparent": true,
+      "sha256": "fd9ca7387d535ce8d537832c6d4b0a80ab4ad66f08964518378bb72828dd5a54"
+    },
+    {
+      "file": "wordmark/patchworks-ai-single-colour-ink-300.png",
+      "width": 300,
+      "height": 53,
+      "transparent": true,
+      "sha256": "36e8ff30ae595f25392feef49607ea5f8a348d7ee9b5ac00c05193561250073e"
+    },
+    {
+      "file": "wordmark/patchworks-ai-single-colour-white-2400.png",
+      "width": 2400,
+      "height": 422,
+      "transparent": true,
+      "sha256": "e389915d2e4b2e34af17a84a3bfebf86e373df9fb8058982a4bf72e8a47bac6c"
+    },
+    {
+      "file": "wordmark/patchworks-ai-single-colour-white-1200.png",
+      "width": 1200,
+      "height": 211,
+      "transparent": true,
+      "sha256": "1b737bb73581e060651dc2a168ffaa371848db3865166b368ddda86c683897a7"
+    },
+    {
+      "file": "wordmark/patchworks-ai-single-colour-white-600.png",
+      "width": 600,
+      "height": 105,
+      "transparent": true,
+      "sha256": "e24714683af26e927315513f7b02dce6ed74cc80be3cced6752f29352d883fac"
+    },
+    {
+      "file": "wordmark/patchworks-ai-single-colour-white-300.png",
+      "width": 300,
+      "height": 53,
+      "transparent": true,
+      "sha256": "37e58254d62f2fc822841b9ccccc9a6cd0b909d467e9d9016a508b5c8157214d"
+    },
+    {
+      "file": "mark/patchworks-wo-orange-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "transparent": true,
+      "sha256": "9e418abadc90bffa6e0d07a6f87b4475b08bb4a575185e82cecc19ac23889aea"
+    },
+    {
+      "file": "mark/patchworks-wo-orange-512.png",
+      "width": 512,
+      "height": 512,
+      "transparent": true,
+      "sha256": "7e7769ae42e585ee618ef2c548ab203a077bb0ec6ea52f6f3b0c846c7e121211"
+    },
+    {
+      "file": "mark/patchworks-wo-orange-256.png",
+      "width": 256,
+      "height": 256,
+      "transparent": true,
+      "sha256": "a4d6c8eeaa3dfd09705cf3a8518958b33d6d7cfc272b08c72b67b3cf17d403ce"
+    },
+    {
+      "file": "mark/patchworks-wo-ink-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "transparent": true,
+      "sha256": "83c111f0e58d8eb13859f84d7c5554ad26cade10839ec5ac0439ab40dc6a9e9c"
+    },
+    {
+      "file": "mark/patchworks-wo-ink-512.png",
+      "width": 512,
+      "height": 512,
+      "transparent": true,
+      "sha256": "f788d2884ca7a1c21834b9cd029270ec16f95d0c7aea74d92df10fca61764cc5"
+    },
+    {
+      "file": "mark/patchworks-wo-ink-256.png",
+      "width": 256,
+      "height": 256,
+      "transparent": true,
+      "sha256": "bea8f6152b1b677a7d875dd9f57dd754fa899c6ba3ff59084b31c481686e8c93"
+    },
+    {
+      "file": "mark/patchworks-wo-white-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "transparent": true,
+      "sha256": "3b88ba75a9e2a11cdb6963b375e8e21d3eca56df5aa6e418faad32f90539f4b0"
+    },
+    {
+      "file": "mark/patchworks-wo-white-512.png",
+      "width": 512,
+      "height": 512,
+      "transparent": true,
+      "sha256": "9c03e5b3615959d119624b44ce89f21732d885f84def2eaeb61e26ca7393428c"
+    },
+    {
+      "file": "mark/patchworks-wo-white-256.png",
+      "width": 256,
+      "height": 256,
+      "transparent": true,
+      "sha256": "021bda6361f30cc414f7f4b14c25e419d2d8b9f1537d267e8ef35d2ed47de1fd"
+    },
+    {
+      "file": "icons/patchworks-wo-180.png",
+      "width": 180,
+      "height": 180,
+      "transparent": true,
+      "sha256": "47918a123ae1f6ce54922be04e490c275a1a2280b11053031be8da30bde4abb9"
+    },
+    {
+      "file": "icons/patchworks-wo-64.png",
+      "width": 64,
+      "height": 64,
+      "transparent": true,
+      "sha256": "6fb172212b9bb55d7f052dac7ead222f9db65b7cbb74345fcb0ce03d33446cfd"
+    },
+    {
+      "file": "icons/patchworks-wo-32.png",
+      "width": 32,
+      "height": 32,
+      "transparent": true,
+      "sha256": "15bdd65fa8213ea0691364263626ab125ecb6c7a912342b53584476c47e76e30"
+    },
+    {
+      "file": "icons/patchworks-wo-16.png",
+      "width": 16,
+      "height": 16,
+      "transparent": true,
+      "sha256": "95eb5ebcd527e5b414eb5998bcb7f542a35c16aa42de85477b9ec5e240d03a63"
+    },
+    {
+      "file": "social/patchworks-avatar-light-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "transparent": false,
+      "sha256": "093b5e042197b02a1d8fbda2e07bb39ad88f6cf85e180378955e402ed8133f54"
+    },
+    {
+      "file": "social/patchworks-avatar-dark-1024.png",
+      "width": 1024,
+      "height": 1024,
+      "transparent": false,
+      "sha256": "6693ba2ec9665305c1e7355ed7393dfe6d2c3710a34bbda28f6f107ec2273ccf"
+    },
+    {
+      "file": "preview/patchworks-wordmark-light-1200.png",
+      "width": 1200,
+      "height": 211,
+      "transparent": false,
+      "sha256": "c101855ef1d9a1087a249f40f07e9ffe03b3d06af98d69ee6e18f2892636fc81"
+    },
+    {
+      "file": "preview/patchworks-wordmark-dark-1200.png",
+      "width": 1200,
+      "height": 211,
+      "transparent": false,
+      "sha256": "6b11e29f6e23d37658cf1a4ae593452db706dfcb887b9d195c29d5f1f35fcca3"
+    }
+  ]
+}

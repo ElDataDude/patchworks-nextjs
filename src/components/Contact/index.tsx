@@ -1,110 +1,77 @@
-import NewsLatterBox from "./NewsLatterBox";
 import BookingWidget from "../Common/BookingWidget";
-import UnconnectedForm from "../Common/UnconnectedForm";
-import { ArrowUpRight } from "lucide-react";
+import EnquiryForm from "./EnquiryForm";
+import Link from "next/link";
+import {
+  COMPANY_LEGAL_NAME,
+  COMPANY_NUMBER,
+  CONTACT_EMAIL,
+  REGISTERED_OFFICE,
+} from "@/data/positioning";
+
 export default function Contact({ page = false }: { page?: boolean }) {
   const Heading = page ? "h1" : "h2";
   const Subheading = page ? "h2" : "h3";
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
+  const enabled =
+    process.env.NEXT_PUBLIC_CONTACT_ENABLED === "true" && Boolean(siteKey);
   return (
     <section id="contact" className="section-space rule-section">
-      <div className="site-container">
-        <div className="contact-grid">
-          <div className="contact-intro">
-            <Heading className="section-heading">
-              Start Your AI Journey Today
-            </Heading>
-            <p className="body-copy">
-              Ready to see measurable ROI from AI within weeks, not years? Our
-              executive-level AI expertise is just a message away. Tell us about
-              your business challenges, and we&apos;ll show you how our
-              pragmatic approach can deliver tangible results.
+      <div className="site-container contact-grid">
+        <div className="contact-intro">
+          <p className="eyebrow">Let’s talk</p>
+          <Heading className={page ? "page-title" : "section-heading"}>
+            What needs to happen next?
+          </Heading>
+          <p className="body-copy">
+            A clearer direction. A programme that needs a closer look. A
+            supplier decision that matters. Tell us where you are and what you
+            want to achieve.
+          </p>
+          <div className="contact-booking">
+            <Subheading>Start with a conversation.</Subheading>
+            <p>
+              Book time with a partner to discuss your priorities and where we
+              can help.
             </p>
-            <div className="contact-booking">
-              <Subheading>Prefer to Talk? Book a Free Consultation</Subheading>
-              <p>
-                Skip the form and speak directly with our AI experts. Book a
-                free 30-minute strategy call to discuss your specific needs.
-              </p>
-              <BookingWidget buttonText="Book Free 30-Minute Call" />
-            </div>
+            <BookingWidget />
           </div>
-          <UnconnectedForm
-            className="form-grid"
-            aria-label="Contact Patchworks AI"
-          >
-            <div className="form-field">
-              <label htmlFor="contact-name">Your Name</label>
-              <input
-                className="form-control"
-                id="contact-name"
-                name="name"
-                autoComplete="name"
-                type="text"
-                placeholder="Enter your name"
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="contact-email">Your Email</label>
-              <input
-                className="form-control"
-                id="contact-email"
-                name="email"
-                autoComplete="email"
-                type="email"
-                placeholder="Enter your email"
-              />
-            </div>
-            <div className="form-field form-wide">
-              <label htmlFor="contact-company">Company</label>
-              <input
-                className="form-control"
-                id="contact-company"
-                name="company"
-                autoComplete="organization"
-                type="text"
-                placeholder="Enter your company name"
-              />
-            </div>
-            <div className="form-field form-wide">
-              <label htmlFor="contact-service">I&apos;m interested in</label>
-              <select
-                className="form-control"
-                id="contact-service"
-                name="service"
-              >
-                <option value="">Please select</option>
-                <option value="fractional-head-of-ai">
-                  Fractional Head-of-AI
-                </option>
-                <option value="getting-started-workshop">
-                  Getting Started Workshop
-                </option>
-                <option value="ai-roadmap">Full AI Roadmap</option>
-                <option value="bespoke-ai-applications">
-                  Bespoke AI Applications
-                </option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div className="form-field form-wide">
-              <label htmlFor="contact-message">Your Message</label>
-              <textarea
-                className="form-control"
-                id="contact-message"
-                name="message"
-                rows={4}
-                placeholder="Enter your message"
-              />
-            </div>
-            <div className="form-wide">
-              <button className="text-link" type="submit">
-                Send Message
-                <ArrowUpRight aria-hidden="true" strokeWidth={1.5} />
-              </button>
-            </div>
-          </UnconnectedForm>
+          <div className="contact-email">
+            <p>Prefer email?</p>
+            <a className="text-link" href={`mailto:${CONTACT_EMAIL}`}>
+              {CONTACT_EMAIL}
+            </a>
+            {page && (
+              <address className="contact-address">
+                {COMPANY_LEGAL_NAME}, company {COMPANY_NUMBER}
+                <br />
+                Registered office: {REGISTERED_OFFICE}
+              </address>
+            )}
+          </div>
         </div>
-        <NewsLatterBox page={page} />
+        {enabled ? (
+          <EnquiryForm siteKey={siteKey} enabled />
+        ) : (
+          <div
+            id="enquiry"
+            className="contact-email-enquiry"
+            data-enquiry="email"
+          >
+            <Subheading>Tell us what you’re working on.</Subheading>
+            <p>
+              Email us with a little about your company, the decision you’re
+              facing and where you would value another perspective.
+            </p>
+            <a className="text-link" href={`mailto:${CONTACT_EMAIL}`}>
+              {CONTACT_EMAIL}
+            </a>
+            <p className="enquiry-privacy">
+              We use your details to respond to your enquiry. Please keep this
+              introduction to a general overview and leave out confidential
+              information. Read our <Link href="/privacy">privacy notice</Link>.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

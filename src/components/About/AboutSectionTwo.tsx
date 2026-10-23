@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ResponsiveImage from "../Common/ResponsiveImage";
 export default function AboutSectionTwo() {
   return (
     <section className="section-space">
@@ -8,7 +8,7 @@ export default function AboutSectionTwo() {
         </h2>
         <div className="case-study-grid">
           <div className="media-frame" data-reveal>
-            <Image
+            <ResponsiveImage
               src="/images/editorial/drilling-study.webp"
               alt="Conceptual illustration of geological layers connected to transparent analytical systems"
               width={1532}

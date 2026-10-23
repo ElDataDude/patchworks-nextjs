@@ -1,0 +1,140 @@
+{
+  "recordedAt": "2026-09-14T06:00:43.563073Z",
+  "workers": [
+    {
+      "id": "patchworks-nextjs",
+      "etag": "fababde670999b0e4fe13627750ed534fe163e4fd05e46894b040456c1ff3faa",
+      "deployment_id": "",
+      "modified_on": "2026-09-14T06:00:43.563073Z",
+      "evidence": "favicon-cookie-release.json",
+      "handlers": ["fetch", "scheduled"]
+    },
+    {
+      "id": "patchworks-nextjs-preview",
+      "etag": "43798ea6238628ba789b7c6384d4c40ef165451d862b805fa33f958255d6224b",
+      "deployment_id": "",
+      "modified_on": "2026-09-14T05:57:45.554473Z",
+      "handlers": ["fetch", "scheduled"],
+      "evidence": "favicon-cookie-release.json"
+    }
+  ],
+  "productionRoutes": [
+    {
+      "id": "f6fe05c2b67d4778aa8887f43e497b68",
+      "pattern": "patchworks.ai/*",
+      "script": "patchworks-nextjs"
+    },
+    {
+      "id": "cb57b22324264d5e8c23aa80cb66ab22",
+      "pattern": "www.patchworks.ai/*",
+      "script": "patchworks-nextjs"
+    }
+  ],
+  "dnsUnchanged": true,
+  "dnsRecordCount": 25,
+  "googleRootMxRecordCount": 5,
+  "infoDestinationVerified": true,
+  "infoDestinationVerifiedAt": "2026-09-14T04:54:57.325176Z",
+  "realEmailSent": true,
+  "contactAcceptance": {
+    "preview": {
+      "httpStatus": 200,
+      "d1Status": "accepted",
+      "tokenReplayStatus": 403,
+      "messageId": "<JTdPRd7Kd5AG63TNlReEgMhul3UsAIo4hS2z@patchworks.ai>",
+      "receivedThroughInfoAlias": true
+    },
+    "production": {
+      "httpStatus": 200,
+      "d1Status": "accepted",
+      "tokenReplayStatus": 403,
+      "messageId": "<eLgPthz8guDjULY57efm8V3R22Nbn6jxyTgs@patchworks.ai>",
+      "receivedThroughInfoAlias": true,
+      "from": "website@patchworks.ai",
+      "replyTo": "bryan.johnson@patchworks.ai",
+      "siteMailLink": "info@patchworks.ai",
+      "spf": "pass",
+      "dkim": "pass",
+      "dmarc": "pass",
+      "tls": true
+    },
+    "inboxReadback": "verified-in-safari"
+  },
+  "analyticsAutomaticInjection": false,
+  "analyticsEdgeInjectionControl": {
+    "rulesetId": "6eb4325d456f49d4a9c724c9ee6aca48",
+    "ruleId": "e24ac05640b249dd8cd0741d6656e4f2",
+    "expression": "http.host eq \"patchworks.ai\"",
+    "action": "set_config",
+    "actionParameters": {
+      "disable_rum": true
+    },
+    "status": "applied",
+    "reason": "auto_install=false alone did not suppress the existing active zone RUM rule for Chrome request headers"
+  },
+  "analyticsAcceptance": {
+    "status": "passed",
+    "cacheDisabledReload": true,
+    "domBeaconCount": 1,
+    "domBeaconId": "cloudflare-web-analytics",
+    "scriptSrc": "https://static.cloudflareinsights.com/beacon.min.js",
+    "collector": "https://cloudflareinsights.com/cdn-cgi/rum",
+    "preflightStatus": 200,
+    "collectorStatus": 204,
+    "apexRumRequestCount": 0
+  },
+  "visualAcceptance": {
+    "verified": [
+      "320px banner heading contrast",
+      "Allow embedded booking is first and highlighted orange in the banner and preferences dialog",
+      "44px sticky header CTA",
+      "Cal deferred until allow plus click",
+      "Cal close restores header CTA focus",
+      "Essential withdrawal removes Cal script and iframe after reload",
+      "secure v1.essential SameSite=Lax preference with 183-day lifetime",
+      "640x360 landscape menu shows all links, focuses Services and restores the menu trigger on Escape",
+      "844x390 desktop header CTA is visible and unobstructed"
+    ],
+    "replacementPreviewVerified": [
+      "320px document width is 320px with compact Turnstile visible and securely completed",
+      "resizing to 768px and back to 320px produces no document overflow",
+      "entered message survives the responsive Turnstile change"
+    ],
+    "productionVerified": [
+      "320px contact page document width is 320px with a 246px Turnstile container and completed secure verification",
+      "resizing from 320px to 768px and back produces no document overflow",
+      "production home document width equals viewport width at 320px, 390px, 430px, 768px, 1024px and 1440px",
+      "one cloudflare-web-analytics beacon is present and no Cal script loads before consent plus click"
+    ],
+    "status": "passed"
+  },
+  "previewVerification": {
+    "seo": 167,
+    "content": 149,
+    "seoEvidence": "favicon-cookie-preview-seo.json"
+  },
+  "productionStagedVerification": {
+    "seo": 166,
+    "content": 149
+  },
+  "productionVerification": {
+    "seo": 167,
+    "content": 149,
+    "seoEvidence": "favicon-cookie-production-seo.json",
+    "contentEvidence": "production-content.json"
+  },
+  "contactTests": 47,
+  "rollback": {
+    "method": "remove both production Worker routes",
+    "apexOrigin": "216.198.79.193",
+    "wwwOrigin": "cname.vercel-dns.com",
+    "mailDnsChangeRequired": false,
+    "snapshot": "pre-cutover-dns-and-rulesets.json",
+    "analyticsSteps": [
+      "remove or disable Configuration Rule e24ac05640b249dd8cd0741d6656e4f2",
+      "restore Web Analytics auto_install=true for the older Vercel release"
+    ]
+  },
+  "releaseStatus": "live-acceptance-complete",
+  "faviconAndCookieFollowup": "favicon-cookie-release.json"
+}

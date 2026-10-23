@@ -1,0 +1,7 @@
+interface:
+  display_name: "Patchworks Publications"
+  short_description: "Create branded Patchworks PDF publications"
+  icon_small: "./assets/patchworks-wo-orange-512.png"
+  icon_large: "./assets/patchworks-wordmark.png"
+  brand_color: "#D16013"
+  default_prompt: "Use $patchworks-publications to create a polished Patchworks PDF publication from my brief."

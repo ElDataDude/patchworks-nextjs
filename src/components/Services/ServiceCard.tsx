@@ -1,56 +1,57 @@
-import AvailabilityDisplay from "../Common/AvailabilityDisplay";
-import EditorialLink from "../Common/EditorialLink";
-
 interface ServiceCardProps {
+  id: string;
   number: string;
   title: string;
-  description: string;
-  price: string;
-  features: string[];
-  idealFor: string;
-  ctaLink: string;
+  summary: string;
+  questions: readonly string[];
+  activities: readonly string[];
+  outputs: readonly string[];
 }
 
 export default function ServiceCard({
+  id,
   number,
   title,
-  description,
-  price,
-  features,
-  idealFor,
-  ctaLink,
+  summary,
+  questions,
+  activities,
+  outputs,
 }: ServiceCardProps) {
+  const sections = [
+    { title: "Questions we help answer", items: questions },
+    { title: "How we work", items: activities },
+    { title: "What you leave with", items: outputs },
+  ];
+
   return (
-    <article className="numbered-item service-row">
-      <span className="item-number" aria-hidden="true">
-        {number}
-      </span>
-      <div className="service-row-main">
-        <h2 className="item-title">{title}</h2>
-        <p>{description}</p>
-        <div className="service-details">
-          <div>
-            <h4>Features:</h4>
+    <article
+      id={id}
+      className="enterprise-service"
+      aria-labelledby={`${id}-title`}
+    >
+      <div className="enterprise-service-heading">
+        <span className="item-number" aria-hidden="true">
+          {number}
+        </span>
+        <div>
+          <h2 id={`${id}-title`} className="enterprise-service-title">
+            {title}
+          </h2>
+          <p className="body-copy">{summary}</p>
+        </div>
+      </div>
+      <div className="enterprise-service-details">
+        {sections.map((section) => (
+          <div key={section.title}>
+            <h3 className="enterprise-label">{section.title}</h3>
             <ul className="detail-list">
-              {features.map((feature) => (
-                <li key={feature}>{feature}</li>
+              {section.items.map((item) => (
+                <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
-          <div>
-            <h4>Ideal for:</h4>
-            <p>{idealFor}</p>
-          </div>
-        </div>
+        ))}
       </div>
-      <aside
-        className="service-commercial"
-        aria-label={`${title} pricing and availability`}
-      >
-        <p className="service-price">{price}</p>
-        <AvailabilityDisplay productId={title} />
-        <EditorialLink href={ctaLink}>Book Free Consultation</EditorialLink>
-      </aside>
     </article>
   );
 }

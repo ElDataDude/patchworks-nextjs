@@ -1,13 +1,9 @@
 import PageIntro from "@/components/Common/PageIntro";
 import Careers from "@/components/Careers";
 import "../../styles/core-pages.css";
-import { Metadata } from "next";
+import { createPageMetadata } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "Careers | Patchworks AI",
-  description:
-    "Join our team of exceptional individuals who are passionate about delivering pragmatic AI solutions with measurable business impact.",
-};
+export const metadata = createPageMetadata("/careers");
 
 export default function CareersPage() {
   return (

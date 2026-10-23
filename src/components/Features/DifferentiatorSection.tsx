@@ -1,41 +1,34 @@
-const items = [
-  {
-    title: "Fractional Head-of-AI",
-    text: "Executive-level AI leadership without the full-time cost. Our fractional model gives you strategic guidance, team coaching, and implementation expertise at 30% the cost of a full-time hire.",
-  },
-  {
-    title: "Pragmatic, ROI-First Delivery",
-    text: "We focus exclusively on AI applications with measurable financial returns. Our approach prioritizes quick wins that build momentum while establishing the foundation for sustainable long-term value.",
-  },
-  {
-    title: "Executive + Engineer Fluency",
-    text: "We bridge the gap between executive vision and technical execution, speaking both languages fluently. This dual communication capability ensures alignment between business goals and technical implementation.",
-  },
-];
+import { partnerExpertise } from "@/data/positioning";
+import EditorialLink from "../Common/EditorialLink";
+
 export default function DifferentiatorSection() {
   return (
-    <section className="section-space rule-section">
+    <section className="section-space rule-section enterprise-expertise">
       <div className="site-container editorial-layout">
         <h2 className="section-heading editorial-anchor">
-          What Makes Us Different
+          Two perspectives. One clear view.
         </h2>
-        <div>
+        <div className="editorial-content">
           <p className="editorial-intro">
-            Our unique approach combines strategic vision with pragmatic
-            execution, delivering measurable AI results where others only
-            promise potential.
+            Technology has to stand up to technical scrutiny and commercial
+            judgement. Our partnership brings both to the same conversation.
           </p>
-          {items.map((item, i) => (
-            <article className="numbered-item" key={item.title} data-reveal>
+          {partnerExpertise.map((expertise, index) => (
+            <article
+              className="numbered-item"
+              key={expertise.title}
+              data-reveal
+            >
               <span className="item-number" aria-hidden="true">
-                {String(i + 1).padStart(2, "0")}
+                {String(index + 1).padStart(2, "0")}
               </span>
               <div>
-                <h3 className="item-title">{item.title}</h3>
-                <p>{item.text}</p>
+                <h3 className="item-title">{expertise.title}</h3>
+                <p>{expertise.text}</p>
               </div>
             </article>
           ))}
+          <EditorialLink href="/about">Our partnership</EditorialLink>
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ Shared visual reference: `/Users/bryanj/dev/patchworks/patchworks-nextjs/design/
 
 - Original generation path: `/Users/bryanj/.codex/generated_images/01a09b53-30ce-7272-835a-6232b109f39a/exec-9c26194c-a03e-4c29-b6ac-55136bfc4a15.png`
 - Native dimensions: 1983 × 793 (requested 2560 × 1024)
-- Master: `public/images/editorial/masters/home-systems.png`
+- Master: `design/editorial-masters/home-systems.png`
 - Optimized asset: `public/images/editorial/home-systems.webp`
 
 ### Exact prompt
@@ -19,7 +19,7 @@ Use case: stylized-concept. Create ONLY a standalone raster artwork asset, reque
 
 - Original generation path: `/Users/bryanj/.codex/generated_images/01a09b53-30ce-7272-835a-6232b109f39a/exec-254e4b38-5ae7-433b-af55-d3bf67adf5c6.png`
 - Native dimensions: 1532 × 1026 (requested 1792 × 1200)
-- Master: `public/images/editorial/masters/drilling-study.png`
+- Master: `design/editorial-masters/drilling-study.png`
 - Optimized asset: `public/images/editorial/drilling-study.webp`
 
 ### Exact prompt
@@ -30,7 +30,7 @@ Use case: stylized-concept. Create one standalone conceptual industrial intellig
 
 - Original generation path: `/Users/bryanj/.codex/generated_images/01a09b53-30ce-7272-835a-6232b109f39a/exec-cacb5d4d-f1fd-41ab-a72c-614cef6c67c9.png`
 - Native dimensions: 1254 × 1254 (requested 1536 × 1536)
-- Master: `public/images/editorial/masters/about-bridge.png`
+- Master: `design/editorial-masters/about-bridge.png`
 - Optimized asset: `public/images/editorial/about-bridge.webp`
 
 ### Exact prompt

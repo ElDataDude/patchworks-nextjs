@@ -6,13 +6,9 @@ import BookingCTA from "@/components/Common/BookingCTA";
 import NewsLatterBox from "@/components/Contact/NewsLatterBox";
 import Image from "next/image";
 import { Search } from "lucide-react";
-import { Metadata } from "next";
+import { createPageMetadata } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "AI Implementation Insights | Patchworks AI Blog",
-  description:
-    "Discover practical insights and strategies for implementing AI solutions that deliver measurable business value.",
-};
+export const metadata = createPageMetadata("/blog-sidebar");
 
 const BlogSidebarPage = () => {
   return (
@@ -73,7 +69,7 @@ const BlogSidebarPage = () => {
                 <div className="media-frame relative mb-10 aspect-[16/9]">
                   <Image
                     src="/images/blog/blog-details-01.jpg"
-                    alt="image"
+                    alt="Angular blue glass building façades viewed from below"
                     fill
                     sizes="(max-width: 767px) 90vw, 760px"
                     className="object-cover"
@@ -111,7 +107,7 @@ const BlogSidebarPage = () => {
                   mattis vulputate cupidatat.
                 </p>
                 <div className="mb-10 border-y border-[#d16013] py-8 text-center">
-                  <BookingCTA text="Get Expert AI Implementation Guidance" />
+                  <BookingCTA />
                 </div>
                 <ul className="mb-12 list-disc space-y-3 pl-6">
                   <li>Consectetur adipiscing elit in voluptate velit.</li>
@@ -160,18 +156,27 @@ const BlogSidebarPage = () => {
                 <div className="flex items-center gap-3">
                   <input
                     type="text"
+                    disabled
                     placeholder="Search here..."
                     aria-label="Search here..."
+                    aria-describedby="legacy-search-unavailable"
                     className="form-control"
                   />
                   <button
                     type="button"
+                    disabled
                     aria-label="search button"
                     className="grid h-12 w-12 shrink-0 place-items-center bg-[#d16013] text-white"
                   >
                     <Search aria-hidden="true" size={18} strokeWidth={1.5} />
                   </button>
                 </div>
+                <p
+                  id="legacy-search-unavailable"
+                  className="mt-3 text-sm text-[#626875]"
+                >
+                  Search is unavailable in this archived layout.
+                </p>
               </div>
               <div className="mb-10 border-t border-[#E3E8EF]">
                 <h2 className="border-b border-[#E3E8EF] py-5 text-2xl">
@@ -217,12 +222,9 @@ const BlogSidebarPage = () => {
                     "Multipurpose",
                   ].map((category) => (
                     <li key={category}>
-                      <a
-                        href="#0"
-                        className="inline-block py-2 text-sm text-[#626875] hover:text-[#d16013]"
-                      >
+                      <span className="inline-block py-2 text-sm text-[#626875]">
                         {category}
-                      </a>
+                      </span>
                     </li>
                   ))}
                 </ul>

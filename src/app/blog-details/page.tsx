@@ -3,14 +3,10 @@ import SharePost from "@/components/Blog/SharePost";
 import TagButton from "@/components/Blog/TagButton";
 import BookingCTA from "@/components/Common/BookingCTA";
 import Image from "next/image";
-import { Metadata } from "next";
+import ResponsiveImage from "@/components/Common/ResponsiveImage";
+import { createPageMetadata } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title:
-    "5 Ways Fractional AI Leadership Can Transform Your Business | Patchworks AI",
-  description:
-    "Discover how a fractional head-of-AI can provide executive-level guidance at a fraction of the cost, helping your business achieve measurable ROI from AI investments.",
-};
+export const metadata = createPageMetadata("/blog-details");
 
 const BlogDetailsPage = () => {
   return (
@@ -62,7 +58,7 @@ const BlogDetailsPage = () => {
 
           <div className="mx-auto mt-12 max-w-5xl">
             <div className="media-frame relative aspect-[16/9] overflow-hidden">
-              <Image
+              <ResponsiveImage
                 src="/images/editorial/article-leadership.webp"
                 alt="Stone and glass leadership structures joined by an orange connection"
                 fill
@@ -143,7 +139,7 @@ const BlogDetailsPage = () => {
               investments.
             </p>
             <div className="mb-12 border-y border-[#E3E8EF] py-8 text-center">
-              <BookingCTA text="Book Your Free AI Leadership Consultation" />
+              <BookingCTA />
             </div>
 
             <footer className="flex flex-col justify-between gap-8 border-t border-[#E3E8EF] pt-7 sm:flex-row sm:items-start">

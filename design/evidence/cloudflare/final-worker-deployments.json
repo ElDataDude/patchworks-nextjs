@@ -1,0 +1,20 @@
+{
+  "preview": {
+    "id": "patchworks-nextjs-preview",
+    "etag": "4edd2b6b80d702dacec38eb6bbcc3687a7468a0aea4687152e196ab2639f19e9",
+    "modified_on": "2026-09-14T05:27:02.953116Z",
+    "handlers": [
+      "fetch",
+      "scheduled"
+    ]
+  },
+  "production": {
+    "id": "patchworks-nextjs",
+    "etag": "487e7ad07ea778445543574ff514b8cf024f3debf47a2840bc990ac86f3f8446",
+    "modified_on": "2026-09-14T05:29:37.159658Z",
+    "handlers": [
+      "fetch",
+      "scheduled"
+    ]
+  }
+}

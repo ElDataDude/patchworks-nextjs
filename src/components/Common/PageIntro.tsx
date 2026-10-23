@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ResponsiveImage from "./ResponsiveImage";
 export default function PageIntro({
   title,
   description,
@@ -25,7 +25,7 @@ export default function PageIntro({
       </div>
       {image && (
         <div className="media-frame">
-          <Image
+          <ResponsiveImage
             src={image}
             alt={imageAlt}
             width={imageWidth}

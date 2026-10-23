@@ -1,28 +1,34 @@
 import Link from "next/link";
 import { Linkedin } from "lucide-react";
+import {
+  COMPANY_LEGAL_NAME,
+  COMPANY_NUMBER,
+  REGISTERED_OFFICE,
+  pillars,
+} from "@/data/positioning";
+import BrandLogo from "../Common/BrandLogo";
+import { PrivacyPreferencesButton } from "../Common/PrivacyControls";
 const groups = [
   {
     title: "Services",
-    links: [
-      ["Fractional Head-of-AI", "/services"],
-      ["AI Workshops", "/services"],
-      ["Custom AI Solutions", "/services"],
-    ],
+    links: pillars.map((pillar) => [pillar.title, pillar.href]),
   },
   {
     title: "Company",
     links: [
       ["About Us", "/about"],
-      ["Careers", "/careers"],
       ["Contact", "/contact"],
+      ["Careers", "/careers"],
+      ["Privacy notice", "/privacy"],
     ],
   },
   {
     title: "Resources",
     links: [
-      ["Blog", "/blog"],
       ["Industries", "/industries"],
-      ["Get in Touch", "/contact"],
+      ["Case study", "/industries#case-study"],
+      ["Use cases", "/use-cases"],
+      ["Blog", "/blog"],
     ],
   },
 ];
@@ -32,13 +38,11 @@ export default function Footer() {
       <div className="site-container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link href="/" className="wordmark" aria-label="Patchworks AI home">
-              <span>patchworks</span>AI
-            </Link>
+            <BrandLogo placement="footer" />
             <p className="footer-description">
-              Patchworks AI provides fractional head-of-AI services and
-              pragmatic AI implementation expertise to help businesses achieve
-              measurable ROI from AI investments.
+              Candid AI counsel and hands-on delivery for large, complex
+              enterprises. We help leadership teams make better decisions and
+              work alongside their people to put them into practice.
             </p>
             <a
               href="https://www.linkedin.com/company/patchworks-ai"
@@ -68,10 +72,11 @@ export default function Footer() {
             © {new Date().getFullYear()} Patchworks AI. All rights reserved.
           </p>
           <p>
-            Patchworks AI is a trading name of PATCHWORKS AI CONSULTING LTD,
-            registered in England and Wales under company number 16144699.
-            Registered office: 14 David Mews, London, W1U 6EQ.
+            Patchworks AI is a trading name of {COMPANY_LEGAL_NAME}, registered
+            in England and Wales under company number {COMPANY_NUMBER}.
+            Registered office: {REGISTERED_OFFICE}.
           </p>
+          <PrivacyPreferencesButton className="footer-privacy-button" />
         </div>
       </div>
     </footer>

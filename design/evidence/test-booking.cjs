@@ -7,6 +7,7 @@
  * https://cal.com/help/embedding/embed-events
  * https://github.com/calcom/cal.com/blob/main/packages/embeds/embed-snippet/src/index.ts
  * https://github.com/calcom/cal.com/blob/main/packages/embeds/embed-core/src/ModalBox/ModalBox.ts
+ * https://github.com/calcom/cal.com/blob/main/packages/embeds/embed-core/src/embed.ts
  */
 const fs = require("node:fs");
 const path = require("node:path");
@@ -24,6 +25,91 @@ function compile(file) {
   }).outputText;
 }
 const helperSource = compile("src/lib/cal-embed.ts");
+const privacySource = compile("src/lib/privacy-preferences.ts");
+const analyticsSource = compile(
+  "src/components/Common/CloudflareWebAnalytics.tsx",
+);
+
+function testAnalyticsBoundary() {
+  const context = {
+    exports: {},
+    require(id) {
+      if (id === "react")
+        return { useEffect() {}, useState: () => ["", () => {}] };
+      if (id === "next/script") return () => null;
+      return require(id);
+    },
+    process: { env: {} },
+  };
+  vm.runInNewContext(analyticsSource, context);
+  const allows = (overrides = {}) =>
+    context.exports.shouldLoadCloudflareAnalytics({
+      nodeEnvironment: "production",
+      siteEnvironment: "production",
+      token: "public-token",
+      hostname: "patchworks.ai",
+      ...overrides,
+    });
+  assert.equal(allows(), true);
+  assert.equal(allows({ hostname: "preview.example.workers.dev" }), false);
+  assert.equal(allows({ hostname: "localhost" }), false);
+  assert.equal(allows({ hostname: "www.patchworks.ai" }), false);
+  assert.equal(allows({ siteEnvironment: "preview" }), false);
+  assert.equal(allows({ nodeEnvironment: "development" }), false);
+  assert.equal(allows({ token: "" }), false);
+  console.log(
+    "PASS analytics boundary: one manual beacon is eligible only on the exact production hostname with its configured token.",
+  );
+}
+
+function testPrivacyPreference() {
+  let stored = "";
+  let serialized = "";
+  let notified = null;
+  const window = Object.assign(new EventTarget(), {
+    location: { protocol: "https:" },
+  });
+  const document = {
+    get cookie() {
+      return stored;
+    },
+    set cookie(value) {
+      serialized = value;
+      stored = value.split(";", 1)[0];
+    },
+  };
+  class TestCustomEvent extends Event {
+    constructor(type, options) {
+      super(type);
+      this.detail = options.detail;
+    }
+  }
+  const context = {
+    exports: {},
+    window,
+    document,
+    CustomEvent: TestCustomEvent,
+  };
+  vm.runInNewContext(privacySource, context);
+  window.addEventListener(context.exports.PRIVACY_PREFERENCE_EVENT, (event) => {
+    notified = event.detail;
+  });
+  assert.equal(context.exports.readPrivacyPreference(), null);
+  context.exports.writePrivacyPreference("booking");
+  assert.equal(context.exports.readPrivacyPreference(), "booking");
+  assert.equal(notified, "booking");
+  assert.match(serialized, /Max-Age=15811200/);
+  assert.match(serialized, /SameSite=Lax/);
+  assert.match(serialized, /Secure/);
+  window.location.protocol = "http:";
+  context.exports.writePrivacyPreference("essential");
+  assert.equal(context.exports.readPrivacyPreference(), "essential");
+  assert.doesNotMatch(serialized, /Secure/);
+  console.log(
+    "PASS privacy choice: versioned preference, six-month expiry, event notification, secure production cookie and local test support.",
+  );
+}
+
 function harness({ existing = false } = {}) {
   const timers = new Map();
   const events = new Map();
@@ -32,9 +118,22 @@ function harness({ existing = false } = {}) {
   let appended = 0;
   const script = Object.assign(new EventTarget(), { dataset: {} });
   const window = new EventTarget();
-  const document = Object.assign(new EventTarget(), {
+  const documentEvents = new Map();
+  const document = {
     querySelector: () => (existing ? script : null),
     createElement: () => script,
+    addEventListener(type, listener) {
+      const listeners = documentEvents.get(type) ?? new Set();
+      listeners.add(listener);
+      documentEvents.set(type, listeners);
+    },
+    removeEventListener(type, listener) {
+      documentEvents.get(type)?.delete(listener);
+    },
+    dispatchEvent(event) {
+      documentEvents.get(event.type)?.forEach((listener) => listener(event));
+      return true;
+    },
     head: {
       appendChild() {
         appended++;
@@ -46,7 +145,7 @@ function harness({ existing = false } = {}) {
         assert.equal(window.Cal.q[0][1].origin, "https://cal.com");
       },
     },
-  });
+  };
   const context = {
     exports: {},
     window,
@@ -78,6 +177,9 @@ function harness({ existing = false } = {}) {
     assert(timer, `Expected a ${delay}ms watchdog`);
     timer.fn();
   }
+  function dismissModal(localName = "cal-modal-box") {
+    document.dispatchEvent({ type: "close", target: { localName } });
+  }
   return {
     api: context.exports,
     timers,
@@ -88,6 +190,7 @@ function harness({ existing = false } = {}) {
     document,
     activate,
     expire,
+    dismissModal,
     count: () => appended,
   };
 }
@@ -113,11 +216,20 @@ async function testHelper() {
   assert.equal(modal[1].config.theme, "light");
   assert.equal(modal[1].config.layout, "month_view");
   assert(!h.events.has("__closeIframe"), "no internal SDK dismissal event");
+  let closeNotices = 0;
+  const unsubscribeClose = h.api.subscribeCalClose(() => closeNotices++);
   h.events.get("linkReady")();
   assert.equal(h.timers.size, 0, "booker readiness clears its watchdog");
   h.api.openCalBooking();
-  h.document.dispatchEvent(new Event("close"));
+  h.dismissModal("dialog");
+  assert.equal(h.timers.size, 1, "unrelated close events are ignored");
+  assert.equal(closeNotices, 0);
+  h.dismissModal();
   assert.equal(h.timers.size, 0, "native modal dismissal clears its watchdog");
+  assert.equal(closeNotices, 1, "native Cal modal close is published once");
+  unsubscribeClose();
+  h.dismissModal();
+  assert.equal(closeNotices, 1, "Cal close subscription can be removed");
   let notices = 0;
   const unsubscribe = h.api.subscribeCalFailure(() => notices++);
   h.events.get("linkFailed")();
@@ -175,24 +287,72 @@ async function testHelper() {
   h.expire(15000);
   assert.equal(h.api.openCalBooking(), false);
   console.log(
-    "PASS helper: queue ordering, shared load, pending fallback, modal config, native dismissal, provider error, script/evaluation errors, late load, existing script, both watchdogs.",
+    "PASS helper: queue ordering, shared load, pending fallback, modal config, documented native Cal dismissal, provider error, script/evaluation errors, late load, existing script, both watchdogs.",
   );
 }
-function testAnchor() {
-  let shouldOpen = false;
-  let calls = 0;
+async function testAnchor() {
+  let preference = null;
+  let loadCalls = 0;
+  let openCalls = 0;
+  let failureListener;
+  let closeListener;
+  let cleanup;
+  let failureUnsubscribed = false;
+  let closeUnsubscribed = false;
+  const anchorElement = {
+    focusCalls: 0,
+    isConnected: true,
+    focus() {
+      this.focusCalls++;
+    },
+  };
   const context = {
     exports: {},
+    requestAnimationFrame(callback) {
+      callback();
+    },
     require(id) {
       if (id === "react")
-        return { useState: () => [false, () => {}], useEffect: () => {} };
+        return {
+          useState: (initial) => [initial, () => {}],
+          useEffect: (effect) => {
+            cleanup = effect();
+            assert.equal(typeof cleanup, "function");
+          },
+          useId: () => "booking-status",
+          useRef: () => ({ current: anchorElement }),
+        };
       if (id === "lucide-react") return { ArrowUpRight: () => null };
+      if (id === "@/data/positioning") {
+        const content = { exports: {} };
+        vm.runInNewContext(compile("src/data/positioning.ts"), content);
+        return content.exports;
+      }
+      if (id.includes("privacy-preferences"))
+        return {
+          readPrivacyPreference: () => preference,
+        };
       if (id.includes("cal-embed"))
         return {
           BOOKING_URL: "https://cal.com/bryanj/30min",
+          loadCalEmbed: async () => {
+            loadCalls++;
+          },
           openCalBooking: () => {
-            calls++;
-            return shouldOpen;
+            openCalls++;
+            return true;
+          },
+          subscribeCalFailure: (listener) => {
+            failureListener = listener;
+            return () => {
+              failureUnsubscribed = true;
+            };
+          },
+          subscribeCalClose: (listener) => {
+            closeListener = listener;
+            return () => {
+              closeUnsubscribed = true;
+            };
           },
         };
       return require(id);
@@ -210,10 +370,15 @@ function testAnchor() {
   assert.equal(anchor.props.rel, "noopener noreferrer");
   assert.equal(anchor.props.children[0].props.className, "hero-booking-label");
   assert.equal(
+    anchor.props.children[0].props.children,
+    "Book a partner conversation",
+  );
+  assert.equal(
     anchor.props["data-cal-link"],
     undefined,
     "prevent duplicate Cal click handlers",
   );
+  assert.equal(loadCalls, 0, "render must not request Cal");
   let prevented = false;
   const click = {
     button: 0,
@@ -221,11 +386,33 @@ function testAnchor() {
       prevented = true;
     },
   };
-  anchor.props.onClick(click);
+  await anchor.props.onClick(click);
   assert.equal(prevented, false);
-  shouldOpen = true;
-  anchor.props.onClick(click);
+  assert.equal(loadCalls, 0, "no choice preserves direct navigation");
+  preference = "essential";
+  await anchor.props.onClick(click);
+  assert.equal(prevented, false);
+  assert.equal(loadCalls, 0, "essential choice preserves direct navigation");
+  preference = "booking";
+  await anchor.props.onClick(click);
   assert.equal(prevented, true);
+  assert.equal(loadCalls, 1, "consent plus click requests Cal once");
+  assert.equal(openCalls, 1, "embed opens after the runtime loads");
+  closeListener();
+  assert.equal(
+    anchorElement.focusCalls,
+    1,
+    "native Cal close restores focus to the originating anchor",
+  );
+  prevented = false;
+  await anchor.props.onClick(click);
+  assert.equal(openCalls, 2);
+  closeListener();
+  assert.equal(
+    anchorElement.focusCalls,
+    2,
+    "Cal's Escape dismissal close restores the same originating anchor",
+  );
   for (const modifier of [
     { metaKey: true },
     { ctrlKey: true },
@@ -234,18 +421,35 @@ function testAnchor() {
     { button: 1 },
   ]) {
     prevented = false;
-    const previous = calls;
-    anchor.props.onClick({ ...click, ...modifier });
+    const previousLoads = loadCalls;
+    const previousOpens = openCalls;
+    await anchor.props.onClick({ ...click, ...modifier });
     assert.equal(prevented, false);
-    assert.equal(calls, previous);
+    assert.equal(loadCalls, previousLoads);
+    assert.equal(openCalls, previousOpens);
   }
+  assert.equal(failureUnsubscribed, false);
+  assert.equal(closeUnsubscribed, false);
+  prevented = false;
+  await anchor.props.onClick(click);
+  failureListener();
+  assert.equal(
+    anchorElement.focusCalls,
+    3,
+    "embed failure continues to restore focus",
+  );
+  cleanup();
+  assert.equal(failureUnsubscribed, true);
+  assert.equal(closeUnsubscribed, true);
   console.log(
-    "PASS component: real secure booking anchor, editorial label, no duplicate handler, readiness-only interception, modified/middle clicks.",
+    "PASS component: real secure anchor, zero Cal requests on render or essential choice, consent-plus-click loading, modified/middle-click fallback, and originating-anchor focus restoration for native close and Escape dismissal.",
   );
 }
 (async () => {
+  testAnalyticsBoundary();
+  testPrivacyPreference();
   await testHelper();
-  testAnchor();
+  await testAnchor();
 })().catch((error) => {
   console.error(error);
   process.exitCode = 1;

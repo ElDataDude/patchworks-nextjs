@@ -1,0 +1,100 @@
+{
+  "status": "passed",
+  "publicationSystem": "1.0.0",
+  "successfulRenders": [
+    {
+      "status": "passed",
+      "publicationSystem": "1.0.0",
+      "assetIntegrity": {
+        "status": "passed",
+        "fileCount": 6,
+        "manifestSha256": "09c85661b9584422e6b27df081e34ce9e8212a7d11d2b2856e579dd5e09eb7c7"
+      },
+      "source": "/Users/bryanj/dev/patchworks/patchworks-nextjs/design/publication-system/examples/white-paper.json",
+      "sourceSha256": "27e2034e18418363c023b0a5c3da8dded738035a330e5c7acdad9565b895da20",
+      "output": "/Users/bryanj/dev/patchworks/patchworks-nextjs/output/pdf/patchworks-white-paper-sample.pdf",
+      "pageCount": 7,
+      "imageCount": 7,
+      "loadedFonts": [
+        "Instrument Serif italic",
+        "Instrument Serif normal",
+        "Source Sans 3 normal"
+      ],
+      "overflowIssues": []
+    },
+    {
+      "status": "passed",
+      "publicationSystem": "1.0.0",
+      "assetIntegrity": {
+        "status": "passed",
+        "fileCount": 6,
+        "manifestSha256": "09c85661b9584422e6b27df081e34ce9e8212a7d11d2b2856e579dd5e09eb7c7"
+      },
+      "source": "/Users/bryanj/dev/patchworks/patchworks-nextjs/design/publication-system/examples/system-specimen.json",
+      "sourceSha256": "0163cf144458f3ae06f898c0c3ba15fefa7c1641b14eadb4642a06df6a004c46",
+      "output": "/Users/bryanj/dev/patchworks/patchworks-nextjs/output/pdf/patchworks-publication-system-specimen.pdf",
+      "pageCount": 8,
+      "imageCount": 9,
+      "loadedFonts": [
+        "Instrument Serif italic",
+        "Instrument Serif normal",
+        "Source Sans 3 normal"
+      ],
+      "overflowIssues": []
+    }
+  ],
+  "pdfChecks": [
+    {
+      "file": "/Users/bryanj/dev/patchworks/patchworks-nextjs/output/pdf/patchworks-white-paper-sample.pdf",
+      "bytes": 476587,
+      "pages": 7,
+      "pageSize": "A4",
+      "tagged": true,
+      "embeddedFonts": [
+        "Source Sans 3",
+        "Instrument Serif"
+      ],
+      "firstPagePixels": {
+        "width": 909,
+        "height": 1287
+      }
+    },
+    {
+      "file": "/Users/bryanj/dev/patchworks/patchworks-nextjs/output/pdf/patchworks-publication-system-specimen.pdf",
+      "bytes": 2693821,
+      "pages": 8,
+      "pageSize": "A4",
+      "tagged": true,
+      "embeddedFonts": [
+        "Source Sans 3",
+        "Instrument Serif"
+      ],
+      "firstPagePixels": {
+        "width": 909,
+        "height": 1287
+      }
+    }
+  ],
+  "failurePathChecks": [
+    {
+      "name": "unsupported block",
+      "status": "passed",
+      "observed": "pages[1].blocks[4].type is unsupported: decorative-swoosh"
+    },
+    {
+      "name": "non-ASCII dash",
+      "status": "passed",
+      "observed": "Source contains a non-ASCII dash. Replace it with an ASCII hyphen."
+    },
+    {
+      "name": "missing image",
+      "status": "passed",
+      "observed": "Required asset is missing: /Users/bryanj/dev/patchworks/patchworks-nextjs/design/publication-system/examples/missing-image.png"
+    },
+    {
+      "name": "page overflow",
+      "status": "passed",
+      "observed": "Render validation failed:"
+    }
+  ]
+}

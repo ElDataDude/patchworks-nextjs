@@ -1,0 +1,75 @@
+{
+  "date": "2026-09-14",
+  "method": "Fresh CUA browser checks and Safari Patchworks Gmail readback; Cloudflare account configuration used the plugin only",
+  "productionUrl": "https://patchworks.ai",
+  "realEnquiries": {
+    "preview": {
+      "marker": "PW-CF-20260914-PREVIEW",
+      "httpStatus": 200,
+      "ledgerStatus": "accepted",
+      "messageId": "<JTdPRd7Kd5AG63TNlReEgMhul3UsAIo4hS2z@patchworks.ai>",
+      "inboxReceived": true,
+      "usedTurnstileTokenReplayStatus": 403
+    },
+    "production": {
+      "marker": "PW-CF-20260914-PRODUCTION",
+      "httpStatus": 200,
+      "ledgerStatus": "accepted",
+      "messageId": "<eLgPthz8guDjULY57efm8V3R22Nbn6jxyTgs@patchworks.ai>",
+      "inboxReceived": true,
+      "usedTurnstileTokenReplayStatus": 403,
+      "from": "website@patchworks.ai",
+      "to": "info@patchworks.ai",
+      "replyTo": "bryan.johnson@patchworks.ai",
+      "mailedBy": "cf-bounce.patchworks.ai",
+      "signedBy": "patchworks.ai",
+      "spf": "PASS",
+      "dkim": "PASS",
+      "dmarc": "PASS",
+      "transport": "TLS",
+      "gmailOriginalMessageIdMatchesLedger": true
+    },
+    "ledgerReadbackAfterReplays": "Exactly one accepted record in each environment; no resend"
+  },
+  "analytics": {
+    "automaticInstallation": false,
+    "configurationRulesetId": "6eb4325d456f49d4a9c724c9ee6aca48",
+    "configurationRuleId": "e24ac05640b249dd8cd0741d6656e4f2",
+    "automaticInjectionSuppressedFor": "patchworks.ai",
+    "freshHydratedBeaconCount": 1,
+    "beaconId": "cloudflare-web-analytics",
+    "collector": "https://cloudflareinsights.com/cdn-cgi/rum",
+    "collectorResponseStatuses": [200, 204],
+    "apexRumRequestsAfterFix": 0,
+    "previewBeaconCount": 0
+  },
+  "responsive": {
+    "finalProductionHomeWidthsWithoutHorizontalOverflow": [320, 390, 430, 768, 1024, 1440],
+    "finalProductionContact320": {
+      "documentWidth": 320,
+      "challengeContainerWidth": 246,
+      "turnstile": "Secure verification complete."
+    },
+    "contactResize768To320": "No horizontal overflow; challenge switches size",
+    "previewResizePreservesEnteredMessage": true,
+    "landscape640x360": "Menu links visible; opening focuses Services; Escape restores menu button",
+    "landscape844x390": "Desktop navigation and complete booking CTA remain visible",
+    "mobileHeaderBookingTouchTargetHeight": 44,
+    "firstVisitBanner": "White heading, equally weighted Essential only and Allow embedded booking choices"
+  },
+  "bookingPrivacy": {
+    "beforePermissionOrBookingClick": "No Cal.com script or iframe",
+    "afterPermissionAndBookingClick": "Real calendar and available slots rendered",
+    "closeRestoresHeaderBookingFocus": true,
+    "withdrawalReloadsAndRemovesCalRuntime": true,
+    "calScriptsAfterWithdrawal": 0,
+    "calFramesAfterWithdrawal": 0,
+    "preferenceCookie": {
+      "name": "patchworks_privacy",
+      "value": "v1.essential",
+      "secure": true,
+      "sameSite": "Lax",
+      "remainingDays": 183
+    }
+  }
+}
